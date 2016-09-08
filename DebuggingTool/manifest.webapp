@@ -1,0 +1,29 @@
+{
+    "version":"0.01",
+    "name":"LMIS",
+    "description":"LMIS Ordering App",
+    "icons":{
+        "16":null,
+        "48":"api.png",
+        "128":null
+    }
+    ,"developer":{
+        "url":"https://github.com/lmisuganda/dhis2lmisprototype",
+        "name":"nicolhag",
+        "company":null,
+        "email":null
+    },
+    "activities":{
+        "dhis":{
+            "href":"http://192.168.1.5:8082",
+            "namespace":null
+        }
+    },
+    "folderName":null,
+    "baseUrl":null,
+    "key":null,
+    "launchUrl":null,
+    "launch_path":"index.html",
+    "installs_allowed_from":["*"],
+    "default_locale":"en"
+}

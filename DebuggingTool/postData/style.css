@@ -1,0 +1,32 @@
+main{
+    text-align: center;
+}
+
+#submit-button{
+    margin-top:2%;
+    display:block;
+}
+
+table tr{
+    width:20%;
+}
+
+#input-table{
+    width:50%
+    margin:0 auto 0 auto;
+}
+
+#wrapper{
+    width:100%;
+    margin-top:5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-flex-direction: column; /* Safari */
+    flex-direction:         column;
+}
+
+#output{
+    margin: 5% auto 0 auto;
+    width:50%;
+}

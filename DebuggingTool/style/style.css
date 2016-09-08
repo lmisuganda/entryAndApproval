@@ -1,0 +1,48 @@
+
+
+#eventdata, #programinfo, .eventdatafields, #programstagesinfolist, #program_stages_info{
+	margin:2% 0 0 0;
+	list-style: none;
+}
+
+.eventdatafields, #program_stages_info{
+	background-color: darkgreen;
+	display: inline-block;
+	width: 20%;
+	padding:1%;
+	margin: 2.5% 2.5% 2.5% 2.5%;
+	text-align: left;
+}
+
+#program_stages_info{
+	width:40%;
+}
+
+#program_selector{
+	margin: 10% auto 0 auto;
+}
+
+#filter_selector{
+	margin: 5% auto 0 auto;
+}
+
+main{
+	text-align: center;
+
+}
+
+#programinfo, #programstagesinfolist{
+	background-color:darkgreen;
+	color:white;
+	text-align: center;
+	padding:1%
+}
+
+#eventdata{
+	background-color:green;
+	color:white;
+}
+#programinfo, #eventdata, #programstagesinfolist{
+	width: 100%;
+	margin: 0 auto 0 auto;
+}
