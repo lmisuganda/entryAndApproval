@@ -1,0 +1,97 @@
+/* DASHBOARD */
+.dashboard_section {
+	width: 70%;
+	margin: 20px auto 20px auto;
+	padding: 5px 10px 50px 20px;
+	border-top: 1px solid black;
+	text-align: center;
+}
+
+.dashboard_section h2 {
+	margin: 0;
+	padding: 0;
+	font-size: 1.7rem;
+	font-weight: 300;
+}
+.dashboard_section h3 {
+	margin: 10px 0 40px 0;
+	padding: 0;
+	font-size: 1.5rem;
+	font-weight: 300;
+}
+.dashboard_section h4 {
+	margin: 5px 0 20px 0;
+	padding: 0;
+	font-size: 1.4rem;
+	font-weight: 300;
+}
+.form_list {
+	display: inline-block;
+	width: 46%;
+	min-height: 200px;
+	vertical-align: top;
+	margin: 0 30px 0 0;
+	padding: 0px 0 50px 2px;
+}
+
+.submitted {
+	border-top: 5px solid green;
+}
+
+.submitted li {
+	border: 1px solid green;
+	
+}
+.submitted  li:hover {
+	background-color: green;
+	color: white;
+}
+
+.pending {
+	border-top: 5px solid orange;
+}
+.pending li {
+	border: 1px solid orange;
+	
+}
+.pending  li:hover {
+	background-color: orange;
+	color: white;
+}
+
+
+.form_list li {
+	font-family: 'Open Sans', sans-serif;
+	display: inline-block;
+	margin: 6px 0 6px 0;
+	padding: 10px;
+	width: 95%;
+
+}
+
+#previous_cycles li {
+	text-align: left;
+	font-family: 'Open Sans', sans-serif;
+	display: block;
+	margin: 20px 0 20px 0;
+	font-size: 1.5em;
+}
+
+#previous_cycles details {
+	cursor: pointer;
+}
+
+#previous_cycles summary {
+	user-select: none;
+}
+
+#previous_cycles details li {
+	font-size: .8em;
+	display: block;
+	margin: 0;
+	padding: 10px 10px 10px 30px;
+	border: none;
+}
+#previous_cycles details li:hover {
+	background-color: grey;
+}

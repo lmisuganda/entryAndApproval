@@ -1,0 +1,29 @@
+{
+    "version":"0.2",
+    "name":"Commodity ordering",
+    "description":"Submit and approve commodity orders and reports",
+    "icons":{
+        "16":null,
+        "48":"style/app_icon.png",
+        "128":null
+    }
+    ,"developer":{
+        "url":"null",
+        "name":"magl",
+        "company":null,
+        "email":null
+    },
+    "activities":{
+        "dhis":{
+            "href":"https://lmis-dev.dhis2.org",
+            "namespace":null
+        }
+    },
+    "folderName":null,
+    "baseUrl":null,
+    "key":null,
+    "launchUrl":null,
+    "launch_path":"index.html",
+    "installs_allowed_from":["*"],
+    "default_locale":"en"
+}

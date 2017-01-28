@@ -1,0 +1,193 @@
+/* DATA ENTRY WIZARD */
+
+#commodity_list {
+	text-align: center;
+}
+
+#commodity_list  h1{
+	display: inline-block;
+	width: 95%;
+	min-width: 800px;
+	text-align: left;
+	font-weight: 300;
+	font-size: 1.7rem;
+	margin-bottom: 30px;
+	
+}
+
+#commodity_list li {
+	display: inline-block;
+	width: 95%;
+	height: auto;
+	min-width: 800px;
+	border-top: 1px solid black;
+	padding: 5px 0 0 0;
+	text-align: left;
+	margin-bottom: 20px;
+	overflow: hidden;
+	cursor: pointer;
+	font-size: 1rem;
+	
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+	-moz-user-select: none;     /* Firefox all */
+	-ms-user-select: none;
+}
+
+#commodity_list .current_element {
+	border: 2px solid orange;
+}
+
+#commodity_list h3 {
+	display: inline-block;
+	font-size: 1.2em;
+	font-weight: 300;
+	margin: 0;
+	padding: 0 0 6px 10px;
+}
+
+#commodity_list .completed_element {
+	background-color: #dff0d8;
+	color: black;
+	border: 3px solid #d6e9c6;
+}
+
+#commodity_list .expandable_data_entry{
+	display: none;
+	position: relative;
+	min-height: 180px;
+	margin: 0 0 0 0;
+	padding: 1px 20px 20px 20px;
+	background-color: white;
+	cursor: initial;
+	font-size: initial;
+	color: initial;
+
+}
+
+#commodity_list .not_applicable_wraper{
+	display: block;
+	position: absolute;
+	right: 20px;
+	top: -35px;
+	padding: 10px;
+	margin: 10px;
+	font-size: 1.2rem;
+	border-bottom: 1px solid black;
+	cursor: pointer;
+}
+#commodity_list .not_applicable_wraper input {
+	margin-right: 10px;
+	width: 1.2rem;
+	height: 1.2rem;
+	vertical-align: bottom;
+}
+
+#commodity_list button{
+	display: block;
+	position: absolute;
+	right: 10px;
+	bottom: 5px;
+	
+	padding: 15px;
+	margin: 20px;
+	background-color: #276696;
+	color: white;
+	cursor: pointer;
+	font-weight: 600;
+	font-size: 1rem;
+	text-align: center;
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+	-moz-user-select: none;     /* Firefox all */
+	-ms-user-select: none; 
+}
+#commodity_list button:hover {
+	opacity: 0.8;
+}
+
+#commodity_list .data_element_input_pair {
+	display: inline-block;
+	margin-right: 15px;
+	margin-bottom: 45px;
+	vertical-align: bottom;
+	padding: 15px;
+	border: 2px solid white;
+	width: 145px;
+}
+
+#commodity_list p {
+	padding-top: 5px;
+	padding-left: 15px;
+	font-style: italic;
+	margin-bottom: 10px;
+}
+
+#commodity_list label {
+	width: 120px;
+	font-family: 'Open Sans', sans-serif;
+	display: block;
+	margin-bottom: 10px;
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+	-moz-user-select: none;     /* Firefox all */
+	-ms-user-select: none; 
+	
+}
+#commodity_list .data_element_input {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1em;
+	display: block;
+	width: 100%;	
+}
+#commodity_list .data_element_input::-webkit-outer-spin-button,
+#commodity_list .data_element_input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+#commodity_list .calculated_input {
+	border: 0px solid black;
+	background-color: white;
+}
+
+#commodity_list .notes {
+	width: 320px;
+}
+
+#save_continue_button {
+	display: inline-block;
+	width: auto;
+	margin: 0 auto 30px auto;
+	padding: 8px 20px 8px 20px;
+	border: 1px solid black;
+	font-size: 1.2rem;
+	background-color: #276696;
+	text-align: center;
+	color: white;
+	
+}
+
+#arrow_icon {
+	position: absolute;
+	display: none;
+	top: 300px;
+	left: 200px;
+}
+
+/* VALIDATION MESSAGES */
+
+#error_messages {
+	max-width: auto;
+	background-color: #F2DEDE;
+	border: 2px solid #D9534F;
+	padding: 10px 10px 20px 20px;
+}
+#error_messages h2 {
+	font-size: 1.2em;
+}
+#error_messages li {
+	display: list-item;
+	border: 0px;
+	cursor: inherit;
+	list-style: square;
+	margin-left: 5px;
+}

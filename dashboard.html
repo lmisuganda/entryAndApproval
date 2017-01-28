@@ -1,0 +1,53 @@
+<html>
+
+<head>
+	<title>DHIS2 Commodity ordering - Dashboard</title>
+	<script src="js/jquery-3.1.0.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="style/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="style/style.css"></link>
+	<link rel="stylesheet" href="style/dashboard.css"></link>
+</head>
+<body>
+<header id="main_header">
+	<a href="../../../"><img src="style/dhis2_logo.png"></a>
+	<h1><a href="index.html">Commodity order</a></h1>
+	<h1></h1>
+	<menu>
+		<a href=""><i class="fa fa-home" aria-hidden="true"></i>Dashboard</a>
+		<a href="index.html"><i class="fa fa-list-ul" aria-hidden="true"></i></i>Facility list</a>
+		<a href=""><i class="fa fa-question-circle" aria-hidden="true"></i>Help</a>
+	</menu>
+</header>
+
+<section class="dashboard_section" style="border: 0px">
+	<h2 id="facility_title_header">Kawaala Health Center III</h2>
+	<p>Kampala District<br>Delivery zone: 4</p>
+</section>
+
+<section class="dashboard_section">
+	<h3 id="current_cycle_header"></h3>
+	<ul id="pending_forms" class="form_list pending">
+		<h4>Pending reports this cycle</h4>
+	</ul>
+
+	<ul id="submitted_forms" class="form_list submitted">
+		<h4>Submitted reports this cycle</h4>
+	</ul>
+
+</section>
+
+<section class="dashboard_section">
+	<h3>Previous cycles</h3>
+	<ul id="previous_cycles">
+	
+	</ul>
+</section>
+
+</body>
+</html>
+
+<script src="js/localStorage_handler.js"></script>
+<script src="js/data_object_interface.js"></script>
+<script src="js/scripts.js"></script>
+<script src="js/dashboard.js"></script>
