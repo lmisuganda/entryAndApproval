@@ -14,6 +14,7 @@ var facility = LS.getFacilityById(facilityId);
 if (isUndefinedOrNull(facility)) navigateToAddress("index.html");
 
 generateMainMenu(); //located in scripts.js
+
 generateFacilityInfoSection();
 generateListOfCurrentCycleForms(getCurrentCycle(facility));
 generateListOfPreviousCycles(getPreviousCycles(facility));
@@ -40,7 +41,6 @@ function generateListOfCurrentCycleForms(cycle) {
 }
 
 function generateListOfPreviousCycles(cycles) {
-	console.log(cycles);
 	for (var i = 0; i < cycles.length; i++) {
 		var listElement = document.createElement("LI");
 		var detailElement = document.createElement("DETAILS");

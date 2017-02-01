@@ -1,6 +1,23 @@
+var fileName = getFileNameFromURL();
+showHelpAside(fileName); //TEMP
 
+$("#help_link").on("click", function () {
+	var fileName = getFileNameFromURL();
+	if (helpAsideIsOpen()) {
+		hideHelpAside();
+		try { 
+			adjustArrowPosition();
+		}catch (e) {};
+	} else {
+		showHelpAside(fileName);
+		try { 
+			adjustArrowPosition();
+		}catch (e) {};
+	}
+	
+});
 
-function showHelpAside() {
+function showHelpAside(fileName) {
 	var helpElement = document.createElement("ASIDE");
 	$(helpElement).attr("id", "help_aside");
 	$(helpElement).width("30%");
@@ -10,12 +27,10 @@ function showHelpAside() {
 	$(helpElement).css("border-left", "3px solid #276696");
 	$(helpElement).css("top", $("#main_header").height());
 	$(helpElement).css("right", "0");
-
-	$(helpElement).append("<h1>Help</h1>");
-	$(helpElement).append('<iframe src="help.html?page=test"></iframe>');
+	console.log(fileName);
+	$(helpElement).append('<iframe src="help/index.html?asideMode=true&page=' + fileName + '"></iframe>');
 	$("main").css("width", "70%");
 	$("body").append(helpElement);
-	console.log($("body"));
 	
 }
 function hideHelpAside() {
