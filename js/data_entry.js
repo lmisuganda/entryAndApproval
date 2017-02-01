@@ -19,6 +19,7 @@ if (!editIsAllowed(form, "temp")) {
 	navigateToAddress("form_summary.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId)	
 }
 
+generateMainMenu(); //located in scripts.js
 var singleCommodityEdit = getParameterFromURLByName("single")
 var commodityId = getParameterFromURLByName("commodityId")
 var unsolvedErrors = false; //in use for validation to prevent navigation way from commodity with errors. 

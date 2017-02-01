@@ -14,6 +14,7 @@ if (!editIsAllowed(form, "temp")) {
 	navigateToAddress("form_summary.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId)	
 }
 
+generateMainMenu(); //located in scripts.js
 setProgramTitleHeader(getName(form)); 
 generateSectionsList();
 
@@ -111,3 +112,12 @@ function setProgramTitleHeader(text) {
 	$("#program_title_header").text(text);
 }
 
+$(window).resize(function () {
+	adjustArrowPosition();
+});
+
+
+function adjustArrowPosition() {
+	var lemLeft = $(".current_section").position().left;
+	$("#arrow_icon").css("left", (lemLeft - $("#arrow_icon").width()));
+}

@@ -13,6 +13,7 @@ if (isUndefinedOrNull(facilityId)) navigateToAddress("index.html");
 var facility = LS.getFacilityById(facilityId);
 if (isUndefinedOrNull(facility)) navigateToAddress("index.html");
 
+generateMainMenu(); //located in scripts.js
 generateFacilityInfoSection();
 generateListOfCurrentCycleForms(getCurrentCycle(facility));
 generateListOfPreviousCycles(getPreviousCycles(facility));

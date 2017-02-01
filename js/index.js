@@ -7,6 +7,7 @@ if (true) {
 	
 }
 
+generateMainMenu(); //located in scripts.js
 generateFacilityList(facilities);
 
 function generateFacilityList(facilities) {

@@ -15,6 +15,8 @@ if (isUndefinedOrNull(form, facility)) navigateToAddress("index.html");
 
 var sectionElements = [];
 var currentSection = 0;
+
+generateMainMenu(); //located in scripts.js
 generateFormSummaryHeader();
 generateSectionsList();
 
