@@ -146,7 +146,7 @@ function getStatusColor(form, allowedApproval) {
 function getStatusIcon(form, allowedApproval) {
 	var status = getStatus(form);
 	var entry = '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>';
-	var completed = '<i class="fa fa-check-circle-o" aria-hidden="true"></i>';
+	var completed = '<i class="fa fa-check" aria-hidden="true"></i>';
 	var approved = '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>';
 	var icons = [entry, completed, approved];
 	

@@ -2,7 +2,7 @@
 
 #dashboard_header {
 	width: 80%;
-	margin: 0 auto 50px auto;
+	margin: 30px auto 50px auto;
 }
 #dashboard_header h1{
 	display: inline-block;
@@ -19,16 +19,17 @@
 	margin-right: 5px;
 }
 
+#highlighted_forms_section {
+	
+}
+
 h3 {
-	margin: 10px 0 40px 0;
+	margin: 10px 0 20px 0;
 	padding: 0;
 	font-size: 1.3rem;
 	font-weight: 300;
 }
 
-#highlighted_forms_section {
-	
-}
 .form_list li{
 	padding: 10px;
 	display: inline-block;
@@ -64,14 +65,14 @@ h3 {
 .form_list {
 	display: block;
 	width: 80%;
-	min-height: 200px;
+	min-height: 140px;
 	vertical-align: top;
-	margin: 0 auto 0 auto;
+	margin: 0 auto 40px auto;
 	padding: 0px 20px 50px 20px;
 }
 
 #submitted_forms {
-	border-top: 3px solid green;
+	border: 0px solid green;
 }
 
 #submitted_forms li {
@@ -84,7 +85,7 @@ h3 {
 }
 
 #pending_forms {
-	border-top: 3px solid orange;
+	border: 1px solid orange;
 }
 #pending_forms li {
 	border-top: 1px solid orange;
@@ -98,7 +99,7 @@ h3 {
 
 /* PREVIOUS CYCLES */
 #previous_cycles {
-	border-top: 3px solid grey;
+	border: 0px solid grey;
 }
 #previous_cycles li {
 	text-align: left;
