@@ -11,7 +11,7 @@ function generateMainMenu() {
 		if (!isUndefinedOrNull(facilityId)) {
 			$(mainMenu).append('<a href="dashboard.html?facility=' + facilityId + '"><i class="fa fa-home" aria-hidden="true"></i>Facility Dashboard</a>');
 		}
-		$(mainMenu).append('<a href="index.html"><i class="fa fa-list-ul" aria-hidden="true"></i></i>Facility list</a>');
+		$(mainMenu).append('<a href="index.html"><i class="fa fa-list-ul" aria-hidden="true"></i></i>All facilities</a>');
 		
 		var helpLink = document.createElement("A");
 		$(helpLink).attr("id", "help_link");

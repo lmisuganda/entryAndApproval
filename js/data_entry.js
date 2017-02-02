@@ -349,7 +349,6 @@ function displayValidationErrorMessages(HTMLelement, messages) {
 	$(HTMLelement).append(errorElement);
 	$(errorElement).append("<h2>Data entry errors:</h2>");
 	$(HTMLelement).find("button").css("margin", "40px");
-	$(HTMLelement).find(".not_applicable_wraper").css("margin", "40px");
 	for (var i = 0; i < messages.length; i++) {
 		$(errorElement).append("<li class='error_message'>" + (i+1) + ". " + messages[i] + "</li>");
 	}
