@@ -1344,6 +1344,7 @@ var cycles = [
 									calculated: false,
 									required: true,
 									getDataFromElementInPreviousCycle: 4,
+									description: "Balance on hand at start of cycle",
 								},
 								{ 
 									id: 1,
@@ -1351,6 +1352,7 @@ var cycles = [
 									type: "Number",
 									calculated: false,
 									required: true,
+									description: "Received from order last cycle",
 								},
 								{ 
 									id: 2,
@@ -1358,6 +1360,7 @@ var cycles = [
 									type: "Number",
 									calculated: false,
 									required: true,
+									description: "Consumed this cycle",
 								},
 								{ 
 									id: 3, 
@@ -1365,6 +1368,7 @@ var cycles = [
 									type: "Number",
 									calculated: false,
 									required: true,
+									description: "Adjustments due to trade, switch etc.",
 								},
 								{ 
 									id: 4,
@@ -1373,6 +1377,7 @@ var cycles = [
 									calculated: true,
 									programIndicatorId: 4,
 									required: true,
+									description: "Current stock balance",
 								},
 								{ 
 									id: 5,
@@ -1381,6 +1386,7 @@ var cycles = [
 									calculated: true,
 									programIndicatorId: 5,
 									required: true,
+									description: "Consumption this cycle * 2",
 								},						
 								{ 
 									id: 6,
@@ -1388,6 +1394,7 @@ var cycles = [
 									type: "Number",
 									calculated: true,
 									required: true,
+									description: "Required for next cycle",
 								},							
 								{ 
 									id: 7,
@@ -1395,6 +1402,7 @@ var cycles = [
 									type: "Number",
 									calculated: false,
 									required: true,
+									description: "Quantity to order",
 								},						
 								{ 
 									id: 8,

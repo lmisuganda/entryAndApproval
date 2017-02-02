@@ -23,6 +23,7 @@ function setValue(object, val) {
 	object.value = val;
 }
 
+
 //completion
 function isCompleted(object) {
 	return object.completed;
@@ -72,6 +73,14 @@ function hasBasicUnit (object) {
 }
 function hasExplanationText(object) {
 	return (typeof object.explanationText !== 'undefined');
+}
+
+//descriptions
+function hasDescription(object) {
+	return (typeof object.description !== 'undefined');
+}
+function getDescription(object) {
+	return object.description;
 }
 
 

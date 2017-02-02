@@ -81,6 +81,7 @@ function getListElement(cycle, form) {
 	
 	//form name
 	var link = document.createElement("A");
+	$(link).attr("data-tip", "this is the tip!");
 	$(listElement).append(link);
 	
 	$(link).html('<i class="fa fa-file-text-o" aria-hidden="true"></i>' + getName(form));

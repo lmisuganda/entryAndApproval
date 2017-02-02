@@ -12,7 +12,6 @@
 	font-weight: 300;
 	font-size: 1.7rem;
 	margin-bottom: 30px;
-	
 }
 
 #commodity_list li {
@@ -80,6 +79,10 @@
 	width: 1.2rem;
 	height: 1.2rem;
 	vertical-align: bottom;
+}
+
+#commodity_list .not_applicable_wraper input[disabled] {
+	color: black;
 }
 
 #commodity_list button{
@@ -153,10 +156,10 @@
 	width: 320px;
 }
 
-#save_continue_button {
+#bottom_menu a {
 	display: inline-block;
-	width: auto;
-	margin: 0 auto 30px auto;
+	width: 200px;
+	margin: 0 10px 0 10px;
 	padding: 8px 20px 8px 20px;
 	border: 1px solid black;
 	font-size: 1.2rem;

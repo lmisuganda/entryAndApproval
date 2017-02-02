@@ -156,13 +156,32 @@ function getDataEntryForm(commodity) {
 		$(input).addClass("data_element_input");
 		$(input).val(getValue(dataElements[i]));
 		
+		var section = document.createElement("SECTION");
+		$(section).addClass("data_element_input_pair");
+
+		
+		if (dataElements[i].required) {
+			$(input).prop('required', true);
+		}
+		
+		//set tool-tip descriptions
+		if (hasDescription(dataElements[i])) {
+			$(section).attr("data-tip", getDescription(dataElements[i]));
+			$(section).addClass("tooltip");
+		}
+		
 		//if data element is auto-calculated
 		if (isCalculated(dataElements[i])) {
 			$(input).prop('disabled', true);
+			$(input).css('border', "1px dashed grey");
 			$(input).addClass("calculated_input");
-		}
-		if (dataElements[i].required) {
-			$(input).prop('required', true);
+			$(input).prop('required', false);
+			
+			//set/add tooltip
+			var description = "";
+			if (hasDescription(dataElements[i])) description = getDescription(dataElements[i]);
+			$(section).attr("data-tip", description + " (Calculated)");
+			$(section).addClass("tooltip");
 		}
 		
 		//get data from defined element in previous cycle (for example previous closing balance to place in current opening balance)
@@ -175,8 +194,7 @@ function getDataEntryForm(commodity) {
 		}
 
 		$(input).prop('type', getType(dataElements[i]));
-		var section = document.createElement("SECTION");
-		$(section).addClass("data_element_input_pair");
+		
 		$(label).text(getName(dataElements[i]));
 		$(label).attr('for', getName(dataElements[i]));
 		$(input).attr('name', getName(dataElements[i]));
