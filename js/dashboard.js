@@ -15,12 +15,15 @@ if (isUndefinedOrNull(facility)) navigateToAddress("index.html");
 
 generateMainMenu(); //located in scripts.js
 
+var currentCycle = getCurrentCycle(facility);
+
 generateFacilityInfoSection();
-generateListOfCurrentCycleForms(getCurrentCycle(facility));
+generateListOfCurrentCycleForms(currentCycle);
 generateListOfPreviousCycles(getPreviousCycles(facility));
 
 function generateFacilityInfoSection() {
 	$("#facility_title_header").text(getName(facility));
+	$("#header_cycle_info").html('<i class="fa fa-circle-o-notch" aria-hidden="true"></i>' + "Current cycle: " + getId(currentCycle));
 }
 
 function generateListOfCurrentCycleForms(cycle) {
@@ -67,13 +70,13 @@ function getListElement(cycle, form) {
 	
 	//cycle info
 	var cycleEl = document.createElement("P");
-	$(cycleEl).html('<i class="fa fa-circle-o-notch" aria-hidden="true"></i>' + "CYCLE 1");
+	$(cycleEl).html('<i class="fa fa-circle-o-notch" aria-hidden="true"></i>' + getId(cycle));
 	$(listElement).append(cycleEl);
 	
 	//status info
 	var status = document.createElement("P");
 	$(status).addClass("form_status");
-	$(status).html('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>' + getStatusText(form));
+	$(status).html(getStatusIcon(form, allowedApproval("TEMP")) + getStatusText(form));
 	$(listElement).append(status);
 	
 	//form name

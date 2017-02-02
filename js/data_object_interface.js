@@ -143,6 +143,15 @@ function getStatusColor(form, allowedApproval) {
 		else return colors[2]; 
 	}
 }
+function getStatusIcon(form, allowedApproval) {
+	var status = getStatus(form);
+	var entry = '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>';
+	var completed = '<i class="fa fa-check-circle-o" aria-hidden="true"></i>';
+	var approved = '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>';
+	var icons = [entry, completed, approved];
+	
+	return icons[status-1];
+}
 function editIsAllowed(form, user) {
 	var formStatus = getStatus(form);
 	if (formStatus == 1) {
@@ -155,7 +164,6 @@ function editIsAllowed(form, user) {
 }
 function actionIsRequiredByUser(form, allowedApproval) {
 	var status = getStatus(form);
-	console.log(allowedApproval);
 	if (status == 1) {
 		return true;
 	} else if (status == 2 && allowedApproval) {

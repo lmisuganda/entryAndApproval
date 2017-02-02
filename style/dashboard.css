@@ -1,118 +1,110 @@
 /* DASHBOARD */
 
 #dashboard_header {
-	text-align: center;
-	margin-bottom: 50px;
+	width: 80%;
+	margin: 0 auto 50px auto;
 }
 #dashboard_header h1{
+	display: inline-block;
 	font-size: 2rem;
 	font-weight: 300;
+	margin: 0;
+	padding: 0;
 }
-#dashboard_header h2 {
+
+#dashboard_header p {
+	float: right;
+}
+#dashboard_header p i {
+	margin-right: 5px;
+}
+
+h3 {
+	margin: 10px 0 40px 0;
+	padding: 0;
+	font-size: 1.3rem;
 	font-weight: 300;
-}
-#dashboard_header h2 i {
-	margin-right: 10px;
 }
 
 #highlighted_forms_section {
 	
 }
-#highlighted_forms_section li{
+.form_list li{
 	padding: 10px;
+	display: inline-block;
+	margin: 6px 0 6px 0;
+	padding: 10px;
+	width: 95%;
 }
-#highlighted_forms_section li a{
+.form_list li a{
 	margin: 10px;
 	height: 100%;
 }
-#highlighted_forms_section li i{
-	margin-right: 10px;
+.form_list li i{
+	margin-right: 5px;
 }
 
-#highlighted_forms_section li p{
+.form_list li p{
 	display: inline-block;
 	padding: 0;
 	margin: 0 10px 0 10px;
 	float: right;
 }
-#highlighted_forms_section li .form_status {
-
-}
-
-.dashboard_section {
-	width: 70%;
-	margin: 20px auto 20px auto;
-	padding: 5px 10px 50px 20px;
+.form_list li .form_status {
+	width: 350px;
 	text-align: left;
 }
 
-.dashboard_section h2 {
-	margin: 0;
-	padding: 0;
-	font-size: 1.7rem;
-	font-weight: 300;
+
+#highlighted_forms_section ul {
+
 }
-.dashboard_section h3 {
-	margin: 10px 0 40px 0;
-	padding: 0;
-	font-size: 1.5rem;
-	font-weight: 300;
-}
-.dashboard_section h4 {
-	margin: 5px 0 20px 0;
-	padding: 0;
-	font-size: 1.4rem;
-	font-weight: 300;
-}
+
+
 .form_list {
-	display: inline-block;
-	width: 100%;
+	display: block;
+	width: 80%;
 	min-height: 200px;
 	vertical-align: top;
-	margin: 0 30px 0 0;
-	padding: 0px 0 50px 2px;
+	margin: 0 auto 0 auto;
+	padding: 0px 20px 50px 20px;
 }
 
-.submitted {
-	border-top: 5px solid green;
+#submitted_forms {
+	border-top: 3px solid green;
 }
 
-.submitted li {
-	border: 1px solid green;
+#submitted_forms li {
+	border-top: 1px solid green;
 	
 }
-.submitted  li:hover {
+#submitted_forms  li:hover {
 	background-color: green;
 	color: white;
 }
 
-.pending {
-	border-top: 5px solid orange;
+#pending_forms {
+	border-top: 3px solid orange;
 }
-.pending li {
-	border: 1px solid orange;
+#pending_forms li {
+	border-top: 1px solid orange;
 	
 }
-.pending  li:hover {
+#pending_forms  li:hover {
 	background-color: orange;
 	color: white;
 }
 
 
-.form_list li {
-	font-family: 'Open Sans', sans-serif;
-	display: inline-block;
-	margin: 6px 0 6px 0;
-	padding: 10px;
-	width: 95%;
-
+/* PREVIOUS CYCLES */
+#previous_cycles {
+	border-top: 3px solid grey;
 }
-
 #previous_cycles li {
 	text-align: left;
 	font-family: 'Open Sans', sans-serif;
 	display: block;
-	margin: 20px 0 20px 0;
+	margin: 10px 0 20px 0;
 	font-size: 1.5em;
 }
 
@@ -122,15 +114,18 @@
 
 #previous_cycles summary {
 	user-select: none;
+	font-size: 1.2rem;
+	font-weight: 300;
 }
 
 #previous_cycles details li {
-	font-size: .8em;
+	font-size: initial;
 	display: block;
-	margin: 0;
+	margin: 20px 0 0 0;
 	padding: 10px 10px 10px 30px;
-	border: none;
+	border-top: 1px solid grey;
 }
 #previous_cycles details li:hover {
 	background-color: grey;
+	color: white;
 }

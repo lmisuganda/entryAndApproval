@@ -2716,7 +2716,7 @@ var cycles = [
    {
 	id: 4,
 	name: "ARV Report and Order form",
-	completed: false,
+	completed: true,
 	sections: [
 			{
 			id: 0, 
@@ -4190,6 +4190,7 @@ var cycles = [
 		},
 	]},],
 	},
+	
 
 ];
 
