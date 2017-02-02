@@ -24,15 +24,16 @@ function generateFacilityInfoSection() {
 }
 
 function generateListOfCurrentCycleForms(cycle) {
+	
 	$("#current_cycle_header").text("Current Cycle: " + getId(cycle))
 	var forms = getForms(cycle);
 	var pendingFormsCount = 0;
 	for (var i = 0; i < forms.length; i++) {
-		if (isCompleted(forms[i])) {
-			$("#submitted_forms").append(getListElement(cycle, forms[i]));
-		} else {
+		if (actionIsRequiredByUser(forms[i], allowedApproval("TEMP"))) {
 			$("#pending_forms").append(getListElement(cycle, forms[i]));
 			pendingFormsCount++;
+		} else {
+			$("#submitted_forms").append(getListElement(cycle, forms[i]));
 		}
 	}
 	if (pendingFormsCount == 0) {
@@ -62,14 +63,30 @@ function generateListOfPreviousCycles(cycles) {
 function getListElement(cycle, form) {
 	
 	var listElement = document.createElement("LI");
-	$(listElement).text(getName(form));
 	
+	
+	//cycle info
+	var cycleEl = document.createElement("P");
+	$(cycleEl).html('<i class="fa fa-circle-o-notch" aria-hidden="true"></i>' + "CYCLE 1");
+	$(listElement).append(cycleEl);
+	
+	//status info
+	var status = document.createElement("P");
+	$(status).addClass("form_status");
+	$(status).html('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>' + getStatusText(form));
+	$(listElement).append(status);
+	
+	//form name
 	var link = document.createElement("A");
+	$(listElement).append(link);
+	
+	$(link).html('<i class="fa fa-file-text-o" aria-hidden="true"></i>' + getName(form));
+
+	
 	if (isCompleted(form)) {
 		$(link).attr("href", "form_summary.html?facility=" + facilityId + "&cycle=" + getId(cycle) + "&form=" + getId(form));
 	} else {
 		$(link).attr("href", "form_overview.html?facility=" + facilityId + "&cycle=" + getId(cycle) + "&form=" + getId(form));
 	}
-	$(link).append(listElement);
-	return link;
+	return listElement;
 }

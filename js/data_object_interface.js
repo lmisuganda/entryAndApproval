@@ -5,7 +5,7 @@
 //#### user data
 
 function allowedApproval(user) {
-	return false; //TEMP
+	return true; //TEMP
 }
 
 
@@ -121,7 +121,7 @@ function getStatus(form) {
 	if (!isCompleted(form)) return 1;
 	if (isCompleted(form) && !isApproved(form)) return 2;
 	if (isApproved(form)) return 3;
-	return 999;
+	return -1;
 }
 function getStatusText(form) {
 	var status = getStatus(form);
@@ -142,8 +142,6 @@ function getStatusColor(form, allowedApproval) {
 		if (status == 1) return colors[0];
 		else return colors[2]; 
 	}
-	
-	
 }
 function editIsAllowed(form, user) {
 	var formStatus = getStatus(form);
@@ -155,7 +153,17 @@ function editIsAllowed(form, user) {
 		return false;
 	}
 }
-
+function actionIsRequiredByUser(form, allowedApproval) {
+	var status = getStatus(form);
+	console.log(allowedApproval);
+	if (status == 1) {
+		return true;
+	} else if (status == 2 && allowedApproval) {
+		return true;
+	} else {
+		return false;
+	}
+}
 //get all sections
 function getSections(form) {
 	return form.sections;

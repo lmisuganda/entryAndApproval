@@ -167,9 +167,11 @@ function getDataEntryForm(commodity) {
 		
 		//get data from defined element in previous cycle (for example previous closing balance to place in current opening balance)
 		if (getDataFromElementInPreviousCycle(dataElements[i])) {
-			var IdOfElementToGet = getDataFromElementInPreviousCycle(dataElements[i]);
-			var dataElement = getDataElementFromCycle(getPreviousCycle(cycleId), formId, sectionId, getId(commodity), IdOfElementToGet);
-			$(input).val(getValue(dataElement));
+			try {
+				var IdOfElementToGet = getDataFromElementInPreviousCycle(dataElements[i]);
+				var dataElement = getDataElementFromCycle(getPreviousCycle(cycleId), formId, sectionId, getId(commodity), IdOfElementToGet);
+				$(input).val(getValue(dataElement));
+			} catch (error) {console.log("Could not get data from previous cycle")};
 		}
 
 		$(input).prop('type', getType(dataElements[i]));

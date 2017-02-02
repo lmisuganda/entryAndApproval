@@ -1,10 +1,49 @@
 /* DASHBOARD */
+
+#dashboard_header {
+	text-align: center;
+	margin-bottom: 50px;
+}
+#dashboard_header h1{
+	font-size: 2rem;
+	font-weight: 300;
+}
+#dashboard_header h2 {
+	font-weight: 300;
+}
+#dashboard_header h2 i {
+	margin-right: 10px;
+}
+
+#highlighted_forms_section {
+	
+}
+#highlighted_forms_section li{
+	padding: 10px;
+}
+#highlighted_forms_section li a{
+	margin: 10px;
+	height: 100%;
+}
+#highlighted_forms_section li i{
+	margin-right: 10px;
+}
+
+#highlighted_forms_section li p{
+	display: inline-block;
+	padding: 0;
+	margin: 0 10px 0 10px;
+	float: right;
+}
+#highlighted_forms_section li .form_status {
+
+}
+
 .dashboard_section {
 	width: 70%;
 	margin: 20px auto 20px auto;
 	padding: 5px 10px 50px 20px;
-	border-top: 1px solid black;
-	text-align: center;
+	text-align: left;
 }
 
 .dashboard_section h2 {
@@ -27,7 +66,7 @@
 }
 .form_list {
 	display: inline-block;
-	width: 46%;
+	width: 100%;
 	min-height: 200px;
 	vertical-align: top;
 	margin: 0 30px 0 0;
