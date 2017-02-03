@@ -9,7 +9,7 @@ function generateMainMenu() {
 	var mainMenu = $("#main_menu");
 	if (elementExist(mainMenu)) {
 		if (!isUndefinedOrNull(facilityId)) {
-			$(mainMenu).append('<a tabindex="-1" href="dashboard.html?facility=' + facilityId + '"><i class="fa fa-home" aria-hidden="true"></i>Facility Dashboard</a>');
+			$(mainMenu).append('<a tabindex="-1" href="dashboard.html?facility=' + facilityId + '"><i class="fa fa-home" aria-hidden="true"></i>' + getName(facility) + '</a>');
 		}
 		$(mainMenu).append('<a tabindex="-1" href="index.html"><i class="fa fa-list-ul" aria-hidden="true"></i></i>All facilities</a>');
 		

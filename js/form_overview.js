@@ -26,6 +26,7 @@ $("li").on("click", function() {
 		openDataEntryForSection(sectionId);
 	}
 });
+//handles navigation by enter button
 $(document).keypress(function(e) {
 	if(e.which == 13) { //13 = enterbutton
 		e.preventDefault();
