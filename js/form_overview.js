@@ -84,6 +84,7 @@ function getLastListElement(name) {
 function getSectionStartButton(section) {
 	var name = getName(section);
 	var startEntryButton = document.createElement("A");
+	console.log(dataEntryIsStarted(section));
 	if (dataEntryIsStarted(section)) {
 		buttonText = "Click here to resume data entry";
 	} else {

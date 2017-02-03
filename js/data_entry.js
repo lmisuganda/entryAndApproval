@@ -10,8 +10,9 @@ if (isUndefinedOrNull(facilityId, cycleId, formId, sectionId)) navigateToAddress
 
 var facility = LS.getFacilityById(facilityId);
 var form = getFormById(getCycleById(facility, cycleId), formId);
+var section = getSectionById(form, sectionId);
 
-if (isUndefinedOrNull(facility, form)) navigateToAddress("index.html"); //check that there are errors in URL paramters
+if (isUndefinedOrNull(facility, section, form)) navigateToAddress("index.html"); //check that there are errors in URL paramters
 
 //if edit not allowed (based on completion and approval status, user rights): navigate to form summary
 if (!editIsAllowed(form, "temp")) {
@@ -257,13 +258,20 @@ function minimizeListElement(element) {
 }
 
 function configureCompleteButton() {
-	$("#back_button").attr("href", "form_overview.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId);
-
-	$("#save_continue_button").attr("href", "form_overview.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId);
 	$("#save_continue_button").on("click", function () {
-		setToCompleted(getSectionById(form, sectionId));
-		LS.updateFacility(facility);
+		console.log(allCommoditiesCompleted(section));
+		if (allCommoditiesCompleted(section)) {
+			setToCompleted(getSectionById(form, sectionId));
+			LS.updateFacility(facility);
+			navigateToAddress("form_overview.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId);
+		} else {
+			alert("All commodities need to be completed in order to complete the section");
+		}
 	});
+}
+
+function configureBackButton () {
+	$("#back_button").attr("href", "form_overview.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId);
 }
 
 function setsectionHeader(sectionNumber) {

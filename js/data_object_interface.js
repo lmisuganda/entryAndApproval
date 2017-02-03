@@ -231,9 +231,12 @@ function getLastCompletedCommodity(section) {
 	return commodities[i];
 }
 function dataEntryIsStarted(section) {
-	console.log("TEst");
 	var commodities = getCommodities(section);
-	return isCompleted[commodities[0]];
+	return isCompleted(commodities[0]);
+}
+function allCommoditiesCompleted(section) {
+	var commodities = getCommodities(section);
+	return isCompleted(commodities[commodities.length-1]);
 }
 
 
