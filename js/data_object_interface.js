@@ -222,6 +222,10 @@ function getFirstUncompletedSection(form) {
 	while (isCompleted(sections[i])) i++;
 	return sections[i];
 }
+function allSectionsIsCompleted(form) {
+	var sections = getSections(form);
+	return isCompleted(sections[sections.length-1]);
+}
 
 //##########  SECTIONS
 function getLastCompletedCommodity(section) {

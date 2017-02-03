@@ -23,9 +23,27 @@ generateSectionsList();
 $("li").on("click", function() {
 	if ($(this).hasClass("completed_section") || $(this).hasClass("current_section")) {
 		var sectionId = $(this).attr("id");
-		window.location.href = "data_entry.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId + "&section=" + sectionId;
+		openDataEntryForSection(sectionId);
 	}
 });
+$(document).keypress(function(e) {
+	if(e.which == 13) { //13 = enterbutton
+		e.preventDefault();
+		if (allSectionsIsCompleted(form)) {
+			openFormSummary();
+		} else {
+			var sectionId = $(".current_section").attr("id");
+			openDataEntryForSection(sectionId);
+		}
+
+    }
+});
+function openDataEntryForSection(sectionId) {
+	navigateToAddress("data_entry.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId + "&section=" + sectionId);
+}
+function openFormSummary() {
+	navigateToAddress("form_summary.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId);
+}
 
 
 function generateSectionsList() {
