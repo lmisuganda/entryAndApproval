@@ -76,7 +76,7 @@ function getListElement(cycle, form) {
 	//status info
 	var status = document.createElement("P");
 	$(status).addClass("form_status");
-	$(status).html(getStatusIcon(form, allowedApproval("TEMP")) + getStatusText(form));
+	$(status).html(getStatusIcon(form, allowedApproval("TEMP")) + getStatusTextShort(form));
 	$(listElement).append(status);
 	
 	//form name

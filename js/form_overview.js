@@ -5,8 +5,9 @@ var formId = getParameterFromURLByName("form");
 if (isUndefinedOrNull(facilityId, cycleId, formId)) navigateToAddress("index.html");
 
 var facility = LS.getFacilityById(facilityId);
-var form = getFormById(getCycleById(facility, cycleId), formId);
-if (isUndefinedOrNull(facility, form)) navigateToAddress("index.html");
+var cycle = getCycleById(facility, cycleId);
+var form = getFormById(cycle, formId);
+if (isUndefinedOrNull(facility, cycle, form)) navigateToAddress("index.html");
 
 //if edit not allowed (based on completion and approval status, user rights): navigate to form summary
 if (!editIsAllowed(form, "temp")) {
@@ -83,7 +84,12 @@ function getLastListElement(name) {
 function getSectionStartButton(section) {
 	var name = getName(section);
 	var startEntryButton = document.createElement("A");
-	$(startEntryButton).text("Click to here start data entry");
+	if (dataEntryIsStarted(section)) {
+		buttonText = "Click here to resume data entry";
+	} else {
+		buttonText = "Click to here start data entry";
+	}
+	$(startEntryButton).text(buttonText);
 	return startEntryButton;
 }
 
@@ -109,7 +115,8 @@ function setArrowPosition(section) {
 }
 
 function setProgramTitleHeader(text) {
-	$("#program_title_header").text(text);
+	$("#program_title").text(text);
+	$("#cycle_title").html('<i class="fa fa-circle-o-notch" aria-hidden="true"></i>' + "Cycle " + getId(cycle));
 }
 
 $(window).resize(function () {

@@ -35,6 +35,11 @@ function checkIfChrome() {
 	}
 }
 
+function attachTooltip(element, text) {
+	$(element).addClass("tooltip");
+	$(element).attr("data-tip", text);
+	return element;
+}
 
 //returns parameter from url based on given name (?example=test)
 function getParameterFromURLByName(name) {

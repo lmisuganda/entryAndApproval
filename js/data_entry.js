@@ -109,9 +109,11 @@ function getNewListElement(commodity) {
 	var notApplicableCheckbox = document.createElement("INPUT");
 	$(notApplicableCheckbox).attr("type", "checkbox");
 	$(notApplicableCheckbox).attr("id", "not_applicable_checkbox");
-	
 	var notApplicableWrapper = document.createElement("DIV");
 	$(notApplicableWrapper).addClass("not_applicable_wraper");
+	attachTooltip(notApplicableWrapper, "Check if this item is not applicable for this facility");
+
+
 	$(notApplicableWrapper).append(notApplicableCheckbox, "Not applicable");
 	
 	var button = document.createElement("BUTTON");
@@ -165,10 +167,8 @@ function getDataEntryForm(commodity) {
 		}
 		
 		//set tool-tip descriptions
-		if (hasDescription(dataElements[i])) {
-			$(section).attr("data-tip", getDescription(dataElements[i]));
-			$(section).addClass("tooltip");
-		}
+		if (hasDescription(dataElements[i])) attachTooltip(section, getDescription(dataElements[i]));
+
 		
 		//if data element is auto-calculated
 		if (isCalculated(dataElements[i])) {
@@ -180,8 +180,7 @@ function getDataEntryForm(commodity) {
 			//set/add tooltip
 			var description = "";
 			if (hasDescription(dataElements[i])) description = getDescription(dataElements[i]);
-			$(section).attr("data-tip", description + " (Calculated)");
-			$(section).addClass("tooltip");
+			attachTooltip(section, description + " (auto calculated)");
 		}
 		
 		//get data from defined element in previous cycle (for example previous closing balance to place in current opening balance)
@@ -211,6 +210,7 @@ function getDataEntryForm(commodity) {
 
 	return form;
 }
+
 
 //Generating and placing arrow
 function setArrowPosition(section) {
@@ -257,7 +257,13 @@ function minimizeListElement(element) {
 }
 
 function configureCompleteButton() {
+	$("#back_button").attr("href", "form_overview.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId);
+
 	$("#save_continue_button").attr("href", "form_overview.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId);
+	$("#save_continue_button").on("click", function () {
+		setToCompleted(getSectionById(form, sectionId));
+		LS.updateFacility(facility);
+	});
 }
 
 function setsectionHeader(sectionNumber) {
@@ -382,12 +388,6 @@ function displayValidationWarningMessages(HTMLelement, messages) {
 		$(errorElement).append("<li class='error_message'>" + messages[i] + "</li>");
 	}
 }
-
-//on section completion
-$("#save_continue_button").on("click", function () {
-	setToCompleted(getSectionById(form, sectionId));
-	LS.updateFacility(facility);
-});
 
 //Border when input-field is in focus. 
 $("input").not(":checkbox").focus("input", function(e) {

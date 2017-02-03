@@ -10,8 +10,9 @@ if (isUndefinedOrNull(facilityId, cycleId, formId)) navigateToAddress("index.htm
 
 //Get facility from localStorage, and form from facility object
 var facility = LS.getFacilityById(facilityId);
-var form = getFormById(getCycleById(facility, cycleId), formId);
-if (isUndefinedOrNull(form, facility)) navigateToAddress("index.html");
+var cycle = getCycleById(facility, cycleId);
+var form = getFormById(cycle, formId);
+if (isUndefinedOrNull(form, cycle, facility)) navigateToAddress("index.html");
 
 var sectionElements = [];
 var currentSection = 0;
@@ -41,6 +42,7 @@ if (promptForInstantApproval && !isApproved(form)) {
 
 // set header + status-text and color
 function generateFormSummaryHeader () {
+	$("#form_summary").prepend("<p>" + '<i class="fa fa-circle-o-notch" aria-hidden="true"></i>' + "Cycle " + getId(cycle) + "</p>");
 	$("#form_summary").prepend("<h1>" + getName(form) + "</h1>")
 	var status = getStatus(form);
 	if (status == 1 || (status == 2 && allowedApproval("TEMP"))) {

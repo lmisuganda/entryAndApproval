@@ -1,5 +1,15 @@
-h1 {
+#program_title_header {
 	text-align: center;
+}
+
+#program_title_header i {
+	margin-right: 5px;
+}
+#program_title_header p {
+	font-size: 1.2rem;
+}
+
+#program_title_header h1 {
 	font-size: 1.5rem;
 	margin: 40px 0 10px 0;
 	font-weight: 300;
@@ -41,6 +51,9 @@ h1 {
 	border: 2px solid #f0ad4e;
 	cursor: pointer;
 }
+#sections_list .current_section a:hover {
+	opacity: .8;
+}
 #sections_list .hidden_list_section {
 	height: 150px;
 	display: none;
@@ -51,6 +64,9 @@ h1 {
 	border: 0px solid black;
 	cursor: pointer;
 	color: white;
+}
+#sections_list .completed_section:hover {
+	opacity: .8;
 }
 
 #sections_list a {

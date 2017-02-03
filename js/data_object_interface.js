@@ -138,6 +138,12 @@ function getStatusText(form) {
 	if (status == 2) return "Form is completed, and waiting for approval";
 	if (status == 3) return "Form is completed and approved";
 }
+function getStatusTextShort(form) {
+	var status = getStatus(form);
+	if (status == 1) return "Waiting for completion";
+	if (status == 2) return "Waiting for approval";
+	if (status == 3) return "Completed and approved";
+}
 function getStatusColor(form, allowedApproval) {
 	var status = getStatus(form);
 	var orange = "#f0ad4e";
@@ -155,8 +161,8 @@ function getStatusColor(form, allowedApproval) {
 function getStatusIcon(form, allowedApproval) {
 	var status = getStatus(form);
 	var entry = '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>';
-	var completed = '<i class="fa fa-check" aria-hidden="true"></i>';
-	var approved = '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>';
+	var completed = '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>';
+	var approved = '<i class="fa fa-check" aria-hidden="true"></i>';
 	var icons = [entry, completed, approved];
 	
 	return icons[status-1];
@@ -223,6 +229,11 @@ function getLastCompletedCommodity(section) {
 	var i = 0;
 	while (i < commodities.length && isCompleted(commodities[i])) i++;
 	return commodities[i];
+}
+function dataEntryIsStarted(section) {
+	console.log("TEst");
+	var commodities = getCommodities(section);
+	return isCompleted[commodities[0]];
 }
 
 

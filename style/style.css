@@ -108,25 +108,25 @@ body {
 }
 
 .tooltip::before {
-    content: attr(data-tip) ;   
-     
+    content: attr(data-tip);   
     font-size: 1rem;
     position:absolute;
-    z-index: 999;
-    white-space:nowrap;
-    bottom:9999px;
-    left: 20%;
-    background:#276696;
-    color:white;
-    padding:0px 7px;
+    z-index: 9999;
+   /* white-space:nowrap; */
+    top:9999px;
+    left: 0%;
+    background: #276696;
+    color: white;
+    padding: 0px 7px;
     line-height: 24px;
-    height: 24px;
-     
+   /* height: 24px; */
+	max-width: 100%;
+    border: 1px solid #276696;
+	border-radius: 2px;
     opacity: 0;  
     transition:opacity 0.4s ease-out; 
-    }
-     
+}
 .tooltip:hover::before {
     opacity: 1;
-    bottom:-35px;
+    top:101%;
 }

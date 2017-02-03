@@ -8,6 +8,15 @@
 	text-align: center;
 }
 
+#form_summary i {
+	margin-right: 5px;
+}
+#form_summary p {
+	margin-top: 10px;
+	font-size: 1.2rem;
+}
+
+
 #form_summary h1 {
 	margin-bottom: 5px;
 	font-size: 1.6rem;
