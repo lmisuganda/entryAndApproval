@@ -127,9 +127,10 @@ function getDataElementFromCycle(cycle, formId, sectionId, commodityId, dataElem
 
 //returns string with predefined qualitative status messages for form. Regarding approval and completion
 function getStatus(form) {
-	if (!isCompleted(form)) return 1;
+	if (!isCompleted(form) && !dataEntryIsStartedInForm(form)) return 1;
 	if (isCompleted(form) && !isApproved(form)) return 2;
 	if (isApproved(form)) return 3;
+	if (!isCompleted(form) && dataEntryIsStartedInForm(form)) return 4;
 	return -1;
 }
 function getStatusText(form) {
@@ -137,12 +138,14 @@ function getStatusText(form) {
 	if (status == 1) return "Form is waiting for completion";
 	if (status == 2) return "Form is completed, and waiting for approval";
 	if (status == 3) return "Form is completed and approved";
+	if (status == 4) return "Data entry is started, but not completed"
 }
 function getStatusTextShort(form) {
 	var status = getStatus(form);
-	if (status == 1) return "Waiting for completion";
+	if (status == 1) return "Data entry not started";
 	if (status == 2) return "Waiting for approval";
 	if (status == 3) return "Completed and approved";
+	if (status == 4) return "Data entry is started, but not completed"
 }
 function getStatusColor(form, allowedApproval) {
 	var status = getStatus(form);
@@ -150,7 +153,7 @@ function getStatusColor(form, allowedApproval) {
 	var red = "#d9534f";
 	var green = "#5cb85c";
 	var colors = [orange, orange, green];
-	
+	if (status == 4) return orange;
 	if (allowedApproval) {
 		return colors[status-1];
 	} else {
@@ -164,12 +167,12 @@ function getStatusIcon(form, allowedApproval) {
 	var completed = '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>';
 	var approved = '<i class="fa fa-check" aria-hidden="true"></i>';
 	var icons = [entry, completed, approved];
-	
+	if (status == 4) return entry;
 	return icons[status-1];
 }
 function editIsAllowed(form, user) {
 	var formStatus = getStatus(form);
-	if (formStatus == 1) {
+	if (formStatus == 1 || formStatus == 4) {
 		return true;
 	} if (formStatus == 2 && allowedApproval(user)) {
 		return true
@@ -179,13 +182,17 @@ function editIsAllowed(form, user) {
 }
 function actionIsRequiredByUser(form, allowedApproval) {
 	var status = getStatus(form);
-	if (status == 1) {
+	if (status == 1 || status == 4) {
 		return true;
 	} else if (status == 2 && allowedApproval) {
 		return true;
 	} else {
 		return false;
 	}
+}
+function dataEntryIsStartedInForm(form) {
+	var section = getSections(form)[0];
+	return dataEntryIsStartedInSection(section);
 }
 //get all sections
 function getSections(form) {
@@ -234,7 +241,7 @@ function getLastCompletedCommodity(section) {
 	while (i < commodities.length && isCompleted(commodities[i])) i++;
 	return commodities[i];
 }
-function dataEntryIsStarted(section) {
+function dataEntryIsStartedInSection(section) {
 	var commodities = getCommodities(section);
 	return isCompleted(commodities[0]);
 }

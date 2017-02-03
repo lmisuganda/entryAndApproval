@@ -214,6 +214,7 @@ function getDataEntryForm(commodity) {
 		}
 
 		$(input).prop('type', getType(dataElements[i]));
+		$(input).prop('step', '1');
 		
 		$(label).text(getName(dataElements[i]));
 		$(label).attr('for', getName(dataElements[i]));
