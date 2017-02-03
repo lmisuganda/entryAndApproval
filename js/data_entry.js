@@ -6,13 +6,13 @@ var facilityId = getParameterFromURLByName("facility");
 var cycleId = getParameterFromURLByName("cycle");
 var formId = getParameterFromURLByName("form");
 var sectionId = getParameterFromURLByName("section");
-if (isUndefinedOrNull(facilityId, cycleId, formId, sectionId)) navigateToAddress("index.html");
+if (isUndefinedOrNull(facilityId, cycleId, formId, sectionId)) navigateToAddress("index.html"); //Handle errors in URL-parameters
 
 var facility = LS.getFacilityById(facilityId);
 var form = getFormById(getCycleById(facility, cycleId), formId);
 var section = getSectionById(form, sectionId);
 
-if (isUndefinedOrNull(facility, section, form)) navigateToAddress("index.html"); //check that there are errors in URL paramters
+if (isUndefinedOrNull(facility, section, form)) navigateToAddress("index.html"); //handle errors in LS lookup. 
 
 //if edit not allowed (based on completion and approval status, user rights): navigate to form summary
 if (!editIsAllowed(form, "temp")) {
@@ -106,27 +106,16 @@ function getNewListElement(commodity) {
 		$(explanationText).append("<b>Basic Unit:</b> " + getBasicUnit(commodity));
 	} 
 
-	//Create check box
-	var notApplicableCheckbox = document.createElement("INPUT");
-	$(notApplicableCheckbox).attr("type", "checkbox");
-	$(notApplicableCheckbox).attr("id", "not_applicable_checkbox");
-	var notApplicableWrapper = document.createElement("DIV");
-	$(notApplicableWrapper).addClass("not_applicable_wraper");
-	attachTooltip(notApplicableWrapper, "Check if this item is not applicable for this facility");
-
-
-	$(notApplicableWrapper).append(notApplicableCheckbox, "Not applicable");
+	var notApplicableBox = getNotApplicableBox();
 	
-	var button = document.createElement("BUTTON");
-	$(button).text("Validate and go to next");
-	$(button).attr("tabindex", "0");
-	$(button).attr("id", "save_commodity_button");
+	var button = getValidateButton();
+	
 	var form = getDataEntryForm(commodity); //get input form generated based on the elements defined data elements
 	
 	//Create expandable detail element and append content
 	var detailElement = document.createElement("SECTION");
 	$(detailElement).addClass("expandable_data_entry");
-	$(detailElement).append(explanationText, form, notApplicableWrapper, button); //add content to details section (expandable section)
+	$(detailElement).append(explanationText, form, notApplicableBox, button); //add content to details section (expandable section)
 	
 	//create list element and append content
 	var listElement = document.createElement("LI");
@@ -134,11 +123,42 @@ function getNewListElement(commodity) {
 	$(listElement).append(title, detailElement); //add content to list elemen
 	
 	if (!isApplicable(commodity)) {
-		$(notApplicableCheckbox).prop("checked", "checked");
+		console.log();
+		$($(notApplicableBox).find(":checkbox")[0]).prop("checked", "checked");
 		$(listElement).find(".data_element_input").attr("disabled", "true");
 	}
 	
 	return listElement;
+}
+
+function getValidateButton() {
+	var button = document.createElement("BUTTON");
+	$(button).text("Validate and go to next");
+	$(button).attr("tabindex", "0");
+	$(button).attr("id", "save_commodity_button");
+	return button;
+}
+function getNotApplicableBox(commodity, listElement) {
+	var notApplicableCheckbox = document.createElement("INPUT");
+	$(notApplicableCheckbox).attr("type", "checkbox");
+	$(notApplicableCheckbox).attr("tabindex", "-1");
+	$(notApplicableCheckbox).attr("id", "not_applicable_checkbox");
+	var notApplicableWrapper = document.createElement("DIV");
+	$(notApplicableWrapper).addClass("not_applicable_wraper");
+	attachTooltip(notApplicableWrapper, "Check if this item is not applicable for this facility");
+	//handle not applicable checking
+	$(notApplicableWrapper).on("click", function(e) {
+		var checkbox = $(e.target).find("#not_applicable_checkbox");
+		checkbox.prop("checked", !checkbox.prop("checked")); 
+		styleCommodityToNotApplicable(checkbox);
+	});
+	$(notApplicableCheckbox).change("click", function(e) {
+		var checkbox = $(e.target);
+		styleCommodityToNotApplicable(checkbox);
+	});
+
+	$(notApplicableWrapper).append(notApplicableCheckbox, "Not applicable");
+	return notApplicableWrapper;
 }
 
 //Generates and returns form for commodity with data elements
@@ -259,15 +279,18 @@ function minimizeListElement(element) {
 
 function configureCompleteButton() {
 	$("#save_continue_button").on("click", function () {
-		console.log(allCommoditiesCompleted(section));
-		if (allCommoditiesCompleted(section)) {
-			setToCompleted(getSectionById(form, sectionId));
-			LS.updateFacility(facility);
-			navigateToAddress("form_overview.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId);
-		} else {
-			alert("All commodities need to be completed in order to complete the section");
-		}
+		tryToCompleteSection();
 	});
+}
+
+function tryToCompleteSection() {
+	if (allCommoditiesCompleted(section)) {
+		setToCompleted(getSectionById(form, sectionId));
+		LS.updateFacility(facility);
+		navigateToAddress("form_overview.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId);
+	} else {
+		alert("All commodities need to be completed in order to complete the section");
+	}
 }
 
 function configureBackButton () {
@@ -316,16 +339,7 @@ function isExpandedHTML (element) {
 	return $(element).hasClass("current_element");
 }
 
-//handle not applicable checking
-$(".not_applicable_wraper").on("click", function(e) {
-	var checkbox = $(e.target).find("#not_applicable_checkbox");
-	checkbox.prop("checked", !checkbox.prop("checked")); 
-	styleCommodityToNotApplicable(checkbox);
-});
-$(":checkbox").change("click", function(e) {
-	var checkbox = $(e.target);
-	styleCommodityToNotApplicable(checkbox)
-});
+
 
 function styleCommodityToNotApplicable(checkbox) {	   
 	if (checkbox.prop("checked")) {
@@ -340,9 +354,14 @@ function styleCommodityToNotApplicable(checkbox) {
 //Event listener for complete commodity button
 $("#commodity_list").on("click", "button", function() {
 	
-	//SAVE COMMODITY
-	var currentElement = this.parentElement.parentElement;
+	validateCommodityClickHandler(this);
 	
+});
+
+function validateCommodityClickHandler(button) {
+	//SAVE COMMODITY
+	var currentElement = button.parentElement.parentElement;
+	console.log(currentElement);
 	var commodityId = $(currentElement).attr("id")
 	
 	var currentForm = $(currentElement).find("form")[0];
@@ -357,7 +376,7 @@ $("#commodity_list").on("click", "button", function() {
 		
 			//WHEN SINGLE EDIT MODE --> NAVIGATE BACK TO SUMMARY
 			if (singleCommodityEdit) {
-				window.location.href = "form_summary.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId + "&section=" + sectionId;
+				navigateToAddress("form_summary.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId + "&section=" + sectionId);
 			}
 			styleCompletedCommodity(currentElement); //set styles
 			
@@ -367,10 +386,24 @@ $("#commodity_list").on("click", "button", function() {
 			expandCurrentCommodity();
 	} else {
 		unsolvedErrors = true;
-		displayValidationErrorMessages(this.parentElement, errorMessages);
+		displayValidationErrorMessages(button.parentElement, errorMessages);
 	}
-	
+}
+
+//HANDLE ENTER-CLICK TO TRIGGER VALIDATE BUTTON CLICK
+$(document).keypress(function(e) {
+	if(e.which == 13) { //13 = enterbutton
+		e.preventDefault();
+		try {
+			var button = $($(".current_element")[0]).find("button")[0];
+			validateCommodityClickHandler(button);
+		} catch (error) {
+			tryToCompleteSection();
+		}
+
+    }
 });
+
 function clearValidationMessages() {
 	$("#error_messages").remove();
 }
@@ -409,3 +442,5 @@ $("input").not(":checkbox").focusout("input", function(e) {
 $("input").keyup(function () {
 	calculateAndPrintIndicators("temp", $("input").filter(":visible"));
 });
+
+
