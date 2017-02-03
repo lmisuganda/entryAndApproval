@@ -67,7 +67,7 @@ function generateSectionsList() {
 
 //generates a new LI-element containing given name
 function getNewListElement(section) {
-	name = getName(section);
+	var name = "<p>" + getName(section) + "</p>";
 
 	var hiddenListSection = document.createElement("SECTION");
 	$(hiddenListSection).addClass("hidden_list_section");
@@ -78,10 +78,18 @@ function getNewListElement(section) {
 	if (isCompleted(section)) { //If sections is already completed. Add styling
 		$(listElement).addClass("completed_section"); 
 	}
-	$(listElement).append(name, hiddenListSection); //add content to list element
+	var statusElement = getSectionStatusElement(section);
+	$(listElement).append(name, statusElement, hiddenListSection); //add content to list element
 	$(listElement).attr("id", getId(section));
 	
 	return listElement;
+}
+
+function getSectionStatusElement(section) {
+	var statusText = document.createElement("P");
+	$(statusText).addClass("section_status");
+	$(statusText).html(getSectionStatusIcon(section) + "Entry of " + getCountOfCompletedCommoditiesInSection(section) + " of " + getCountOfCommoditiesInSection(section) + " elements completed");
+	return statusText;
 }
 
 function getLastListElement(name) {

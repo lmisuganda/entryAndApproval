@@ -72,11 +72,25 @@
 #sections_list a {
 	display: inline-block;
 	border: 1px solid black;
-	margin-top: 40px;
+	margin-top: 60px;
 	padding: 15px 40px 15px 40px;
 	background-color: #449d44;
 	color: white;
 	font-size: 1rem;
+
+}
+#sections_list p {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+#sections_list i {
+	margin-right: 5px;
+}
+#sections_list .section_status {
+	display: inline-block;
+	float: right;
+	font-size: 0.9rem;
 
 }
 

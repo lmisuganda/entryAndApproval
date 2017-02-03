@@ -40,7 +40,7 @@ function generateListOfCurrentCycleForms(cycle) {
 		}
 	}
 	if (pendingFormsCount == 0) {
-		$("#pending_forms").append("<br><p>Wohoo! All forms submitted for this cycle</p>");
+		$("#pending_forms").append("<br><p>Wohoo! No forms requires your action</p>");
 	}
 }
 

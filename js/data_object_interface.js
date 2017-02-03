@@ -249,8 +249,28 @@ function allCommoditiesCompleted(section) {
 	var commodities = getCommodities(section);
 	return isCompleted(commodities[commodities.length-1]);
 }
-
-
+function getCountOfCommoditiesInSection(section) {
+	return getCommodities(section).length;
+}
+function getCountOfCompletedCommoditiesInSection(section) {
+	var commodities = getCommodities(section);
+	var count = 0;
+	while (count < commodities.length && isCompleted(commodities[count])) count++;
+	return count;
+}
+function getSectionStatus(section) {
+	if (!isCompleted(section) && !dataEntryIsStartedInSection(section)) return 1;
+	if (!isCompleted(section)) return 2;
+	if (isCompleted(section)) return 3;
+}
+function getSectionStatusIcon(section) {
+	var status = getSectionStatus(section);
+	var entry = '<i class="fa fa-circle" aria-hidden="true"></i>';
+	var started = '<i class="fa fa-pause" aria-hidden="true"></i>';
+	var completed = '<i class="fa fa-check" aria-hidden="true"></i>';
+	var icons = [entry, started, completed];
+	return icons[status-1];
+}
 //########## COMMODITIES
 
 
