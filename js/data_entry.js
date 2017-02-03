@@ -266,7 +266,9 @@ function expandListElement(element) {
 		// Animation complete.
 	}); 
 	currentExpandedCommodity = element;
-	$(element).find("input").eq(0).focus()
+	var firstDataElementInput = $($(element).find(".data_element_input"))[0];
+	console.log(firstDataElementInput);
+	$(firstDataElementInput).focus();
 }
 
 function minimizeListElement(element) {
@@ -284,10 +286,10 @@ function configureCompleteButton() {
 }
 
 function tryToCompleteSection() {
-	if (allCommoditiesCompleted(section)) {
+	if (singleCommodityEdit || allCommoditiesCompleted(section)) {
 		setToCompleted(getSectionById(form, sectionId));
 		LS.updateFacility(facility);
-		navigateToAddress("form_overview.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId);
+		if (!singleCommodityEdit) navigateToAddress("form_overview.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId);
 	} else {
 		alert("All commodities need to be completed in order to complete the section");
 	}
