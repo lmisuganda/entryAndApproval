@@ -92,14 +92,15 @@
 	right: 10px;
 	bottom: 5px;
 	
-	padding: 10px;
+	padding: 10px 15px;
 	margin: 20px;
 	background-color: #276696;
 	color: white;
 	cursor: pointer;
-	font-weight: 600;
-	font-size: .8rem;
+	font-weight: 300;
+	font-size: .9rem;
 	text-align: center;
+	border: none;
 	-webkit-user-select: none;  /* Chrome all / Safari all */
 	-moz-user-select: none;     /* Firefox all */
 	-ms-user-select: none; 
@@ -165,13 +166,17 @@
 	width: 200px;
 	margin: 10px auto 10px auto;
 	padding: 8px 20px 8px 20px;
-	border: 1px solid black;
-	font-size: 1.2rem;
+	border: 0px solid black;
+	font-size: 1rem;
 	background-color: #276696;
 	text-align: center;
 	color: white;
-	
+	cursor: pointer;
 }
+#bottom_menu a:hover {
+	opacity: .8;
+}
+
 #bottom_menu a  i {
 	margin-right: 5px;
 }
@@ -192,10 +197,11 @@
 	padding: 10px 10px 20px 20px;
 }
 #error_messages h2 {
-	font-size: 1.2em;
+	font-size: 1rem;
 }
 #error_messages li {
 	display: list-item;
+	font-size: .9rem;
 	border: 0px;
 	cursor: inherit;
 	list-style: square;

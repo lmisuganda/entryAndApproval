@@ -133,7 +133,7 @@ function getNewListElement(commodity) {
 
 function getValidateButton() {
 	var button = document.createElement("BUTTON");
-	$(button).text("Validate and go to next");
+	$(button).text("Validate and save");
 	$(button).attr("tabindex", "0");
 	$(button).attr("id", "save_commodity_button");
 	return button;
