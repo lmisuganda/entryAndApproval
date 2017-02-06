@@ -434,7 +434,6 @@ function displayValidationWarningMessages(HTMLelement, messages) {
 }
 
 
-
 //Border when input-field is in focus. 
 $("input").not(":checkbox").focus("input", function(e) {
 	$(this).parent().css("border", "2px solid green");
