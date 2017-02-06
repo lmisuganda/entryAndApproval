@@ -292,7 +292,7 @@ function tryToCompleteSection() {
 		LS.updateFacility(facility);
 		if (!singleCommodityEdit) navigateToAddress("form_overview.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId);
 	} else {
-		alert("All commodities need to be completed in order to complete the section");
+		showMessageBox("<p>All commodities needs to be validated and completed in order to complete section</p>");
 	}
 }
 
@@ -432,6 +432,8 @@ function displayValidationWarningMessages(HTMLelement, messages) {
 		$(errorElement).append("<li class='error_message'>" + messages[i] + "</li>");
 	}
 }
+
+
 
 //Border when input-field is in focus. 
 $("input").not(":checkbox").focus("input", function(e) {

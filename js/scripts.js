@@ -94,3 +94,29 @@ function elementExist(element) {
 function isDefined(variable) {
 	return (typeof variable != 'undefined' || variable != null);
 }
+
+/* GENERIC POPUP MESSAGE BOX */
+function showMessageBox(html) {
+	var background = document.createElement("DIV");
+	$(background).attr("id", "popup_msgbox_background");
+	
+	var box = document.createElement("SECTION");
+	$(box).attr("id", "popup_msgbox");
+	$(box).append(html);
+	
+	var close = document.createElement("P");
+	$(close).html('<i id="close_msgbox" class="fa fa-window-close-o" aria-hidden="true"></i>')
+	
+	$(close).click(function() {
+		closeMessageBox(background);
+	});
+	
+	$(box).append(close);
+	$(background).append(box);
+	$("body").append(background);
+}
+function closeMessageBox(box) {
+	console.log(box);
+	$(box).remove();
+	$("main").css("opacity", "1");
+}
