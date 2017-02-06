@@ -10,7 +10,7 @@
 	min-width: 800px;
 	text-align: left;
 	font-weight: 300;
-	font-size: 1.7rem;
+	font-size: 1.4rem;
 	margin-bottom: 30px;
 }
 
@@ -24,7 +24,7 @@
 	text-align: left;
 	margin-bottom: 20px;
 	overflow: hidden;
-	font-size: 1rem;
+	font-size: .8rem;
 	
 	-webkit-user-select: none;  /* Chrome all / Safari all */
 	-moz-user-select: none;     /* Firefox all */
@@ -68,17 +68,17 @@
 	display: block;
 	position: absolute;
 	right: 20px;
-	top: -35px;
+	top: -45px;
 	padding: 10px;
 	margin: 10px;
-	font-size: 1.2rem;
-	border-bottom: 1px solid black;
+	font-size: .9rem;
+	border-bottom: 1px dashed black;
 	cursor: pointer;
 }
 #commodity_list .not_applicable_wraper input {
-	margin-right: 10px;
-	width: 1.2rem;
-	height: 1.2rem;
+	margin-right: 7px;
+	width: .9rem;
+	height: .9rem;
 	vertical-align: bottom;
 }
 
@@ -92,13 +92,13 @@
 	right: 10px;
 	bottom: 5px;
 	
-	padding: 15px;
+	padding: 10px;
 	margin: 20px;
 	background-color: #276696;
 	color: white;
 	cursor: pointer;
 	font-weight: 600;
-	font-size: 1rem;
+	font-size: .8rem;
 	text-align: center;
 	-webkit-user-select: none;  /* Chrome all / Safari all */
 	-moz-user-select: none;     /* Firefox all */
@@ -110,15 +110,17 @@
 
 #commodity_list .data_element_input_pair {
 	display: inline-block;
-	margin-right: 15px;
-	margin-bottom: 45px;
+	margin-right: 5px;
+	margin-bottom: 30px;
 	vertical-align: bottom;
 	padding: 15px;
 	border: 2px solid white;
-	width: 145px;
+	width: 135px;
 }
 
+
 #commodity_list p {
+	font-size: .9rem;
 	padding-top: 5px;
 	padding-left: 15px;
 	font-style: italic;
@@ -128,6 +130,7 @@
 #commodity_list label {
 	width: 120px;
 	font-family: 'Open Sans', sans-serif;
+	font-size: .9rem;
 	display: block;
 	margin-bottom: 10px;
 	-webkit-user-select: none;  /* Chrome all / Safari all */
@@ -137,7 +140,7 @@
 }
 #commodity_list .data_element_input {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 1em;
+	font-size: .9rem;
 	display: block;
 	width: 100%;	
 }

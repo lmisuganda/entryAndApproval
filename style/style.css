@@ -109,7 +109,7 @@ body {
 
 .tooltip::before {
     content: attr(data-tip);   
-    font-size: 1rem;
+    font-size: .9rem;
     position:absolute;
     z-index: 9999;
    /* white-space:nowrap; */
