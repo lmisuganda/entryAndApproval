@@ -225,29 +225,3 @@ function getInitializedTable(dataElements) {
 	$(table).append(row);
 	return table;
 }
-
-/*
-function expandOrMinimizeListElement(element) {
-	if ($(element).height() <= 70) {
-		expandListElement(element);
-	} else {
-		minimizeListElement(element);
-	}
-}
-
-function expandListElement(element) {
-	$(element).find(".hidden_list_section").css("display","block");
-	$(element).css("opacity","0.5");
-	$(element).animate({
-		opacity: "1"
-	}, 250, function() {
-		// Animation complete.
-	}); 
-}
-function minimizeListElement(element) {
-	$(element).find(".hidden_list_section").css("display","none");
-	$('html, body').animate({
-      //scrollTop: ($(element).offset().top - 80)
-    }, 2);
-}
-*/
