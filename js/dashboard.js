@@ -1,11 +1,12 @@
 
+ //MOVE TO INDEPENDENT SERVER-SYNC FILE
 if (false) {
 	//load from DHIS2 server
 	updateLS(cycles);
 	console.log("Working online");
 } else {
 	console.log("Working offline");
-}
+} //
 
 var facilityId = getParameterFromURLByName("facility");
 if (isUndefinedOrNull(facilityId)) navigateToAddress("index.html");
@@ -18,7 +19,7 @@ generateMainMenu(); //located in scripts.js
 var currentCycle = getCurrentCycle(facility);
 
 generateFacilityInfoSection();
-generateListOfCurrentCycleForms(currentCycle);
+generateListOfHighlightedForms(currentCycle);
 generateListOfPreviousCycles(getPreviousCycles(facility));
 
 function generateFacilityInfoSection() {
@@ -26,9 +27,7 @@ function generateFacilityInfoSection() {
 	$("#header_cycle_info").html('<i class="fa fa-circle-o-notch" aria-hidden="true"></i>' + "Current cycle: " + getId(currentCycle));
 }
 
-function generateListOfCurrentCycleForms(cycle) {
-	
-	$("#current_cycle_header").text("Current Cycle: " + getId(cycle))
+function generateListOfHighlightedForms(cycle) {
 	var forms = getForms(cycle);
 	var pendingFormsCount = 0;
 	for (var i = 0; i < forms.length; i++) {

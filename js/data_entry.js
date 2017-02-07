@@ -14,16 +14,14 @@ var section = getSectionById(form, sectionId);
 
 if (isUndefinedOrNull(facility, section, form)) navigateToAddress("index.html"); //handle errors in LS lookup. 
 
-//if edit not allowed (based on completion and approval status, user rights): navigate to form summary
-if (!editIsAllowed(form, "temp")) {
-	$("body").hide();
-	navigateToAddress("form_summary.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId)	
-}
+redirectIfEditIsDenied(form); //if edit not allowed (based on completion and approval status, user rights): navigate to form summary
 
 generateMainMenu(); //located in scripts.js
-var singleCommodityEdit = getParameterFromURLByName("single")
-var commodityId = getParameterFromURLByName("commodityId")
+
+var singleCommodityEdit = getParameterFromURLByName("single");
+var commodityId = getParameterFromURLByName("commodityId");
 var unsolvedErrors = false; //in use for validation to prevent navigation way from commodity with errors. 
+
 
 if (isUndefinedOrNull(singleCommodityEdit)) {
 	initMultipleCommodityMode();
@@ -123,10 +121,16 @@ function getNewListElement(commodity) {
 	$(listElement).append(title, detailElement); //add content to list elemen
 	
 	if (!isApplicable(commodity)) {
-		console.log();
 		$($(notApplicableBox).find(":checkbox")[0]).prop("checked", "checked");
 		$(listElement).find(".data_element_input").attr("disabled", "true");
 	}
+	
+	//Event-listener  expand  / minimize list elements
+	$(listElement).on("click", function(e) {
+		if (e.target.className != "error_message" && e.target == this || e.target.tagName == "H3") {
+			if (!unsolvedErrors && isCompletedHTML(this) && !isExpandedHTML(this)) expandOrMinimizeListElement(this);
+		}
+	});
 	
 	return listElement;
 }
@@ -136,6 +140,11 @@ function getValidateButton() {
 	$(button).text("Validate and save");
 	$(button).attr("tabindex", "0");
 	$(button).attr("id", "save_commodity_button");
+	
+	$(button).on("click", function() {
+		validateCommodityClickHandler(this);
+	});
+
 	return button;
 }
 function getNotApplicableBox(commodity, listElement) {
@@ -174,65 +183,85 @@ function getDataEntryForm(commodity) {
 	
 	//add data element input fields
 	for (var i = 0; i < dataElements.length; i++) {
-		var label = document.createElement("LABEL");
-		var input = document.createElement("INPUT");
-		$(input).addClass("data_element_input");
-		$(input).val(getValue(dataElements[i]));
-		
-		var section = document.createElement("SECTION");
-		$(section).addClass("data_element_input_pair");
-
-		
-		if (dataElements[i].required) {
-			$(input).prop('required', true);
-		}
-		
-		//set tool-tip descriptions
-		if (hasDescription(dataElements[i])) attachTooltip(section, getDescription(dataElements[i]));
-
-		
-		//if data element is auto-calculated
-		if (isCalculated(dataElements[i])) {
-			$(input).prop('disabled', true);
-			$(input).css('border', "1px dashed grey");
-			$(input).addClass("calculated_input");
-			$(input).prop('required', false);
-			
-			//set/add tooltip
-			var description = "";
-			if (hasDescription(dataElements[i])) description = getDescription(dataElements[i]);
-			attachTooltip(section, description + " (auto calculated)");
-		}
-		
-		//get data from defined element in previous cycle (for example previous closing balance to place in current opening balance)
-		if (getDataFromElementInPreviousCycle(dataElements[i])) {
-			try {
-				var IdOfElementToGet = getDataFromElementInPreviousCycle(dataElements[i]);
-				var dataElement = getDataElementFromCycle(getPreviousCycle(cycleId), formId, sectionId, getId(commodity), IdOfElementToGet);
-				$(input).val(getValue(dataElement));
-			} catch (error) {console.log("Could not get data from previous cycle")};
-		}
-
-		$(input).prop('type', getType(dataElements[i]));
-		$(input).prop('step', '1');
-		
-		$(label).text(getName(dataElements[i]));
-		$(label).attr('for', getName(dataElements[i]));
-		$(input).attr('name', getName(dataElements[i]));
-		$(input).attr('id', "de_" + getId(dataElements[i]));
-		
-		//If notes
-		if (getName(dataElements[i]) == "Notes") {
-			$(section).addClass("notes");
-		}
-		
-		$(section).append(label, input);
-		$(form).append(section);
+		$(form).append(getDataElementInputPair(commodity, dataElements[i]));
 	}
 
 	return form;
 }
 
+function getDataElementInputPair(commodity, dataElement) {
+	var label = document.createElement("LABEL");
+	var input = document.createElement("INPUT");
+	$(input).addClass("data_element_input");
+	$(input).val(getValue(dataElement));
+	
+	var section = document.createElement("SECTION");
+	$(section).addClass("data_element_input_pair");
+
+	
+	if (dataElement.required) {
+		$(input).prop('required', true);
+	}
+	
+	//set tool-tip descriptions
+	if (hasDescription(dataElement)) attachTooltip(section, getDescription(dataElement));
+
+	
+	//if data element is auto-calculated
+	if (isCalculated(dataElement)) {
+		$(input).prop('disabled', true);
+		$(input).css('border', "1px dashed grey");
+		$(input).addClass("calculated_input");
+		$(input).prop('required', false);
+		
+		//set/add tooltip
+		var description = "";
+		if (hasDescription(dataElement)) description = getDescription(dataElement);
+		attachTooltip(section, description + " (auto calculated)");
+	}
+	
+	//get data from defined element in previous cycle (for example previous closing balance to place in current opening balance)
+	if (getDataFromElementInPreviousCycle(dataElement)) {
+		try {
+			var IdOfElementToGet = getDataFromElementInPreviousCycle(dataElement);
+			var prevDE = getDataElementFromCycle(getPreviousCycle(cycleId), formId, sectionId, getId(commodity), IdOfElementToGet);
+			$(input).val(getValue(prevDE));
+		} catch (error) {console.log("Could not get data from previous cycle")};
+	}
+
+	$(input).prop('type', getType(dataElement));
+	$(input).prop('step', '1');
+	
+	$(label).text(getName(dataElement));
+	$(label).attr('for', getName(dataElement));
+	$(input).attr('name', getName(dataElement));
+	$(input).attr('id', "de_" + getId(dataElement));
+	
+	addInputEventListeners(input);
+	
+	//If notes
+	if (getName(dataElement) == "Notes") {
+		$(section).addClass("notes");
+	}
+	
+	$(section).append(label, input);
+	return section;
+}
+
+function addInputEventListeners(input) {
+	//Border when input-field is in focus. 
+	$(input).not(":checkbox").focus("input", function(e) {
+		$(this).parent().css("border", "2px solid green");
+	});
+	$(input).not(":checkbox").focusout("input", function(e) {
+		$(this).parent().css("border", "");
+	});
+
+	// temp indicator autocalc handler. --> see program_indicator_handler.js
+	$(input).keyup(function () {
+		calculateAndPrintIndicators("temp", $("input").filter(":visible"));
+	});
+}
 
 //Generating and placing arrow
 function setArrowPosition(section) {
@@ -268,7 +297,6 @@ function expandListElement(element) {
 	}); 
 	currentExpandedCommodity = element;
 	var firstDataElementInput = $($(element).find(".data_element_input"))[0];
-	console.log(firstDataElementInput);
 	$(firstDataElementInput).focus();
 }
 
@@ -327,14 +355,6 @@ function saveCommodity(id, currForm, notApplicable) {
 
 
 
-//Event-listener on the commodity list to expand  / minimize list elements
-$("#commodity_list").on("click", "li", function(e) {
-	
-    if (e.target.className != "error_message" && e.target == this || e.target.tagName == "H3") {
-		if (!unsolvedErrors && isCompletedHTML(this) && !isExpandedHTML(this)) expandOrMinimizeListElement(this);
-	}
-});
-
 function isCompletedHTML(element) {
 	return $(element).hasClass("completed_element");
 }
@@ -354,17 +374,10 @@ function styleCommodityToNotApplicable(checkbox) {
 	}
 }
 
-//Event listener for complete commodity button
-$("#commodity_list").on("click", "button", function() {
-	
-	validateCommodityClickHandler(this);
-	
-});
 
 function validateCommodityClickHandler(button) {
 	//SAVE COMMODITY
 	var currentElement = button.parentElement.parentElement;
-	console.log(currentElement);
 	var commodityId = $(currentElement).attr("id")
 	
 	var currentForm = $(currentElement).find("form")[0];
@@ -432,19 +445,3 @@ function displayValidationWarningMessages(HTMLelement, messages) {
 		$(errorElement).append("<li class='error_message'>" + messages[i] + "</li>");
 	}
 }
-
-
-//Border when input-field is in focus. 
-$("input").not(":checkbox").focus("input", function(e) {
-	$(this).parent().css("border", "2px solid green");
-});
-$("input").not(":checkbox").focusout("input", function(e) {
-	$(this).parent().css("border", "");
-});
-
-// temp indicator autocalc handler. --> see program_indicator_handler.js
-$("input").keyup(function () {
-	calculateAndPrintIndicators("temp", $("input").filter(":visible"));
-});
-
-

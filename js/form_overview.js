@@ -9,42 +9,14 @@ var cycle = getCycleById(facility, cycleId);
 var form = getFormById(cycle, formId);
 if (isUndefinedOrNull(facility, cycle, form)) navigateToAddress("index.html");
 
-//if edit not allowed (based on completion and approval status, user rights): navigate to form summary
-if (!editIsAllowed(form, "temp")) {
-	$("body").hide();
-	navigateToAddress("form_summary.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId)	
-}
+redirectIfEditIsDenied(form); //if edit not allowed (based on completion and approval status, user rights) redirect to summary
 
 generateMainMenu(); //located in scripts.js
 setProgramTitleHeader(getName(form)); 
 generateSectionsList();
 
-//event-listener onclick list elements (sections)
-$("li").on("click", function() {
-	if ($(this).hasClass("completed_section") || $(this).hasClass("current_section")) {
-		var sectionId = $(this).attr("id");
-		openDataEntryForSection(sectionId);
-	}
-});
-//handles navigation by enter button
-$(document).keypress(function(e) {
-	if(e.which == 13) { //13 = enterbutton
-		e.preventDefault();
-		if (allSectionsIsCompleted(form)) {
-			openFormSummary();
-		} else {
-			var sectionId = $(".current_section").attr("id");
-			openDataEntryForSection(sectionId);
-		}
 
-    }
-});
-function openDataEntryForSection(sectionId) {
-	navigateToAddress("data_entry.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId + "&section=" + sectionId);
-}
-function openFormSummary() {
-	navigateToAddress("form_summary.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId);
-}
+
 
 
 function generateSectionsList() {
@@ -82,6 +54,14 @@ function getNewListElement(section) {
 	$(listElement).append(name, statusElement, hiddenListSection); //add content to list element
 	$(listElement).attr("id", getId(section));
 	
+	//event-listener onclick list elements
+	$(listElement).on("click", function() {
+		if ($(this).hasClass("completed_section") || $(this).hasClass("current_section")) {
+			var sectionId = $(this).attr("id");
+			openDataEntryForSection(sectionId);
+		}
+	});
+	
 	return listElement;
 }
 
@@ -91,6 +71,28 @@ function getSectionStatusElement(section) {
 	$(statusText).html(getSectionStatusIcon(section) + "Entry of " + getCountOfCompletedCommoditiesInSection(section) + " of " + getCountOfCommoditiesInSection(section) + " elements completed");
 	return statusText;
 }
+
+
+//handles navigation by enter button
+$(document).keypress(function(e) {
+	if(e.which == 13) { //13 = enterbutton
+		e.preventDefault();
+		if (allSectionsIsCompleted(form)) {
+			openFormSummary();
+		} else {
+			var sectionId = $(".current_section").attr("id");
+			openDataEntryForSection(sectionId);
+		}
+
+    }
+});
+function openDataEntryForSection(sectionId) {
+	navigateToAddress("data_entry.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId + "&section=" + sectionId);
+}
+function openFormSummary() {
+	navigateToAddress("form_summary.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId);
+}
+
 
 function getLastListElement(name) {
 
@@ -146,10 +148,11 @@ function setProgramTitleHeader(text) {
 	$("#cycle_title").html('<i class="fa fa-circle-o-notch" aria-hidden="true"></i>' + "Cycle " + getId(cycle));
 }
 
+
+// adjust arrow on window resize
 $(window).resize(function () {
 	adjustArrowPosition();
 });
-
 
 function adjustArrowPosition() {
 	var lemLeft = $(".current_section").position().left;

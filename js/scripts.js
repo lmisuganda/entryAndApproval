@@ -80,6 +80,13 @@ function navigateToAddress(address) {
 	window.location.href = address;
 }
 
+function redirectIfEditIsDenied(form) {
+	if (!editIsAllowed(form, "temp")) { //temp - add real user object
+		$("body").hide();
+		navigateToAddress("form_summary.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId)	
+	}
+}
+
 //takes array of variables and check for undefined and null
 function isUndefinedOrNull() {
 	for (var i = 0; i < arguments.length; i++) {
