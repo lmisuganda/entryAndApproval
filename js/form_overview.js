@@ -87,10 +87,10 @@ $(document).keypress(function(e) {
     }
 });
 function openDataEntryForSection(sectionId) {
-	navigateToAddress("data_entry.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId + "&section=" + sectionId);
+	navigateToAddress("data_entry.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId + "#section=" + sectionId);
 }
 function openFormSummary() {
-	navigateToAddress("form_summary.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId);
+	navigateToAddress("form_summary.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId);
 }
 
 
@@ -102,7 +102,7 @@ function getLastListElement(name) {
 	
 	var startEntryButton = document.createElement("A");
 	$(startEntryButton).text("Click here to look over and complete form");
-	$(startEntryButton).attr("href", "form_summary.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId);
+	$(startEntryButton).attr("href", "form_summary.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId);
 	
 	$(hiddenListSection).append(startEntryButton);
 	$(listElement).attr("id", "show_summary_button");

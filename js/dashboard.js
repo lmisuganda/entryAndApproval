@@ -87,9 +87,9 @@ function getListElement(cycle, form) {
 
 	
 	if (isCompleted(form)) {
-		$(link).attr("href", "form_summary.html?facility=" + facilityId + "&cycle=" + getId(cycle) + "&form=" + getId(form));
+		$(link).attr("href", "form_summary.html#facility=" + facilityId + "#cycle=" + getId(cycle) + "#form=" + getId(form));
 	} else {
-		$(link).attr("href", "form_overview.html?facility=" + facilityId + "&cycle=" + getId(cycle) + "&form=" + getId(form));
+		$(link).attr("href", "form_overview.html#facility=" + facilityId + "#cycle=" + getId(cycle) + "#form=" + getId(form));
 	}
 	return listElement;
 }

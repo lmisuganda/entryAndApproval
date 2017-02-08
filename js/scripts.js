@@ -9,7 +9,7 @@ function generateMainMenu() {
 	var mainMenu = $("#main_menu");
 	if (elementExist(mainMenu)) {
 		if (!isUndefinedOrNull(facilityId)) {
-			$(mainMenu).append('<a tabindex="-1" href="dashboard.html?facility=' + facilityId + '"><i class="fa fa-home" aria-hidden="true"></i>' + getName(facility) + '</a>');
+			$(mainMenu).append('<a tabindex="-1" href="dashboard.html#facility=' + facilityId + '"><i class="fa fa-home" aria-hidden="true"></i>' + getName(facility) + '</a>');
 		}
 		$(mainMenu).append('<a tabindex="-1" href="index.html"><i class="fa fa-list-ul" aria-hidden="true"></i></i>All facilities</a>');
 		
@@ -41,11 +41,12 @@ function attachTooltip(element, text) {
 	return element;
 }
 
-//returns parameter from url based on given name (?example=test)
+//returns parameter from url based on given name (#example=test)
 function getParameterFromURLByName(name) {
     url = window.location.href;
+	//url = url.replace('#','');
     name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    var regex = new RegExp("[#]" + name + "(=([^&#]*)|&|#|$)"),
         results = regex.exec(url);
     if (!results) return null;
     if (!results[2]) return '';
@@ -83,7 +84,7 @@ function navigateToAddress(address) {
 function redirectIfEditIsDenied(form) {
 	if (!editIsAllowed(form, "temp")) { //temp - add real user object
 		$("body").hide();
-		navigateToAddress("form_summary.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId)	
+		navigateToAddress("form_summary.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId)	
 	}
 }
 

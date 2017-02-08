@@ -25,7 +25,7 @@ function generateFacilityList(facilities) {
 		//$(menu).append(details);
 		$(liElement).append(menu);
 		
-		$(aElement).attr("href", "dashboard.html?facility=" + getId(facilities[i]));
+		$(aElement).attr("href", "dashboard.html#facility=" + getId(facilities[i]));
 		$(liElement).append(aElement);
 		$("#facility_list").append(liElement);
 		

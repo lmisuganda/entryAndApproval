@@ -318,14 +318,14 @@ function tryToCompleteSection() {
 	if (singleCommodityEdit || allCommoditiesCompleted(section)) {
 		setToCompleted(getSectionById(form, sectionId));
 		LS.updateFacility(facility);
-		if (!singleCommodityEdit) navigateToAddress("form_overview.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId);
+		if (!singleCommodityEdit) navigateToAddress("form_overview.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId);
 	} else {
 		showMessageBox("<p>All commodities needs to be validated and completed in order to complete section</p>");
 	}
 }
 
 function configureBackButton () {
-	$("#back_button").attr("href", "form_overview.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId);
+	$("#back_button").attr("href", "form_overview.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId);
 }
 
 function setsectionHeader(sectionNumber) {
@@ -392,7 +392,7 @@ function validateCommodityClickHandler(button) {
 		
 			//WHEN SINGLE EDIT MODE --> NAVIGATE BACK TO SUMMARY
 			if (singleCommodityEdit) {
-				navigateToAddress("form_summary.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId + "&section=" + sectionId);
+				navigateToAddress("form_summary.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId + "#section=" + sectionId);
 			}
 			styleCompletedCommodity(currentElement); //set styles
 			

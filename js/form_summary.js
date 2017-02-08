@@ -69,7 +69,7 @@ function enableCommodityEditing() {
 	$(".title").on("click", function(e) {
 		var sectionId = $(this).closest("li").attr("id"); //get sectionId from clicked element
 		var commodityId = $(this).attr("id"); //get commodityId from clicked element
-		navigateToAddress("data_entry.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId + "&section=" + sectionId + "&commodityId=" + commodityId + "&single=true");
+		navigateToAddress("data_entry.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId + "#section=" + sectionId + "#commodityId=" + commodityId + "#single=true");
 	});
 	$(".title").css("cursor", "pointer");
 }
@@ -88,7 +88,7 @@ function generateCompleteButton() {
 			
 			//if allowed approval: refresh and prompt for instant approval after completion
 			if (allowedApproval("TEMP")) {
-				navigateToAddress("form_summary.html?facility=" + facilityId + "&cycle=" + cycleId + "&form=" + formId + "&promptForInstantApproval=true");
+				navigateToAddress("form_summary.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId + "#promptForInstantApproval=true");
 			} else {
 				location.reload();
 			}
