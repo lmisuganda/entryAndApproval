@@ -91,5 +91,10 @@ function getListElement(cycle, form) {
 	} else {
 		$(link).attr("href", "form_overview.html#facility=" + facilityId + "#cycle=" + getId(cycle) + "#form=" + getId(form));
 	}
+	
+	$(listElement).click(function() {
+		navigateToAddress("form_overview.html#facility=" + facilityId + "#cycle=" + getId(cycle) + "#form=" + getId(form));
+	});
+	
 	return listElement;
 }

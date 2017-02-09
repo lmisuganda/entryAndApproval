@@ -36,6 +36,7 @@ h3 {
 	margin: 6px 0 6px 0;
 	padding: 10px;
 	width: 95%;
+	cursor: pointer;
 }
 .form_list li a{
 	margin: 10px;
