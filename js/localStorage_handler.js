@@ -1,14 +1,28 @@
-Storage.prototype.setObject = function(key, value) {
-    this.setItem(key, JSON.stringify(value));
+
+var DHIS2 = {
+	
+	getAllFacilities:
+	function () {
+		
+	},
+	
+	getFacilityById:
+	function (id) {
+		
+	},
+	
+	getFormById:
+	function (id) {
+		
+	},
+	
+	getSectionById:
+	function (id) {
+		
+	},
+	
+	
 }
-
-Storage.prototype.getObject = function(key) {
-    var value = this.getItem(key);
-    return value && JSON.parse(value);
-}
-
-
-//test by 14.01.2017
 
 var LS = {
 	
@@ -45,4 +59,12 @@ var LS = {
 	
 }
 
+Storage.prototype.setObject = function(key, value) {
+    this.setItem(key, JSON.stringify(value));
+}
+
+Storage.prototype.getObject = function(key) {
+    var value = this.getItem(key);
+    return value && JSON.parse(value);
+}
 

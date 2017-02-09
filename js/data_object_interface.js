@@ -61,6 +61,9 @@ function setToUnapproved(object) {
 function setToNotApplicable(object) {
 	object.notApplicable = true;
 }
+function setToApplicable(object) {
+	object.notApplicable = false;
+}
 function isApplicable (object) {
 	if (object.notApplicable === undefined || !object.notApplicable) {
 		return true;

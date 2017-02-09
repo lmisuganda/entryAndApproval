@@ -221,13 +221,7 @@ function getDataElementInputPair(commodity, dataElement) {
 	}
 	
 	//get data from defined element in previous cycle (for example previous closing balance to place in current opening balance)
-	if (getDataFromElementInPreviousCycle(dataElement)) {
-		try {
-			var IdOfElementToGet = getDataFromElementInPreviousCycle(dataElement);
-			var prevDE = getDataElementFromCycle(getPreviousCycle(cycleId), formId, sectionId, getId(commodity), IdOfElementToGet);
-			$(input).val(getValue(prevDE));
-		} catch (error) {console.log("Could not get data from previous cycle")};
-	}
+	insertValueFromPreviousCycleIfRequired(input, dataElement, commodity);
 
 	$(input).prop('type', getType(dataElement));
 	$(input).prop('step', '1');
@@ -246,6 +240,16 @@ function getDataElementInputPair(commodity, dataElement) {
 	
 	$(section).append(label, input);
 	return section;
+}
+
+function insertValueFromPreviousCycleIfRequired(input, dataElement, commodity) {
+	if ($(input).val() == "" && !isCompleted(commodity) && getDataFromElementInPreviousCycle(dataElement)) {
+		try {
+			var IdOfElementToGet = getDataFromElementInPreviousCycle(dataElement);
+			var prevDE = getDataElementFromCycle(getPreviousCycle(cycleId), formId, sectionId, getId(commodity), IdOfElementToGet);
+			$(input).val(getValue(prevDE));
+		} catch (error) {console.log("Could not get data from previous cycle")};
+	}
 }
 
 function addInputEventListeners(input) {
@@ -345,6 +349,7 @@ function saveCommodity(id, currForm, notApplicable) {
 	if (notApplicable) {
 		setToNotApplicable(commodity);
 	} else {
+		setToApplicable(commodity);
 		for (var i = 0; i < dataElements.length; i++) {
 			setValue(dataElements[i], inputFields[i].value);
 		}
