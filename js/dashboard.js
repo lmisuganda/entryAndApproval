@@ -66,6 +66,12 @@ function getListElement(cycle, form) {
 	
 	var listElement = document.createElement("LI");
 	
+	//form name
+	var link = document.createElement("A");
+	$(link).attr("data-tip", "this is the tip!");
+	$(listElement).append(link);
+	
+	$(link).html('<i class="fa fa-file-text-o" aria-hidden="true"></i>' + getName(form));
 	
 	//cycle info
 	var cycleEl = document.createElement("P");
@@ -78,12 +84,6 @@ function getListElement(cycle, form) {
 	$(status).html(getStatusIcon(form, allowedApproval("TEMP")) + getStatusTextShort(form));
 	$(listElement).append(status);
 	
-	//form name
-	var link = document.createElement("A");
-	$(link).attr("data-tip", "this is the tip!");
-	$(listElement).append(link);
-	
-	$(link).html('<i class="fa fa-file-text-o" aria-hidden="true"></i>' + getName(form));
 
 	
 	if (isCompleted(form)) {

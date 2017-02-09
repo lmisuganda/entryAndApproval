@@ -39,13 +39,13 @@ function generateSectionsList() {
 
 //generates a new LI-element containing given name
 function getNewListElement(section) {
+	var listElement = document.createElement("LI");
 	var name = "<p>" + getName(section) + "</p>";
 
 	var hiddenListSection = document.createElement("SECTION");
+	var applicableElement = getNotApplicableBox(listElement);
 	$(hiddenListSection).addClass("hidden_list_section");
 	$(hiddenListSection).append(getSectionStartButton(section));
-	
-	var listElement = document.createElement("LI");
 	
 	if (isCompleted(section)) { //If sections is already completed. Add styling
 		$(listElement).addClass("completed_section"); 
@@ -55,8 +55,8 @@ function getNewListElement(section) {
 	$(listElement).attr("id", getId(section));
 	
 	//event-listener onclick list elements
-	$(listElement).on("click", function() {
-		if ($(this).hasClass("completed_section") || $(this).hasClass("current_section")) {
+	$(listElement).on("click", function(e) {
+		if (isNotApplicableElement(e.target) && ($(this).hasClass("completed_section") || $(this).hasClass("current_section"))) {
 			var sectionId = $(this).attr("id");
 			openDataEntryForSection(sectionId);
 		}
@@ -65,11 +65,43 @@ function getNewListElement(section) {
 	return listElement;
 }
 
+function isNotApplicableElement(elem) {
+	return (elem.tagName !== "DIV" && elem.tagName !== "INPUT");
+}
+function setToNotApplicable(listElement) {
+	$(listElement).find(".section_status").hide();
+}
+
 function getSectionStatusElement(section) {
 	var statusText = document.createElement("P");
 	$(statusText).addClass("section_status");
 	$(statusText).html(getSectionStatusIcon(section) + "Entry of " + getCountOfCompletedCommoditiesInSection(section) + " of " + getCountOfCommoditiesInSection(section) + " elements completed");
 	return statusText;
+}
+
+function getNotApplicableBox(listElement) {
+	var notApplicableCheckbox = document.createElement("INPUT");
+	$(notApplicableCheckbox).attr("type", "checkbox");
+	$(notApplicableCheckbox).attr("tabindex", "-1");
+	$(notApplicableCheckbox).attr("id", "not_applicable_checkbox");
+	
+	var notApplicableWrapper = document.createElement("DIV");
+	$(notApplicableWrapper).addClass("not_applicable_wraper");
+	attachTooltip(notApplicableWrapper, "Check if this section is not applicable for this facility");
+	
+	//handle not applicable checking
+	$(notApplicableWrapper).on("click", function(e) {
+		var checkbox = $(e.target).find("#not_applicable_checkbox");
+		checkbox.prop("checked", !checkbox.prop("checked")); 
+		setToNotApplicable(listElement);
+	});
+	$(notApplicableCheckbox).change("click", function(e) {
+		var checkbox = $(e.target);
+		//COMPLETE SECTION
+	});
+
+	$(notApplicableWrapper).append(notApplicableCheckbox, "Section not applicable");
+	return notApplicableWrapper;
 }
 
 
