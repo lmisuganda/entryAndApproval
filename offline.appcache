@@ -1,6 +1,7 @@
 CACHE MANIFEST
-#08.02.17 v9
+#09.02.17
 
+CACHE:
 index.html
 dashboard.html
 form_overview.html
@@ -34,5 +35,34 @@ style/index.css
 style/style.css
 style/data_entry.css
 
+style/font-awesome/css/font-awesome.min.css
+style/font-awesome/fonts/FontAwesome.otf?v=4.7.0 
+style/font-awesome/fonts/fontawesome-webfont.eot?v=4.7.0 
+style/font-awesome/fonts/fontawesome-webfont.svg?v=4.7.0 
+style/font-awesome/fonts/fontawesome-webfont.ttf?v=4.7.0 
+style/font-awesome/fonts/fontawesome-webfont.woff?v=4.7.0 
+
+style/fonts/open_sans.css
+style/fonts/OpenSans-Bold.ttf
+style/fonts/OpenSans-BoldItalic.ttf
+style/fonts/OpenSans-ExtraBold.ttf
+style/fonts/OpenSans-ExtraBoldItalic.ttf
+style/fonts/OpenSans-Italic.ttf
+style/fonts/OpenSans-Light.ttf
+style/fonts/OpenSans-LightItalic.ttf
+style/fonts/OpenSans-Regular.ttf
+style/fonts/OpenSans-Semibold.ttf
+style/fonts/OpenSans-SemiboldItalic.ttf
+
 offline.appcache
 manifest.webapp
+
+NETWORK:
+*
+
+FALLBACK:
+style/font-awesome/fonts/fontawesome-webfont.woff style/font-awesome/fonts/fontawesome-webfont.woff
+style/font-awesome/fonts/fontawesome-webfont.eot style/font-awesome/fonts/fontawesome-webfont.eot
+style/font-awesome/fonts/fontawesome-webfont.svg style/font-awesome/fonts/fontawesome-webfont.svg
+style/font-awesome/fonts/fontawesome-webfont.ttf style/font-awesome/fonts/fontawesome-webfont.ttf
+style/font-awesome/fonts/FontAwesome.otf style/font-awesome/fonts/FontAwesome.otf
