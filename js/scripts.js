@@ -123,6 +123,27 @@ function showMessageBox(html) {
 	$(background).append(box);
 	$("body").append(background);
 }
+function showConfirmBox(html, yes, no) {
+	var background = document.createElement("DIV");
+	$(background).attr("id", "popup_msgbox_background");
+	
+	var box = document.createElement("SECTION");
+	$(box).attr("id", "popup_msgbox");
+	$(box).append(html);
+	
+	var yesButton = document.createElement("BUTTON");
+	$(yesButton).text("Yes");
+	$(yesButton).click(yes);
+
+	var noButton = document.createElement("BUTTON");
+	$(noButton).text("No");
+	$(noButton).click(no);
+	
+	$(box).append(yesButton);
+	$(box).append(noButton);
+	$(background).append(box);
+	$("body").append(background);
+}
 function closeMessageBox(box) {
 	console.log(box);
 	$(box).remove();

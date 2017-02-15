@@ -143,6 +143,8 @@ body {
 }
 
 #popup_msgbox {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.2rem;
 	position: fixed;
 	max-width: 80%;
 	padding: 50px;
@@ -152,6 +154,14 @@ body {
 	border: 1px solid #d9534f;
 	background-color: white;
 	opacity: 1;
+	text-align: center;
+}
+
+#popup_msgbox button {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1rem;	
+	margin: 10px 5px;
+	min-width: 70px;
 }
 
 #popup_msgbox #close_msgbox {
