@@ -1,45 +1,66 @@
 if (true) {
 	//load from DHIS2 server
-	LS.updateAllFacilities(facilities);
+	//LS.updateAllFacilities(facilities);
 	console.log("Working online");
 } else {
 	console.log("Working offline");
 	
 }
+var facilities = LS.getFacilities();
 
 generateMainMenu(); //located in scripts.js
 generateFacilityList(facilities);
 
 function generateFacilityList(facilities) {
 	for (var i = 0; i < facilities.length; i++) {
-		var liElement = document.createElement("LI");
-		$(liElement).attr("id", getId(facilities[i]));
-		var aElement = document.createElement("A");
-		$(aElement).text(getName(facilities[i]));
-		
-		var menu = document.createElement("MENU");
-		var details = document.createElement("I");
-		$(details).attr("class", "fa fa-info-circle");
-		$(details).attr("aria-hidden", "true");
-		//$(menu).append('<i class="fa fa-home" aria-hidden="true"></i>');
-		//$(menu).append(details);
-		$(liElement).append(menu);
-		
-		$(aElement).attr("href", "dashboard.html#facility=" + getId(facilities[i]));
-		$(liElement).append(aElement);
-		$("#facility_list").append(liElement);
-		
-		$(details).on("click", function() {
-			var element = this.parentNode.parentNode;
-			if (!$(element).hasClass("initialized")) {
-				generateFacilitySummary(element);
-				$(element).append('<a href="test">Go to facility dashboard</a>');
-			}
-		})
-		
+		$("#facility_list").append(getListElement(facilities[i]));
 	}
 }
 
+function getListElement(facility) {
+	var liElement = document.createElement("LI");
+	$(liElement).attr("id", getId(facility));
+	var aElement = document.createElement("A");
+	$(aElement).append('<i class="fa fa-home" aria-hidden="true"></i>');
+	$(aElement).append(getName(facility));
+	$(aElement).attr("href", "dashboard.html#facility=" + getId(facility));
+	$(liElement).append(aElement);
+	appendStatusElements(liElement, facility);
+	return liElement;
+}
+
+function appendStatusElements(listElement, facility) {
+	var statusCounts = getFormStatusCounts(facility);
+	var formsCount = getCountOfFormsCurrentCycle(facility);
+	
+	var statusElement = document.createElement("ASIDE");
+
+	if (statusCounts.uncompleted > 0) {
+		var waitingForCompletion = document.createElement("P");
+		$(waitingForCompletion).append('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>');
+		$(waitingForCompletion).append(statusCounts.uncompleted + " of " + formsCount + " waiting for completion");
+		$(statusElement).append(waitingForCompletion);
+	}
+
+	if (statusCounts.completed > 0) {
+		var waitingForApproval = document.createElement("P");
+		$(waitingForApproval).append('<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>');
+		$(waitingForApproval).append(statusCounts.completed + " of " + formsCount + " waiting for approval");
+		$(statusElement).append(waitingForApproval);
+	}
+	
+	if (statusCounts.approved > 0) {
+		var completedAndApproved = document.createElement("P");
+		$(completedAndApproved).append('<i class="fa fa-check" aria-hidden="true"></i>');
+		$(completedAndApproved).append(statusCounts.approved + " of " + formsCount + " completed and approved");
+		$(statusElement).append(completedAndApproved);
+	}
+	
+	$(statusElement).addClass("status_element");
+	$(listElement).append(statusElement);
+}
+
+/*
 function generateFacilitySummary(facilityElement) {
 	$(facilityElement).addClass("initialized");
 	var pendingList = document.createElement("UL");
@@ -77,9 +98,9 @@ function generateListOfCurrentCycleForms(cycle, pendingList, completedList) {
 function getListElement(cycle, form) {
 	
 	var listElement = document.createElement("LI");
-	$(listElement).text(getName(form));
 	
 	var link = document.createElement("A");
+	$(link).text(getName(form));
 	if (isCompleted(form)) {
 		$(link).attr("href", "form_summary.html?facility="  + "&cycle=" + getId(cycle) + "&form=" + getId(form));
 	} else {
@@ -87,4 +108,4 @@ function getListElement(cycle, form) {
 	}
 	$(link).append(listElement);
 	return link;
-}
+} */

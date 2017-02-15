@@ -25,6 +25,18 @@ var DHIS2 = {
 }
 
 var LS = {
+
+	getFacilities: 
+	function () {
+		var result = [];
+		for (var i = 0; i < localStorage.length; i++) {
+			var key = localStorage.key(i);
+			if (key.startsWith("facility_")) { 
+				result.push(localStorage.getObject(key)); 
+			}
+		}
+		return result;
+	},
 	
 	getFacilityById: 
 	function (id) {
