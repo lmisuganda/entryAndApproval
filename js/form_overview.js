@@ -15,8 +15,6 @@ generateMainMenu(); //located in scripts.js
 setProgramTitleHeader(getName(form)); 
 generateSectionsList();
 
-
-
 function refreshSectionsList() {
 	$("#sections_list").html("");
 	generateSectionsList();
