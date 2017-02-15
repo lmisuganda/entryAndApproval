@@ -17,7 +17,10 @@ generateSectionsList();
 
 
 
-
+function refreshSectionsList() {
+	$("#sections_list").html("");
+	generateSectionsList();
+}
 
 function generateSectionsList() {
 	var sectionsListElement = $("#sections_list");
@@ -71,6 +74,7 @@ function getNewListElement(section) {
 }
 function styleAsCompleted(listElement) {
 	$(listElement).addClass("completed_section"); 
+	$($(listElement).find(".hidden_list_section")[0]).hide();
 }
 function styleAsNotApplicable(listElement) {
 	$(listElement).addClass("not_applicable");
@@ -124,17 +128,18 @@ function toggleNotApplicable(checkbox, sectionId, listElement) {
 			setToNotApplicable(section)
 			setToCompleted(section);
 			LS.updateFacility(facility);
-			location.reload();
-		}, function () {
+			refreshSectionsList();
 			closeMessageBox($("#popup_msgbox_background"));
+		}, function () {
 			checkbox.prop("checked", false);
+			closeMessageBox($("#popup_msgbox_background"));
 		});
 		
 	} else {
 		setToApplicable(section)
 		setToUncompleted(section);
 		LS.updateFacility(facility);
-		location.reload();
+		refreshSectionsList();
 	}
 }
 
