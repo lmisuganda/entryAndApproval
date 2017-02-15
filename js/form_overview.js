@@ -10,7 +10,7 @@ var form = getFormById(cycle, formId);
 if (isUndefinedOrNull(facility, cycle, form)) navigateToAddress("index.html");
 
 redirectIfEditIsDenied(form); //if edit not allowed (based on completion and approval status, user rights) redirect to summary
-
+if (isCompleted(form)) navigateToAddress("form_summary.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId);
 generateMainMenu(); //located in scripts.js
 setProgramTitleHeader(getName(form)); 
 generateSectionsList();
