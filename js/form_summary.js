@@ -33,7 +33,7 @@ if (!isCompleted(form)) {
 //if user just completed the form, and have approval rights: prompt for approval. 
 var promptForInstantApproval = getParameterFromURLByName("promptForInstantApproval");
 if (promptForInstantApproval && !isApproved(form)) {
-	showConfirmationBox("Do you also want to <b>approve</b> the form?", function() {
+	showConfirmBox("<p>Do you also want to <b>approve</b> the form?</p>", function() {
 			setToApproved(form);
 			LS.updateFacility(facility);
 			location.reload();
@@ -82,7 +82,7 @@ function generateCompleteButton() {
 	
 	//add event-listener to button
 	$(button).on("click", function(e) {
-		showConfirmationBox("Are you sure you want to the complete the form?", function() {
+		showConfirmBox("<p>Are you sure you want to the complete the form?</p>", function() {
 			setToCompleted(form);
 			LS.updateFacility(facility);
 			//if allowed approval: refresh and prompt for instant approval after completion
@@ -104,40 +104,12 @@ function generateApproveButton() {
 	
 	//add event-listener to button
 	$(button).on("click", function(e) {
-		showConfirmationBox("Are you sure you want to the approve the form?", function() {
+		showConfirmBox("<p>Are you sure you want to the approve the form?</p>", function() {
 			setToApproved(form);
 			LS.updateFacility(facility);
 			location.reload();
 		});
 	});
-}
-
-function showConfirmationBox(text, confirmFunction) {
-	
-	$("#sections_list").css("opacity", "0.1");
-	$("#form_summary").css("opacity", "0.1");
-	height = $("#confirmation_box").height();
-	width = $("#confirmation_box").width();
-	topPos = ($(window).height() / 3) - height; 
-	leftPos = ($(window).width() - width) / 2;
-	$("#confirmation_box").css({ top: topPos});
-	$("#confirmation_box").css({ left: leftPos});
-	
-	$("#confirmation_box").find("p").html(text);
-	
-	$("#confirmation_box").fadeIn(250);
-	
-	//cancel-event
-	$("#cancel_button").on("click", function(e) {
-		
-		$("#summary_navigation").css("display", "");
-		$("#confirmation_box").css("display", "none");
-		$("#sections_list").css("opacity", "");
-		$("#form_summary").css("opacity", "");
-	});
-	
-	//complete event (defined in parameters)
-	$("#confirm_button").on("click", confirmFunction);
 }
 
 function generateSectionsList() {

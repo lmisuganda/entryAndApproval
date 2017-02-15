@@ -146,9 +146,10 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 1.2rem;
 	position: fixed;
+	min-width: 45%;
 	max-width: 80%;
 	padding: 50px;
-	top: 50%;
+	top: 35%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	border: 1px solid #d9534f;
@@ -161,7 +162,7 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 1rem;	
 	margin: 10px 5px;
-	min-width: 70px;
+	min-width: 100px;
 }
 
 #popup_msgbox #close_msgbox {

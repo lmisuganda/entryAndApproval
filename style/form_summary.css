@@ -129,29 +129,4 @@ tr:first-child td {
 	margin-right: 10px;
 }
 
-#confirmation_box {
-	display: none;
-	position: fixed;
-	top: 0;
-	margin: 0 auto 0 auto;
-	padding: 50px 10px 50px 10px;
-	background-color: white;
-	border: 3px solid #f0ad4e;
-	width: 60vw;
-	color: black;
-	text-align: center;
-	font-size: 1.6rem;
-}
-
-#confirmation_box p {
-	margin-bottom: 50px;
-}
-
-#confirmation_box button {
-	margin: 0 10px 0 10px;
-	padding: 5px;
-	min-width: 150px;
-	font-size: 1rem;
-	cursor: pointer;
-}
 

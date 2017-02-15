@@ -137,7 +137,14 @@ function showConfirmBox(html, yes, no) {
 
 	var noButton = document.createElement("BUTTON");
 	$(noButton).text("No");
-	$(noButton).click(no);
+	if (isUndefinedOrNull(no)) {
+		$(noButton).click(function () {
+			closeMessageBox(background);
+		});		
+	} else {
+		$(noButton).click(no);
+	}
+
 	
 	$(box).append(yesButton);
 	$(box).append(noButton);
@@ -145,7 +152,6 @@ function showConfirmBox(html, yes, no) {
 	$("body").append(background);
 }
 function closeMessageBox(box) {
-	console.log(box);
 	$(box).remove();
 	$("main").css("opacity", "1");
 }

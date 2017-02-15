@@ -35,7 +35,10 @@ function generateSectionsList() {
 			currentSectionNotSet = false;
 		}
 	}
-	var elem = getLastListElement("Look over and complete form")
+	var elem = getLastListElement("Look over and complete form");
+	$(elem).click(function() {
+		showMessageBox("All sections needs to be completed or marked as not applicable to continue");
+	});
 	sectionsListElement.append(elem);
 	if (currentSectionNotSet) setToCurrentSection(elem);
 }
