@@ -1,12 +1,12 @@
 if (true) {
 	//load from DHIS2 server
-	//LS.updateAllFacilities(facilities);
+	LS.updateAllFacilities(facilities);
 	console.log("Working online");
 } else {
 	console.log("Working offline");
 	
 }
-var facilities = LS.getFacilities();
+//var facilities = LS.getFacilities();
 
 generateMainMenu(); //located in scripts.js
 generateFacilityList(facilities);

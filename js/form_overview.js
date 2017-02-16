@@ -225,7 +225,7 @@ function setArrowPosition(section) {
 	var lemTop = $(section).position().top;
 	var lemLeft = $(section).position().left;
 	$("#arrow_icon").animate({
-		top: (lemTop - 8),
+		top: (lemTop - 2),
 		left: (lemLeft - $("#arrow_icon").width())
 	}, 250, function() {
 		// Animation complete.
