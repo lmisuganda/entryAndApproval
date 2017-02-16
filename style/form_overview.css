@@ -17,6 +17,7 @@
 
 #sections_list {
 	text-align: center;
+	padding-top: 40px;
 }
 
 #sections_list  h2{
@@ -27,7 +28,6 @@
 	font-size: 1.3em;
 	vertical-align: top;
 	font-weight: 300;
-	
 }
 
 
@@ -49,7 +49,6 @@
 
 #sections_list .current_section {
 	border: 2px solid #f0ad4e;
-	cursor: pointer;
 }
 #sections_list .current_section a:hover {
 	opacity: .8;
