@@ -93,7 +93,7 @@
 	font-size: 1.1rem;
 	background: #449d44;
 	color: white;
-
+	cursor: pointer;
 }
 
 #sections_list .skip_button {

@@ -10,7 +10,7 @@ var form = getFormById(cycle, formId);
 if (isUndefinedOrNull(facility, cycle, form)) navigateToAddress("index.html");
 
 redirectIfEditIsDenied(form); //if edit not allowed (based on completion and approval status, user rights) redirect to summary
-if (isCompleted(form)) navigateToAddress("form_summary.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId);
+if (isCompleted(form)) openFormSummary();
 
 generateMainMenu(); //located in scripts.js
 setProgramTitleHeader(getName(form)); 
@@ -190,7 +190,7 @@ function openDataEntryForSection(sectionId) {
 	navigateToAddress("data_entry.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId + "#section=" + sectionId);
 }
 function openFormSummary() {
-	navigateToAddress("form_summary.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId);
+	navigateToAddress("form_summary.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId + "#section=0");
 }
 
 
@@ -202,7 +202,7 @@ function getLastListElement(name) {
 	
 	var startEntryButton = document.createElement("A");
 	$(startEntryButton).text("Click here to look over and complete form");
-	$(startEntryButton).attr("href", "form_summary.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId);
+	$(startEntryButton).attr("href", "form_summary.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId + "#section=0");
 	
 	$(hiddenListSection).append(startEntryButton);
 	$(listElement).attr("id", "show_summary_button");
