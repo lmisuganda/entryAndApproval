@@ -55,9 +55,10 @@
 	opacity: .8;
 }
 #sections_list .hidden_list_section {
-	height: 150px;
+	padding-bottom: 30px;
 	display: none;
 	text-align: center;
+	margin-top: 35px;
 }
 #sections_list .completed_section {
 	background-color: #449d44;
@@ -69,9 +70,13 @@
 	opacity: .8;
 }
 
+#sections_list .not_applicable {
+	background-color: #f0ad4e;
+}
+
 .not_applicable_wraper  {
 	margin-top: 12px;
-	font-size: 1rem;
+	
 }
 
 .not_applicable div {
@@ -83,12 +88,17 @@
 #sections_list a {
 	display: inline-block;
 	border: 0px solid black;
-	margin-top: 40px;
+	margin: 10px;
 	padding: 15px 40px 15px 40px;
+	min-width: 150px;
 	font-size: 1.1rem;
 	background: #449d44;
 	color: white;
 
+}
+
+#sections_list .skip_button {
+	background-color: #f0ad4e;
 }
 #sections_list p {
 	display: inline-block;

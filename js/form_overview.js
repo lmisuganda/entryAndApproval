@@ -11,6 +11,7 @@ if (isUndefinedOrNull(facility, cycle, form)) navigateToAddress("index.html");
 
 redirectIfEditIsDenied(form); //if edit not allowed (based on completion and approval status, user rights) redirect to summary
 if (isCompleted(form)) navigateToAddress("form_summary.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId);
+
 generateMainMenu(); //located in scripts.js
 setProgramTitleHeader(getName(form)); 
 generateSectionsList();
@@ -34,11 +35,12 @@ function generateSectionsList() {
 		}
 	}
 	var elem = getLastListElement("Look over and complete form");
-	$(elem).click(function() {
-		showMessageBox("All sections needs to be completed or marked as not applicable to continue");
-	});
 	sectionsListElement.append(elem);
 	if (currentSectionNotSet) setToCurrentSection(elem);
+	
+	$(elem).click(function() {
+		if (!$(elem).hasClass("current_section")) showMessageBox("All sections needs to be completed or marked as not applicable to continue");
+	});
 }
 
 //generates a new LI-element containing given name
@@ -50,7 +52,7 @@ function getNewListElement(section) {
 	var hiddenListSection = document.createElement("SECTION");
 	var applicableElement = getNotApplicableBox(listElement);
 	$(hiddenListSection).addClass("hidden_list_section");
-	$(hiddenListSection).append(getSectionStartButton(section), applicableElement);
+	$(hiddenListSection).append(getSectionStartButton(section), getSectionSkipButton(section, listElement), applicableElement);
 	
 	if (isCompleted(section)) { //If sections is already completed. Add styling
 		styleAsCompleted(listElement);
@@ -65,7 +67,7 @@ function getNewListElement(section) {
 	
 	//event-listener onclick list elements
 	$(listElement).on("click", function(e) {
-		if (isNotApplicableElement(e.target) && !$(this).hasClass("not_applicable") && ($(this).hasClass("completed_section") || $(this).hasClass("current_section"))) {
+		if (!$(this).hasClass("current_section") && !$(this).hasClass("not_applicable") && ($(this).hasClass("completed_section") || $(this).hasClass("current_section"))) {
 			var sectionId = $(this).attr("id");
 			openDataEntryForSection(sectionId);
 		}
@@ -73,6 +75,53 @@ function getNewListElement(section) {
 	
 	return listElement;
 }
+
+function getSectionStartButton(section) {
+	var startEntryButton = document.createElement("A");
+	if (dataEntryIsStartedInSection(section)) {
+		buttonText = "Resume data entry";
+	} else {
+		buttonText = "Start data entry";
+	}
+	$(startEntryButton).text(buttonText);
+	$(startEntryButton).on("click", function() {
+		var sectionId = getId(section);
+		openDataEntryForSection(sectionId);
+	});
+	return startEntryButton;
+}
+
+function getSectionSkipButton(section, listElement) {
+	var skipButton = document.createElement("A");
+	$(skipButton).addClass("skip_button");
+	$(skipButton).text("Not applicable");
+	$(skipButton).click(function(e) {
+		toggleNotApplicable(section, listElement);
+	});
+	return skipButton;
+}
+
+function toggleNotApplicable(section, listElement) {	   
+	if (!$(listElement).hasClass("not_applicable")) {
+		showConfirmBox("<p>Are you sure the whole section is not applicable for this facility?</p>", function () {
+			setToNotApplicable(section)
+			setToCompleted(section);
+			LS.updateFacility(facility);
+			refreshSectionsList();
+			closeMessageBox($("#popup_msgbox_background"));
+		}, function () {
+			//her kommer godsakene
+			closeMessageBox($("#popup_msgbox_background"));
+		});
+		
+	} else {
+		setToApplicable(section)
+		setToUncompleted(section);
+		LS.updateFacility(facility);
+		refreshSectionsList();
+	}
+}
+
 function styleAsCompleted(listElement) {
 	$(listElement).addClass("completed_section"); 
 	$($(listElement).find(".hidden_list_section")[0]).hide();
@@ -111,38 +160,18 @@ function getNotApplicableBox(listElement) {
 	$(notApplicableWrapper).on("click", function(e) {
 		var checkbox = $(e.target).find("#not_applicable_checkbox");
 		checkbox.prop("checked", !checkbox.prop("checked")); 
-		toggleNotApplicable(checkbox, $(listElement).attr("id"), listElement);
+		toggleNotApplicable(getSectionById(form, $(listElement).attr("id")), listElement);
 	});
 	$(notApplicableCheckbox).change("click", function(e) {
 		var checkbox = $(e.target);
-		toggleNotApplicable(checkbox, $(listElement).attr("id"), listElement);
+		toggleNotApplicable(getSectionById(form, $(listElement).attr("id")), listElement);
 	});
 
 	$(notApplicableWrapper).append(notApplicableCheckbox, "Section not applicable");
 	return notApplicableWrapper;
 }
 
-function toggleNotApplicable(checkbox, sectionId, listElement) {	   
-	var section = getSectionById(form, sectionId);
-	if (checkbox.prop("checked")) {
-		showConfirmBox("<p>Are you sure the whole section is not applicable for this facility?</p>", function () {
-			setToNotApplicable(section)
-			setToCompleted(section);
-			LS.updateFacility(facility);
-			refreshSectionsList();
-			closeMessageBox($("#popup_msgbox_background"));
-		}, function () {
-			checkbox.prop("checked", false);
-			closeMessageBox($("#popup_msgbox_background"));
-		});
-		
-	} else {
-		setToApplicable(section)
-		setToUncompleted(section);
-		LS.updateFacility(facility);
-		refreshSectionsList();
-	}
-}
+
 
 //handles navigation by enter button
 $(document).keypress(function(e) {
@@ -181,21 +210,12 @@ function getLastListElement(name) {
 	return listElement;
 }
 
-function getSectionStartButton(section) {
-	var name = getName(section);
-	var startEntryButton = document.createElement("A");
-	if (dataEntryIsStartedInSection(section)) {
-		buttonText = "Click here to resume data entry";
-	} else {
-		buttonText = "Click to here start data entry";
-	}
-	$(startEntryButton).text(buttonText);
-	return startEntryButton;
-}
+
 
 function setToCurrentSection(section) {
 	$(section).toggleClass("current_section");
 	$(section).find(".hidden_list_section").css("display", "block");
+	$(section).find(".not_applicable_wraper").hide();
 	setArrowPosition(section);
 }
 
