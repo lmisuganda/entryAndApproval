@@ -141,8 +141,10 @@ function isNotApplicableElement(elem) {
 
 function getSectionStatusElement(section) {
 	var statusText = document.createElement("P");
+	var completedCount = getCountOfCompletedCommoditiesInSection(section);
+	if (completedCount == 0) return "<p></p>";
 	$(statusText).addClass("section_status");
-	$(statusText).html(getSectionStatusIcon(section) + "Entry of " + getCountOfCompletedCommoditiesInSection(section) + " of " + getCountOfCommoditiesInSection(section) + " elements completed");
+	$(statusText).html(getSectionStatusIcon(section) + "Entry of " + completedCount + " of " + getCountOfCommoditiesInSection(section) + " elements completed");
 	return statusText;
 }
 

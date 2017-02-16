@@ -4513,7 +4513,7 @@ var cycles = [
 		},
 		{
 			id: 5, 
-			name: "SUMMARY: ART Patients per Treatment Regimen",
+			name: "Summary: ART Patients per Treatment Regimen",
 			completed: false,
 			commodities: [ 
 					{
@@ -4867,7 +4867,7 @@ var cycles = [
 		},
 		{
 			id: 6, 
-			name: "SUMMARY: Information on opportunistic infections",
+			name: "Summary: Information on opportunistic infections",
 			completed: false,
 			commodities: [ 
 					{
