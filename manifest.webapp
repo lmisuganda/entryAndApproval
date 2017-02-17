@@ -1,6 +1,6 @@
 {
-    "version":"0.4",
-    "name":"Commodity ordering",
+    "version":"0.5",
+    "name":"Commodity ordering DEMO",
     "description":"Submit and approve commodity orders and reports",
     "icons":{
         "16":null,
