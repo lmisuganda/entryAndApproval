@@ -1,5 +1,5 @@
-// DHIS2 LMIS ORDER/REPORT APP. UiO - MAGNUS LI 2017. 
-// DATA ENTRY PAGE HANDLER 
+// DHIS2 LMIS ORDER/REPORT APP. UiO - MAGNUS LI 2017.
+// DATA ENTRY PAGE HANDLER
 
 
 var facilityId = getParameterFromURLByName("facility");
@@ -12,7 +12,7 @@ var facility = LS.getFacilityById(facilityId);
 var form = getFormById(getCycleById(facility, cycleId), formId);
 var section = getSectionById(form, sectionId);
 
-if (isUndefinedOrNull(facility, section, form)) navigateToAddress("index.html"); //handle errors in LS lookup. 
+if (isUndefinedOrNull(facility, section, form)) navigateToAddress("index.html"); //handle errors in LS lookup.
 
 redirectIfEditIsDenied(form); //if edit not allowed (based on completion and approval status, user rights): navigate to form summary
 
@@ -20,7 +20,7 @@ generateMainMenu(); //located in scripts.js
 
 var singleCommodityEdit = getParameterFromURLByName("single");
 var commodityId = getParameterFromURLByName("commodityId");
-var unsolvedErrors = false; //in use for validation to prevent navigation way from commodity with errors. 
+var unsolvedErrors = false; //in use for validation to prevent navigation way from commodity with errors.
 
 
 if (isUndefinedOrNull(singleCommodityEdit)) {
@@ -41,9 +41,9 @@ function initSingleCommodityMode() {
 	currentExpandedCommodity = $("li");
 	expandOrMinimizeListElement(currentExpandedCommodity);
 }
-//initialise gui for multiple entry 
+//initialise gui for multiple entry
 function initMultipleCommodityMode() {
-	setsectionHeader(sectionId);					
+	setsectionHeader(sectionId);
 	configureCompleteButton();
 	generateCommodityList(sectionId);
 
@@ -58,20 +58,28 @@ function initMultipleCommodityMode() {
 
 function expandCurrentCommodity() {
 	var commodity = getLastCompletedCommodity(getSectionById(form, sectionId));
-	
+
 	if (typeof commodity !== 'undefined') {
 		var listElement = $("#" + getId(commodity));
 		expandOrMinimizeListElement(listElement);
 		currentExpandedCommodity = (listElement[0]);
 	} else {
-		$("#save_continue_button").css("display","inline-block"); //show save and continue button
-		setArrowPosition($("#save_continue_button")[0]);
+		setArrowPosition($("#save_continue_button")[0], -6);
 	}
 }
 
 function styleCompletedCommodity(currentElement) {
 	$(currentElement).addClass("completed_element"); //add style for completed element
+	if (!$(currentElement).hasClass("not_applicable")) $(currentElement).find(".commodity_status_text").text("Completed");
 }
+
+function styleNotApplicableCommodity(listElement) {
+	$(listElement).find(":checkbox").prop("checked", "checked");
+	$(listElement).find(".data_element_input").attr("disabled", "true");
+	$(listElement).addClass("not_applicable");
+	$(listElement).find(".commodity_status_text").text("Not applicable");
+}
+
 //  #################### GENERATE LIST OF COMMODITIES IN GUI #############################
 function generateCommodityList(sectionId, commodityId) {
 	var commodityList = document.getElementById("commodity_list");
@@ -83,7 +91,6 @@ function generateCommodityList(sectionId, commodityId) {
 		for (i = 0; i < commodities.length; i++) {
 			var li = getNewListElement(commodities[i])
 			commodityList.appendChild(li);
-			if (isCompleted(commodities[i])) styleCompletedCommodity(li);
 		}
 	}
 }
@@ -91,47 +98,54 @@ function generateCommodityList(sectionId, commodityId) {
 // generates and returns new list element (form for one commodity)
 function getNewListElement(commodity) {
 
+	var listElement = document.createElement("LI");
+
 	//Create element title and add text
 	var title = document.createElement("H3")
 	$(title).text(getName(commodity));
 	//Create explanationText element and add text  (combining baseUnit and explanation in one p)
 	var explanationText = document.createElement("P")
-	
+
 	if (hasExplanationText(commodity)) {
 		$(explanationText).append(getExplanationText(commodity) + "<br><br>");
 	}
 	if (hasBasicUnit(commodity)) {
 		$(explanationText).append("<b>Basic Unit:</b> " + getBasicUnit(commodity));
-	} 
+	}
 
-	var notApplicableBox = getNotApplicableBox();
-	
+	var notApplicableBox = getNotApplicableBox(listElement);
+
 	var button = getValidateButton();
-	
+
 	var form = getDataEntryForm(commodity); //get input form generated based on the elements defined data elements
-	
+
 	//Create expandable detail element and append content
 	var detailElement = document.createElement("SECTION");
 	$(detailElement).addClass("expandable_data_entry");
 	$(detailElement).append(explanationText, form, notApplicableBox, button); //add content to details section (expandable section)
-	
+
 	//create list element and append content
-	var listElement = document.createElement("LI");
 	$(listElement).attr("id", getId(commodity));
-	$(listElement).append(title, detailElement); //add content to list elemen
-	
-	if (!isApplicable(commodity)) {
-		$($(notApplicableBox).find(":checkbox")[0]).prop("checked", "checked");
-		$(listElement).find(".data_element_input").attr("disabled", "true");
+
+	var commodityStatus = document.createElement("P");
+	$(commodityStatus).addClass("commodity_status_text");
+	$(listElement).append(title, commodityStatus, detailElement); //add content to list elemen
+
+	if (isCompleted(commodity)) {
+		styleCompletedCommodity(listElement);
 	}
-	
+
+	if (!isApplicable(commodity)) {
+		styleNotApplicableCommodity(listElement);
+	}
+
 	//Event-listener  expand  / minimize list elements
 	$(listElement).on("click", function(e) {
 		if (e.target.className != "error_message" && e.target == this || e.target.tagName == "H3") {
 			if (!unsolvedErrors && isCompletedHTML(this) && !isExpandedHTML(this)) expandOrMinimizeListElement(this);
 		}
 	});
-	
+
 	return listElement;
 }
 
@@ -140,14 +154,14 @@ function getValidateButton() {
 	$(button).text("Validate and save");
 	$(button).attr("tabindex", "0");
 	$(button).attr("id", "save_commodity_button");
-	
+
 	$(button).on("click", function() {
 		validateCommodityClickHandler(this);
 	});
 
 	return button;
 }
-function getNotApplicableBox(commodity, listElement) {
+function getNotApplicableBox(listElement) {
 	var notApplicableCheckbox = document.createElement("INPUT");
 	$(notApplicableCheckbox).attr("type", "checkbox");
 	$(notApplicableCheckbox).attr("tabindex", "-1");
@@ -158,12 +172,12 @@ function getNotApplicableBox(commodity, listElement) {
 	//handle not applicable checking
 	$(notApplicableWrapper).on("click", function(e) {
 		var checkbox = $(e.target).find("#not_applicable_checkbox");
-		checkbox.prop("checked", !checkbox.prop("checked")); 
-		styleCommodityToNotApplicable(checkbox);
+		checkbox.prop("checked", !checkbox.prop("checked"));
+		toggleCommodityNotApplicableStyling(listElement);
 	});
 	$(notApplicableCheckbox).change("click", function(e) {
 		var checkbox = $(e.target);
-		styleCommodityToNotApplicable(checkbox);
+		toggleCommodityNotApplicableStyling(listElement);
 	});
 
 	$(notApplicableWrapper).append(notApplicableCheckbox, "Not applicable");
@@ -174,13 +188,13 @@ function getNotApplicableBox(commodity, listElement) {
 function getDataEntryForm(commodity) {
 	var dataElements = commodity.dataElements;
 	var form = document.createElement("FORM");
-	
+
 	//add hidden submit-button to trigger html5 validation messages on save
 	var submit = document.createElement("INPUT");
 	$(submit).css("display", "none");
 	$(submit).attr("type", "submit");
 	$(form).append(submit);
-	
+
 	//add data element input fields
 	for (var i = 0; i < dataElements.length; i++) {
 		$(form).append(getDataElementInputPair(commodity, dataElements[i]));
@@ -194,50 +208,50 @@ function getDataElementInputPair(commodity, dataElement) {
 	var input = document.createElement("INPUT");
 	$(input).addClass("data_element_input");
 	$(input).val(getValue(dataElement));
-	
+
 	var section = document.createElement("SECTION");
 	$(section).addClass("data_element_input_pair");
 
-	
+
 	if (dataElement.required) {
 		$(input).prop('required', true);
 	}
-	
+
 	//set tool-tip descriptions
 	if (hasDescription(dataElement)) attachTooltip(section, getDescription(dataElement));
 
-	
+
 	//if data element is auto-calculated
 	if (isCalculated(dataElement)) {
 		$(input).prop('disabled', true);
 		$(input).css('border', "1px dashed grey");
 		$(input).addClass("calculated_input");
 		$(input).prop('required', false);
-		
+
 		//set/add tooltip
 		var description = "";
 		if (hasDescription(dataElement)) description = getDescription(dataElement);
 		attachTooltip(section, description + " (auto calculated)");
 	}
-	
+
 	//get data from defined element in previous cycle (for example previous closing balance to place in current opening balance)
 	insertValueFromPreviousCycleIfRequired(input, dataElement, commodity);
 
 	$(input).prop('type', getType(dataElement));
 	$(input).prop('step', '1');
-	
+
 	$(label).text(getName(dataElement));
 	$(label).attr('for', getName(dataElement));
 	$(input).attr('name', getName(dataElement));
 	$(input).attr('id', "de_" + getId(dataElement));
-	
+
 	addInputEventListeners(input);
-	
+
 	//If notes
 	if (getName(dataElement) == "Notes") {
 		$(section).addClass("notes");
 	}
-	
+
 	$(section).append(label, input);
 	return section;
 }
@@ -253,9 +267,9 @@ function insertValueFromPreviousCycleIfRequired(input, dataElement, commodity) {
 }
 
 function addInputEventListeners(input) {
-	//Border when input-field is in focus. 
+	//Border when input-field is in focus.
 	$(input).not(":checkbox").focus("input", function(e) {
-		$(this).parent().css("border", "2px solid green");
+		$(this).parent().css("border", "2px solid orange");
 	});
 	$(input).not(":checkbox").focusout("input", function(e) {
 		$(this).parent().css("border", "");
@@ -268,15 +282,16 @@ function addInputEventListeners(input) {
 }
 
 //Generating and placing arrow
-function setArrowPosition(section) {
+function setArrowPosition(section, topMargin) {
+	if (isUndefinedOrNull(topMargin)) var topMargin = 10;
 	$("#arrow_icon").css("display", "block");
 	var lemTop = $(section).position().top;
 	var lemLeft = $(section).position().left;
 	$("#arrow_icon").animate({
-		top: (lemTop - 10),
+		top: (lemTop - topMargin),
 		left: (lemLeft - $("#arrow_icon").width())
 	}, 250, function() {
-	}); 
+	});
 
 }
 
@@ -293,12 +308,13 @@ function expandOrMinimizeListElement(element) {
 function expandListElement(element) {
 	$(element).addClass("current_element");
 	$(element).find(".expandable_data_entry").css("display","block");
+	$(element).find(".commodity_status_text").hide();
 	$(element).css("opacity","0.5");
 	$(element).animate({
 		opacity: "1"
 	}, 250, function() {
 		// Animation complete.
-	}); 
+	});
 	currentExpandedCommodity = element;
 	var firstDataElementInput = $($(element).find(".data_element_input"))[0];
 	$(firstDataElementInput).focus();
@@ -306,6 +322,7 @@ function expandListElement(element) {
 
 function minimizeListElement(element) {
 	$(element).removeClass("current_element");
+	$(element).find(".commodity_status_text").show();
 	$(element).find(".expandable_data_entry").css("display","none");
 	$('html, body').animate({
       scrollTop: ($(element).offset().top - 80)
@@ -344,8 +361,8 @@ function saveCommodity(id, currForm, notApplicable) {
 	section = getSectionById(form, sectionId);
 	commodity = getCommodityById(section, id);
 	dataElements = commodity.dataElements;
-	
-	//ADD VALUES FROM USER INPUT TO OBJECT 
+
+	//ADD VALUES FROM USER INPUT TO OBJECT
 	if (notApplicable) {
 		setToNotApplicable(commodity);
 	} else {
@@ -369,13 +386,17 @@ function isExpandedHTML (element) {
 
 
 
-function styleCommodityToNotApplicable(checkbox) {	   
+function toggleCommodityNotApplicableStyling(listElement) {
+	var checkbox = $(listElement).find("#not_applicable_checkbox");
 	if (checkbox.prop("checked")) {
 		$(currentExpandedCommodity).find(".data_element_input").val("");
 		$(currentExpandedCommodity).find(".data_element_input").attr("disabled", "true");
+		$(currentExpandedCommodity).toggleClass("not_applicable");
+		$(currentExpandedCommodity).find(".commodity_status_text").text("Not applicable");
 	} else {
 		$(currentExpandedCommodity).find(".data_element_input").val("");
 		$(currentExpandedCommodity).find(".data_element_input").not(".calculated_input").removeAttr("disabled");
+		$(currentExpandedCommodity).toggleClass("not_applicable", "completed_element");
 	}
 }
 
@@ -384,7 +405,7 @@ function validateCommodityClickHandler(button) {
 	//SAVE COMMODITY
 	var currentElement = button.parentElement.parentElement;
 	var commodityId = $(currentElement).attr("id")
-	
+
 	var currentForm = $(currentElement).find("form")[0];
 	var notApplicable = $(currentElement).find("#not_applicable_checkbox").is(':checked');
 	var errorMessages = validateCommodityInput(commodityId, currentForm);
@@ -392,16 +413,16 @@ function validateCommodityClickHandler(button) {
 	if (notApplicable || errorMessages.length == 0){
 			unsolvedErrors = false;
 			clearValidationMessages();
-			
+
 			saveCommodity(commodityId, currentForm, notApplicable);
-		
+
 			//WHEN SINGLE EDIT MODE --> NAVIGATE BACK TO SUMMARY
 			if (singleCommodityEdit) {
 				navigateToAddress("form_summary.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId + "#section=" + sectionId);
 			}
 			styleCompletedCommodity(currentElement); //set styles
-			
-			$(currentElement).css("border-color", "");			
+
+			$(currentElement).css("border-color", "");
 			//Minimize this element and expand next
 			expandOrMinimizeListElement(currentElement);
 			expandCurrentCommodity();

@@ -52,7 +52,7 @@ function generateListOfPreviousCycles(cycles) {
 		$(detailElement).append(summaryElement);
 		$(listElement).append(detailElement);
 		$("#previous_cycles").append(listElement);
-		//buildListOfForms("#previous_cycles"), 
+		//buildListOfForms("#previous_cycles"),
 		var forms = getForms(cycles[i]);
 		for (var j = 0; j < forms.length; j++) {
 			$(detailElement).append(getListElement(cycles[i], forms[j]));
@@ -63,38 +63,38 @@ function generateListOfPreviousCycles(cycles) {
 
 
 function getListElement(cycle, form) {
-	
+
 	var listElement = document.createElement("LI");
-	
+
 	//form name
 	var link = document.createElement("A");
 	$(link).attr("data-tip", "this is the tip!");
 	$(listElement).append(link);
-	
+
 	$(link).html('<i class="fa fa-file-text-o" aria-hidden="true"></i>' + getName(form));
-	
+
 	//cycle info
 	var cycleEl = document.createElement("P");
 	$(cycleEl).html('<i class="fa fa-circle-o-notch" aria-hidden="true"></i>' + getId(cycle));
 	$(listElement).append(cycleEl);
-	
+
 	//status info
 	var status = document.createElement("P");
 	$(status).addClass("form_status");
 	$(status).html(getStatusIcon(form, allowedApproval("TEMP")) + getStatusTextShort(form));
 	$(listElement).append(status);
-	
 
-	
+
+
 	if (isCompleted(form)) {
 		$(link).attr("href", "form_summary.html#facility=" + facilityId + "#cycle=" + getId(cycle) + "#form=" + getId(form));
 	} else {
 		$(link).attr("href", "form_overview.html#facility=" + facilityId + "#cycle=" + getId(cycle) + "#form=" + getId(form));
 	}
-	
+
 	$(listElement).click(function() {
 		navigateToAddress("form_overview.html#facility=" + facilityId + "#cycle=" + getId(cycle) + "#form=" + getId(form));
 	});
-	
+
 	return listElement;
 }
