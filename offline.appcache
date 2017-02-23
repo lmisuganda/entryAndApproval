@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#16.02.17
+#23.02.17
 
 CACHE:
 index.html
@@ -36,11 +36,11 @@ style/style.css
 style/data_entry.css
 
 style/font-awesome/css/font-awesome.min.css
-style/font-awesome/fonts/FontAwesome.otf?v=4.7.0 
-style/font-awesome/fonts/fontawesome-webfont.eot?v=4.7.0 
-style/font-awesome/fonts/fontawesome-webfont.svg?v=4.7.0 
-style/font-awesome/fonts/fontawesome-webfont.ttf?v=4.7.0 
-style/font-awesome/fonts/fontawesome-webfont.woff?v=4.7.0 
+style/font-awesome/fonts/FontAwesome.otf?v=4.7.0
+style/font-awesome/fonts/fontawesome-webfont.eot?v=4.7.0
+style/font-awesome/fonts/fontawesome-webfont.svg?v=4.7.0
+style/font-awesome/fonts/fontawesome-webfont.ttf?v=4.7.0
+style/font-awesome/fonts/fontawesome-webfont.woff?v=4.7.0
 
 style/fonts/open_sans.css
 style/fonts/OpenSans-Bold.ttf

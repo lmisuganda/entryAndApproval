@@ -1,11 +1,11 @@
-// DHIS2 LMIS ORDER/REPORT APP. UiO - MAGNUS LI 2017. 
-// DATA ENTRY VALIDATION HANDLER 
+// DHIS2 LMIS ORDER/REPORT APP. UiO - MAGNUS LI 2017.
+// DATA ENTRY VALIDATION HANDLER
 
 function validateCommodityInput(commodityId, form) {
 	currentInputFields = $(form).find("input").not(":checkbox");
 	console.log("Running validation");
-	
-	
+
+
 	//HTML5 validation (on required fields and correct data type)
 	if(form.checkValidity()) {
 		console.log("   - HTML5 validation OK");
@@ -15,18 +15,20 @@ function validateCommodityInput(commodityId, form) {
 		return ["Missing required values"];
 	}
 	var result = [];
-	var j = 0;
-	//run rules from DHIS2
-	for (var i = 0; i < rules.length; i++) {
-		if (checkValidationRule(rules[i], currentInputFields) === true) {
-			console.log("   - TESTVAL OK");
-		} else {
-			console.log("   - TESTVAL FAILED");
-			console.log("     " + rules[i].instruction);
-			result[j++] = rules[i].instruction;
+	if (formId == 1) {
+
+		var j = 0;
+		//run rules from DHIS2
+		for (var i = 0; i < rules.length; i++) {
+			if (checkValidationRule(rules[i], currentInputFields) === true) {
+				console.log("   - TESTVAL OK");
+			} else {
+				console.log("   - TESTVAL FAILED");
+				console.log("     " + rules[i].instruction);
+				result[j++] = rules[i].instruction;
+			}
 		}
 	}
-	
 	return result;
 }
 
@@ -54,7 +56,7 @@ testruleB = {
 var rules = [testruleA];
 
 //tests validation rule based on DHIS2 rule object, and list of current input fields
-//returns true or error message based on instruction defined in rule. 
+//returns true or error message based on instruction defined in rule.
 function checkValidationRule(rule, currentInputFields) {
 	var left = convertExpression(rule.leftSide.expression, currentInputFields);
 	var right = convertExpression(rule.rightSide.expression, currentInputFields);
@@ -62,7 +64,7 @@ function checkValidationRule(rule, currentInputFields) {
 	//console.log("" + left + operator + right);
 	try {
 		var result = eval("" + left + operator + right);
-		if (!result) return rule.instruction; 
+		if (!result) return rule.instruction;
 	}
 	catch(err) {
 		//console.log(err.message);
@@ -79,9 +81,9 @@ function convertExpression(exp, currentInputFields) {
 			var id = exp.substr(i + 2, exp.substr(i + 2, exp.length).indexOf("}"));
 			convExp += getValueFromDataInputElement(id, currentInputFields);
 			i += id.length + 3;
-		} else { 
+		} else {
 			convExp += exp.charAt(i++);
-		} 
+		}
 	}
 	return convExp;
 }
@@ -105,6 +107,6 @@ function getOperator(text) {
 	operators["less_than"] = "<";
 	operators["less_than_or_equal_to"] = "<=";
 	operators["compulsory_pair"] = "===";
-	
+
 	return operators[text];
 }

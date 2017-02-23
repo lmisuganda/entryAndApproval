@@ -2,15 +2,15 @@
 var forms = [
 
 	{
-	id: 2,
+	id: 1,
 	name: "HIV Test Kits Report and Order form",
 	completed: false,
 	sections: [
 			{
-			id: 0, 
+			id: 0,
 			name: "Commodity report",
 			completed: false,
-			commodities: [ 
+			commodities: [
 					{
 					id: 1,
 					name: "Determine HIV 1/2",
@@ -18,7 +18,7 @@ var forms = [
 					basicUnit: "1 test",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -26,28 +26,28 @@ var forms = [
 									required: true,
 									getDataFromElementInPreviousCycle: 4,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
@@ -55,29 +55,29 @@ var forms = [
 									programIndicatorId: 4,
 									required: true,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
 									calculated: true,
 									programIndicatorId: 5,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -92,7 +92,7 @@ var forms = [
 					basicUnit: "1 test",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -100,56 +100,56 @@ var forms = [
 									required: true,
 									getDataFromElementInPreviousCycle: 4,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -157,14 +157,14 @@ var forms = [
 									required: true,
 								}
 							],
-				},				
+				},
 				{
 					id: 3,
 					name: "Unigold HIV 1/2",
 					basicUnit: "1 test",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -172,56 +172,56 @@ var forms = [
 									required: true,
 									getDataFromElementInPreviousCycle: 4,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -236,7 +236,7 @@ var forms = [
 					basicUnit: "1pc",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -244,56 +244,56 @@ var forms = [
 									required: true,
 									getDataFromElementInPreviousCycle: 4,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -308,63 +308,63 @@ var forms = [
 					basicUnit: "1pc",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -379,63 +379,63 @@ var forms = [
 					basicUnit: "1pc",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -450,63 +450,63 @@ var forms = [
 					basicUnit: "1pc",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -521,63 +521,63 @@ var forms = [
 					basicUnit: "Kit",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -592,32 +592,32 @@ var forms = [
 			id: 1,
 			name: "Bimonthly Summary of HIV Test by Purpose of Use",
 			completed: false,
-			commodities: [ 
+			commodities: [
 				{
 					id: 1,
 					name: "Determine HIV 1/2",
 					basicUnit: "",
 					completed: false,
 					dataElements: [
-									{ 
+									{
 										name: "HCT",
 										type: "Number",
 										calculated: false,
 										required: true,
 									},
-									{ 
+									{
 										name: "PMTCT",
 										type: "Number",
 										calculated: false,
 										required: true,
 									},
-									{ 
+									{
 										name: "Clinical Diagnosis",
 										type: "Number",
 										calculated: false,
 										required: true,
 									},
-									{ 
+									{
 										name: "Quality Control",
 										type: "Number",
 										calculated: false,
@@ -632,25 +632,25 @@ var forms = [
 					completed: false,
 					dataElements:
 										[
-							{ 
+							{
 								name: "HCT",
 								type: "Number",
 								calculated: false,
 								required: true,
 							},
-							{ 
+							{
 								name: "PMTCT",
 								type: "Number",
 								calculated: false,
 								required: true,
 							},
-							{ 
+							{
 								name: "Clinical Diagnosis",
 								type: "Number",
 								calculated: false,
 								required: true,
 							},
-							{ 
+							{
 								name: "Quality Control",
 								type: "Number",
 								calculated: false,
@@ -664,25 +664,25 @@ var forms = [
 					basicUnit: "",
 					completed: false,
 					dataElements: [
-							{ 
+							{
 								name: "HCT",
 								type: "Number",
 								calculated: false,
 								required: true,
 							},
-							{ 
+							{
 								name: "PMTCT",
 								type: "Number",
 								calculated: false,
 								required: true,
 							},
-							{ 
+							{
 								name: "Clinical Diagnosis",
 								type: "Number",
 								calculated: false,
 								required: true,
 							},
-							{ 
+							{
 								name: "Quality Control",
 								type: "Number",
 								calculated: false,
@@ -697,20 +697,20 @@ var forms = [
 ];
 
 var cycles = [
-	
+
 	{
-		id: 1, 
+		id: 1,
 		forms: [
 		{
-	id: 2,
+	id: 1,
 	name: "HIV Test Kits Report and Order form",
 	completed: false,
 	sections: [
 			{
-			id: 0, 
+			id: 0,
 			name: "Commodity report",
 			completed: false,
-			commodities: [ 
+			commodities: [
 					{
 					id: 1,
 					name: "Determine HIV 1/2",
@@ -718,7 +718,7 @@ var cycles = [
 					basicUnit: "1 test",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -727,7 +727,7 @@ var cycles = [
 									getDataFromElementInPreviousCycle: 4,
 									description: "Balance on hand at start of cycle",
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
@@ -735,7 +735,7 @@ var cycles = [
 									required: true,
 									description: "Received from order last cycle",
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
@@ -743,15 +743,15 @@ var cycles = [
 									required: true,
 									description: "Consumed this cycle",
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Adjustments due to trade, switch etc.",
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
@@ -760,7 +760,7 @@ var cycles = [
 									required: true,
 									description: "Current stock balance",
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
@@ -768,24 +768,24 @@ var cycles = [
 									programIndicatorId: 5,
 									required: true,
 									description: "Consumption this cycle * 2",
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
 									description: "Required for next cycle",
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Quantity to order",
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -800,7 +800,7 @@ var cycles = [
 					basicUnit: "1 test",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -808,56 +808,56 @@ var cycles = [
 									required: true,
 									getDataFromElementInPreviousCycle: 4,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -865,14 +865,14 @@ var cycles = [
 									required: true,
 								}
 							],
-				},				
+				},
 				{
 					id: 3,
 					name: "Unigold HIV 1/2",
 					basicUnit: "1 test",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -880,56 +880,56 @@ var cycles = [
 									required: true,
 									getDataFromElementInPreviousCycle: 4,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -944,7 +944,7 @@ var cycles = [
 					basicUnit: "1pc",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -952,56 +952,56 @@ var cycles = [
 									required: true,
 									getDataFromElementInPreviousCycle: 4,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -1016,7 +1016,7 @@ var cycles = [
 					basicUnit: "1pc",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -1024,56 +1024,56 @@ var cycles = [
 									required: true,
 									getDataFromElementInPreviousCycle: 4,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -1088,7 +1088,7 @@ var cycles = [
 					basicUnit: "1pc",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -1096,56 +1096,56 @@ var cycles = [
 									required: true,
 									getDataFromElementInPreviousCycle: 4,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -1160,7 +1160,7 @@ var cycles = [
 					basicUnit: "1pc",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -1168,56 +1168,56 @@ var cycles = [
 									required: true,
 									getDataFromElementInPreviousCycle: 4,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -1232,7 +1232,7 @@ var cycles = [
 					basicUnit: "Kit",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -1240,56 +1240,56 @@ var cycles = [
 									required: true,
 									getDataFromElementInPreviousCycle: 4,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -1304,32 +1304,32 @@ var cycles = [
 			id: 1,
 			name: "Bimonthly Summary of HIV Test by Purpose of Use",
 			completed: false,
-			commodities: [ 
+			commodities: [
 				{
 					id: 1,
 					name: "Determine HIV 1/2",
 					basicUnit: "",
 					completed: false,
 					dataElements: [
-									{ 
+									{
 										name: "HCT",
 										type: "Number",
 										calculated: false,
 										required: true,
 									},
-									{ 
+									{
 										name: "PMTCT",
 										type: "Number",
 										calculated: false,
 										required: true,
 									},
-									{ 
+									{
 										name: "Clinical Diagnosis",
 										type: "Number",
 										calculated: false,
 										required: true,
 									},
-									{ 
+									{
 										name: "Quality Control",
 										type: "Number",
 										calculated: false,
@@ -1344,25 +1344,25 @@ var cycles = [
 					completed: false,
 					dataElements:
 										[
-							{ 
+							{
 								name: "HCT",
 								type: "Number",
 								calculated: false,
 								required: true,
 							},
-							{ 
+							{
 								name: "PMTCT",
 								type: "Number",
 								calculated: false,
 								required: true,
 							},
-							{ 
+							{
 								name: "Clinical Diagnosis",
 								type: "Number",
 								calculated: false,
 								required: true,
 							},
-							{ 
+							{
 								name: "Quality Control",
 								type: "Number",
 								calculated: false,
@@ -1376,25 +1376,25 @@ var cycles = [
 					basicUnit: "",
 					completed: false,
 					dataElements: [
-							{ 
+							{
 								name: "HCT",
 								type: "Number",
 								calculated: false,
 								required: true,
 							},
-							{ 
+							{
 								name: "PMTCT",
 								type: "Number",
 								calculated: false,
 								required: true,
 							},
-							{ 
+							{
 								name: "Clinical Diagnosis",
 								type: "Number",
 								calculated: false,
 								required: true,
 							},
-							{ 
+							{
 								name: "Quality Control",
 								type: "Number",
 								calculated: false,
@@ -1406,16 +1406,16 @@ var cycles = [
 		},
 	]},
 	{
-	id: 2,
+	id: 3,
 	name: "Tuberculosis and Leprosy medicine Report and Order form",
 	completed: true,
 	approved: true,
 	sections: [
 			{
-			id: 0, 
+			id: 0,
 			name: "Commodity report",
 			completed: false,
-			commodities: [ 
+			commodities: [
 					{
 					id: 1,
 					name: "Determine HIV 1/2",
@@ -1423,7 +1423,7 @@ var cycles = [
 					basicUnit: "1 test",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -1431,28 +1431,28 @@ var cycles = [
 									required: true,
 									getDataFromElementInPreviousCycle: 4,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
@@ -1460,29 +1460,29 @@ var cycles = [
 									programIndicatorId: 4,
 									required: true,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
 									calculated: true,
 									programIndicatorId: 5,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -1497,7 +1497,7 @@ var cycles = [
 					basicUnit: "1 test",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -1505,56 +1505,56 @@ var cycles = [
 									required: true,
 									getDataFromElementInPreviousCycle: 4,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -1562,14 +1562,14 @@ var cycles = [
 									required: true,
 								}
 							],
-				},				
+				},
 				{
 					id: 3,
 					name: "Unigold HIV 1/2",
 					basicUnit: "1 test",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -1577,56 +1577,56 @@ var cycles = [
 									required: true,
 									getDataFromElementInPreviousCycle: 4,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -1641,7 +1641,7 @@ var cycles = [
 					basicUnit: "1pc",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -1649,56 +1649,56 @@ var cycles = [
 									required: true,
 									getDataFromElementInPreviousCycle: 4,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -1713,7 +1713,7 @@ var cycles = [
 					basicUnit: "1pc",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -1721,56 +1721,56 @@ var cycles = [
 									required: true,
 									getDataFromElementInPreviousCycle: 4,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -1785,7 +1785,7 @@ var cycles = [
 					basicUnit: "1pc",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -1793,56 +1793,56 @@ var cycles = [
 									required: true,
 									getDataFromElementInPreviousCycle: 4,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -1857,7 +1857,7 @@ var cycles = [
 					basicUnit: "1pc",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -1865,56 +1865,56 @@ var cycles = [
 									required: true,
 									getDataFromElementInPreviousCycle: 4,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -1929,7 +1929,7 @@ var cycles = [
 					basicUnit: "Kit",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -1937,56 +1937,56 @@ var cycles = [
 									required: true,
 									getDataFromElementInPreviousCycle: 4,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -2001,32 +2001,32 @@ var cycles = [
 			id: 1,
 			name: "Bimonthly Summary of HIV Test by Purpose of Use",
 			completed: false,
-			commodities: [ 
+			commodities: [
 				{
 					id: 1,
 					name: "Determine HIV 1/2",
 					basicUnit: "",
 					completed: false,
 					dataElements: [
-									{ 
+									{
 										name: "HCT",
 										type: "Number",
 										calculated: false,
 										required: true,
 									},
-									{ 
+									{
 										name: "PMTCT",
 										type: "Number",
 										calculated: false,
 										required: true,
 									},
-									{ 
+									{
 										name: "Clinical Diagnosis",
 										type: "Number",
 										calculated: false,
 										required: true,
 									},
-									{ 
+									{
 										name: "Quality Control",
 										type: "Number",
 										calculated: false,
@@ -2041,25 +2041,25 @@ var cycles = [
 					completed: false,
 					dataElements:
 										[
-							{ 
+							{
 								name: "HCT",
 								type: "Number",
 								calculated: false,
 								required: true,
 							},
-							{ 
+							{
 								name: "PMTCT",
 								type: "Number",
 								calculated: false,
 								required: true,
 							},
-							{ 
+							{
 								name: "Clinical Diagnosis",
 								type: "Number",
 								calculated: false,
 								required: true,
 							},
-							{ 
+							{
 								name: "Quality Control",
 								type: "Number",
 								calculated: false,
@@ -2073,25 +2073,25 @@ var cycles = [
 					basicUnit: "",
 					completed: false,
 					dataElements: [
-							{ 
+							{
 								name: "HCT",
 								type: "Number",
 								calculated: false,
 								required: true,
 							},
-							{ 
+							{
 								name: "PMTCT",
 								type: "Number",
 								calculated: false,
 								required: true,
 							},
-							{ 
+							{
 								name: "Clinical Diagnosis",
 								type: "Number",
 								calculated: false,
 								required: true,
 							},
-							{ 
+							{
 								name: "Quality Control",
 								type: "Number",
 								calculated: false,
@@ -2103,83 +2103,83 @@ var cycles = [
 		},
 	]},
    {
-	id: 3,
+	id: 2,
 	name: "ARV and E-MTCT Medicines Order Form and Patient Report",
 	completed: false,
 	approved: false,
 	sections: [
 			{
-			id: 0, 
+			id: 0,
 			name: "Adult formulations",
 			completed: false,
-			commodities: [ 
+			commodities: [
 					{
 					id: 1,
 					name: "Tenofovir/Lamivudine/Efavirenz (TDF/3TC/EFV) 300mg/300mg/600mg",
 					basicUnit: "Pack of 30",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -2193,141 +2193,141 @@ var cycles = [
 					basicUnit: "Pack of 30",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
 									required: false,
 								}
 							],
-				},				
+				},
 				{
 					id: 3,
 					name: "Zidovudine/Lamivudine/Nevirapine (AZT/3TC/NVP) 300mg/150mg/200mg",
 					basicUnit: "Pack of 60",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -2341,67 +2341,67 @@ var cycles = [
 					basicUnit: "Pack of 30",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -2415,67 +2415,67 @@ var cycles = [
 					basicUnit: "Pack of 60",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -2489,67 +2489,67 @@ var cycles = [
 					basicUnit: "Pack of 30",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -2563,67 +2563,67 @@ var cycles = [
 					basicUnit: "Pack of 30",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -2637,67 +2637,67 @@ var cycles = [
 					basicUnit: "Pack of 60",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -2711,67 +2711,67 @@ var cycles = [
 					basicUnit: "Pack of 30",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -2785,67 +2785,67 @@ var cycles = [
 					basicUnit: "Pack of 120",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -2859,67 +2859,67 @@ var cycles = [
 					basicUnit: "Pack of 60",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -2930,77 +2930,77 @@ var cycles = [
 			],
 		},
 		{
-			id: 1, 
+			id: 1,
 			name: "Paediatric formulations",
 			completed: false,
-			commodities: [ 
+			commodities: [
 					{
 					id: 1,
 					name: "Abacavir/Lamivudine (ABC/3TC) 60mg/30mg",
 					basicUnit: "Pack of 60",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -3014,141 +3014,141 @@ var cycles = [
 					basicUnit: "Pack of 60",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
 									required: false,
 								}
 							],
-				},				
+				},
 				{
 					id: 3,
 					name: "Zidovudine/Lamivudine (AZT/3TC) 60mg/30mg",
 					basicUnit: "Pack of 60",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -3162,67 +3162,67 @@ var cycles = [
 					basicUnit: "Pack of 90",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -3236,67 +3236,67 @@ var cycles = [
 					basicUnit: "Pack of 60",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -3310,67 +3310,67 @@ var cycles = [
 					basicUnit: "Bottle of 60ml",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -3384,67 +3384,67 @@ var cycles = [
 					basicUnit: "Pack of 60",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -3458,67 +3458,67 @@ var cycles = [
 					basicUnit: "Pack of 60",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -3529,158 +3529,158 @@ var cycles = [
 			],
 		},
 		{
-			id: 2, 
+			id: 2,
 			name: "E-MTCT only formulations",
 			completed: false,
-			commodities: [ 
+			commodities: [
 					{
 					id: 1,
 					name: "Nevirapine (NVP) 10mg/ml oral susp.",
 					basicUnit: "Bottle 100ml",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
 									required: false,
 								}
 							],
-				},				
+				},
 			],
 		},
 		{
-			id: 3, 
+			id: 3,
 			name: "Third line (3rd) formulations",
 			completed: false,
-			commodities: [ 
+			commodities: [
 					{
 					id: 1,
 					name: "Darunavir (DRV) 600mg",
 					basicUnit: "Pack of 60",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -3694,141 +3694,141 @@ var cycles = [
 					basicUnit: "Pack of 60",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
 									required: false,
 								}
 							],
-				},				
+				},
 				{
 					id: 3,
 					name: "Raltegravir (RTG) 400mg",
 					basicUnit: "Pack of 60",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -3842,67 +3842,67 @@ var cycles = [
 					basicUnit: "Pack of 60",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -3916,67 +3916,67 @@ var cycles = [
 					basicUnit: "Pack of 120",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -3987,77 +3987,77 @@ var cycles = [
 			],
 		},
 		{
-			id: 4, 
+			id: 4,
 			name: "Other formulations",
 			completed: false,
-			commodities: [ 
+			commodities: [
 					{
 					id: 1,
 					name: "Cotrimoxazole 960mg",
 					basicUnit: "Pack of 1000",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -4071,141 +4071,141 @@ var cycles = [
 					basicUnit: "Pack of 1000",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
 									required: false,
 								}
 							],
-				},				
+				},
 				{
 					id: 3,
 					name: "Cotrimoxazole 120mg",
 					basicUnit: "Pack of 1000",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -4219,67 +4219,67 @@ var cycles = [
 					basicUnit: "Pack of 28",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -4293,67 +4293,67 @@ var cycles = [
 					basicUnit: "Bottle of 35ml",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -4367,67 +4367,67 @@ var cycles = [
 					basicUnit: "IV 100ml",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -4441,67 +4441,67 @@ var cycles = [
 					basicUnit: "Pack of 1000",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Stock balance at start of 2 Month Cycle",
 								},
-								{ 
+								{
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Recieved during 2 month cycle",
 								},
-								{ 
+								{
 									name: "ART & PMTCT consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Consumption during 2 month cycle"
 								},
-								{ 
+								{
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "(+/-)",
 								},
-								{ 
+								{
 									name: "Days out of stock",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "During 2 month cycle",
 								},
-								{ 
+								{
 									name: "Adjusted AMC",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									name: "Closing balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 									description: "Physical count in stores + pharmacy",
-								},							
-								{ 
+								},
+								{
 									name: "Months of stock on hand",
 									type: "Number",
 									calculated: true,
 									required: true,
 								},
-								{ 
+								{
 									name: "Quantity required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},								
-								{ 
+								},
+								{
 									name: "Notes",
 									type: "Text",
 									calculated: false,
@@ -4512,60 +4512,60 @@ var cycles = [
 			],
 		},
 		{
-			id: 5, 
+			id: 5,
 			name: "Summary: ART Patients per Treatment Regimen",
 			completed: false,
-			commodities: [ 
+			commodities: [
 					{
 					id: 1,
 					name: "EXISTING Adult ART & eMTCT patients: 1st Line Regiments",
 					explanationText: "No. Existing patients on the following regiments at START of previous cycle",
-					
+
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "TDF/3TC/NVP",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "Existing patients on this regiments at start of cycle",
 								},
-								{ 
+								{
 									name: "TDF/3TC/EFV",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "Existing patients on this regiments at start of cycle",
 								},
-								{ 
+								{
 									name: "AZT/3TC/NVP",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "Existing patients on this regiments at start of cycle",
 								},
-								{ 
+								{
 									name: "AZT/3TC/EFV",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "Existing patients on this regiments at start of cycle",
 								},
-								{ 
+								{
 									name: "ABC/3TC/NVP",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "Existing patients on this regiments at start of cycle",
 								},
-								{ 
+								{
 									name: "ABC/3TC/EFV",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "Existing patients on this regiments at start of cycle",
 								},
-								{ 
+								{
 									name: "ABC/3TC/AZT",
 									type: "Number",
 									calculated: false,
@@ -4578,52 +4578,52 @@ var cycles = [
 					id: 2,
 					name: "NEW Adult ART & eMTCT patients: 1st Line Regiments",
 					explanationText: "No. new patients on the following regiments enrolled during the last cycle",
-					
+
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "TDF/3TC/NVP",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "New patients on this regiment",
 								},
-								{ 
+								{
 									name: "TDF/3TC/EFV",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "New patients on this regiment",
 								},
-								{ 
+								{
 									name: "AZT/3TC/NVP",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "New patients on this regiment",
 								},
-								{ 
+								{
 									name: "AZT/3TC/EFV",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "New patients on this regiment",
 								},
-								{ 
+								{
 									name: "ABC/3TC/NVP",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "New patients on this regiment",
 								},
-								{ 
+								{
 									name: "ABC/3TC/EFV",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "New patients on this regiment",
 								},
-								{ 
+								{
 									name: "ABC/3TC/AZT",
 									type: "Number",
 									calculated: false,
@@ -4638,42 +4638,42 @@ var cycles = [
 					explanationText: "No. Existing patients on the following regiments at START of previous cycle",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "TDF/3TC/ATV/r",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "Existing patients on this regiments at start of cycle",
 								},
-								{ 
+								{
 									name: "TDF/3TC/LPV/r",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "Existing patients on this regiments at start of cycle",
 								},
-								{ 
+								{
 									name: "AZT/3TC/ATV/r",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "Existing patients on this regiments at start of cycle",
 								},
-								{ 
+								{
 									name: "AZT/3TC/LPV/r",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "Existing patients on this regiments at start of cycle",
 								},
-								{ 
+								{
 									name: "ABC/3TC/ATV/r",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "Existing patients on this regiments at start of cycle",
 								},
-								{ 
+								{
 									name: "ABC/3TC/LPV/r",
 									type: "Number",
 									calculated: false,
@@ -4688,42 +4688,42 @@ var cycles = [
 					explanationText: "No. new patients on the following regiments enrolled during the last cycle",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "TDF/3TC/ATV/r",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "New patients on this regiment",
 								},
-								{ 
+								{
 									name: "TDF/3TC/LPV/r",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "New patients on this regiment",
 								},
-								{ 
+								{
 									name: "AZT/3TC/ATV/r",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "New patients on this regiment",
 								},
-								{ 
+								{
 									name: "AZT/3TC/LPV/r",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "New patients on this regiment",
 								},
-								{ 
+								{
 									name: "ABC/3TC/ATV/r",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "New patients on this regiment",
 								},
-								{ 
+								{
 									name: "ABC/3TC/LPV/r",
 									type: "Number",
 									calculated: false,
@@ -4738,35 +4738,35 @@ var cycles = [
 					explanationText: "No. Existing patients bellow 15 years on the following regiments at START of previous cycle",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "ABC/3TC/NVP",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "Existing patients on this regiments at start of cycle",
 								},
-								{ 
+								{
 									name: "ABC/3TC/EFV",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "Existing patients on this regiments at start of cycle",
 								},
-								{ 
+								{
 									name: "AZT/3TC/NVP",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "Existing patients on this regiments at start of cycle",
 								},
-								{ 
+								{
 									name: "AZT/3TC/EFV",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "Existing patients on this regiments at start of cycle",
 								},
-								{ 
+								{
 									name: "AZT/3TC/ABC",
 									type: "Number",
 									calculated: false,
@@ -4781,35 +4781,35 @@ var cycles = [
 					explanationText: "No. new patients bellow 15 years on the following regiments enrolled during the last cycle",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "ABC/3TC/NVP",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "New patients on this regiment",
 								},
-								{ 
+								{
 									name: "ABC/3TC/EFV",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "New patients on this regiment",
 								},
-								{ 
+								{
 									name: "AZT/3TC/NVP",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "New patients on this regiment",
 								},
-								{ 
+								{
 									name: "AZT/3TC/EFV",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "New patients on this regiment",
 								},
-								{ 
+								{
 									name: "AZT/3TC/ABC",
 									type: "Number",
 									calculated: false,
@@ -4824,14 +4824,14 @@ var cycles = [
 					explanationText: "No. Existing patients bellow 15 years on the following regiments at START of previous cycle",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "ABC/3TC/LPV/r",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "Existing patients on this regiments at start of cycle",
 								},
-								{ 
+								{
 									name: "AZT/3TC/LPV/r",
 									type: "Number",
 									calculated: false,
@@ -4846,14 +4846,14 @@ var cycles = [
 					explanationText: "No. new patients bellow 15 years on the following regiments enrolled during the last cycle",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "ABC/3TC/LPV/r",
 									type: "Number",
 									calculated: false,
 									required: false,
 									description: "New patients on this regiment",
 								},
-								{ 
+								{
 									name: "AZT/3TC/LPV/r",
 									type: "Number",
 									calculated: false,
@@ -4862,32 +4862,32 @@ var cycles = [
 								},
 							],
 				},
-				
+
 			],
 		},
 		{
-			id: 6, 
+			id: 6,
 			name: "Summary: Information on opportunistic infections",
 			completed: false,
-			commodities: [ 
+			commodities: [
 					{
 					id: 1,
 					name: "Number of Adult patients treated with Fluconazole",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Acute cryptococcal meningitis",
 									type: "Number",
 									calculated: false,
 									required: false,
 								},
-								{ 
+								{
 									name: "Cryptococcal meningitis patients treated on	maintenance therapy",
 									type: "Number",
 									calculated: false,
 									required: false,
 								},
-								{ 
+								{
 									name: "Esophageal candidiasis",
 									type: "Number",
 									calculated: false,
@@ -4901,19 +4901,19 @@ var cycles = [
 					name: "Number of Child patients (under 15 years) treated with Fluconazole",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Acute cryptococcal meningitis",
 									type: "Number",
 									calculated: false,
 									required: false,
 								},
-								{ 
+								{
 									name: "Cryptococcal meningitis patients treated on	maintenance therapy",
 									type: "Number",
 									calculated: false,
 									required: false,
 								},
-								{ 
+								{
 									name: "Esophageal candidiasis",
 									type: "Number",
 									calculated: false,
@@ -4927,13 +4927,13 @@ var cycles = [
 					name: "Number of Adult patients on the following drugs",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Cotrimoxazole (Pre-ART and ART)",
 									type: "Number",
 									calculated: false,
 									required: false,
 								},
-								{ 
+								{
 									name: "Dapsone",
 									type: "Number",
 									calculated: false,
@@ -4946,13 +4946,13 @@ var cycles = [
 					name: "Number of Child patients (under 15 years) treated with Fluconazole",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									name: "Cotrimoxazole (Pre-ART and ART)",
 									type: "Number",
 									calculated: false,
 									required: false,
 								},
-								{ 
+								{
 									name: "Dapsone",
 									type: "Number",
 									calculated: false,
@@ -4963,24 +4963,24 @@ var cycles = [
 			],
 		},
 	]}
-	
+
 	],
 	},
-	
+
 	{
-		id: 2, 
-		forms: 
+		id: 2,
+		forms:
 		[{
-			id: 2,
+			id: 1,
 		name: "HIV Test Kits Report and Order form",
 		completed: true,
 		approved: true,
 		sections: [
 			{
-			id: 0, 
+			id: 0,
 			name: "Commodity report",
 			completed: true,
-			commodities: [ 
+			commodities: [
 					{
 					id: 1,
 					name: "Determine HIV 1/2",
@@ -4988,7 +4988,7 @@ var cycles = [
 					basicUnit: "1 test",
 					completed: true,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -4997,7 +4997,7 @@ var cycles = [
 									getDataFromElementInPreviousCycle: 4,
 									value: 45,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
@@ -5005,7 +5005,7 @@ var cycles = [
 									required: true,
 									value: 50,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
@@ -5013,15 +5013,15 @@ var cycles = [
 									required: true,
 									value: 80,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									value: 10,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
@@ -5030,7 +5030,7 @@ var cycles = [
 									required: true,
 									value: 25,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
@@ -5038,24 +5038,24 @@ var cycles = [
 									programIndicatorId: 5,
 									required: true,
 									value: 160,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
 									value: 135,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
 									value: 135,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -5071,7 +5071,7 @@ var cycles = [
 					basicUnit: "1 test",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -5080,7 +5080,7 @@ var cycles = [
 									getDataFromElementInPreviousCycle: 4,
 									value: 45,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
@@ -5088,7 +5088,7 @@ var cycles = [
 									required: true,
 									value: 50,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
@@ -5096,15 +5096,15 @@ var cycles = [
 									required: true,
 									value: 80,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									value: 10,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
@@ -5113,7 +5113,7 @@ var cycles = [
 									required: true,
 									value: 25,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
@@ -5121,24 +5121,24 @@ var cycles = [
 									programIndicatorId: 5,
 									required: true,
 									value: 160,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
 									value: 135,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
 									value: 135,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -5147,14 +5147,14 @@ var cycles = [
 									value: "",
 								}
 							],
-				},				
+				},
 				{
 					id: 3,
 					name: "Unigold HIV 1/2",
 					basicUnit: "1 test",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -5163,7 +5163,7 @@ var cycles = [
 									getDataFromElementInPreviousCycle: 4,
 									value: 45,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
@@ -5171,7 +5171,7 @@ var cycles = [
 									required: true,
 									value: 50,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
@@ -5179,15 +5179,15 @@ var cycles = [
 									required: true,
 									value: 80,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									value: 10,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
@@ -5196,7 +5196,7 @@ var cycles = [
 									required: true,
 									value: 25,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
@@ -5204,24 +5204,24 @@ var cycles = [
 									programIndicatorId: 5,
 									required: true,
 									value: 160,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
 									value: 135,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
 									value: 135,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -5238,7 +5238,7 @@ var cycles = [
 					completed: false,
 					notApplicable: true,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -5247,7 +5247,7 @@ var cycles = [
 									getDataFromElementInPreviousCycle: 4,
 									value: 45,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
@@ -5255,7 +5255,7 @@ var cycles = [
 									required: true,
 									value: 50,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
@@ -5263,15 +5263,15 @@ var cycles = [
 									required: true,
 									value: 80,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									value: 10,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
@@ -5280,7 +5280,7 @@ var cycles = [
 									required: true,
 									value: 25,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
@@ -5288,24 +5288,24 @@ var cycles = [
 									programIndicatorId: 5,
 									required: true,
 									value: 160,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
 									value: 135,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
 									value: 135,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -5321,7 +5321,7 @@ var cycles = [
 					basicUnit: "1pc",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -5330,7 +5330,7 @@ var cycles = [
 									getDataFromElementInPreviousCycle: 4,
 									value: 45,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
@@ -5338,7 +5338,7 @@ var cycles = [
 									required: true,
 									value: 50,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
@@ -5346,15 +5346,15 @@ var cycles = [
 									required: true,
 									value: 80,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									value: 10,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
@@ -5363,7 +5363,7 @@ var cycles = [
 									required: true,
 									value: 25,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
@@ -5371,24 +5371,24 @@ var cycles = [
 									programIndicatorId: 5,
 									required: true,
 									value: 160,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
 									value: 135,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
 									value: 135,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -5404,7 +5404,7 @@ var cycles = [
 					basicUnit: "1pc",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -5413,7 +5413,7 @@ var cycles = [
 									getDataFromElementInPreviousCycle: 4,
 									value: 45,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
@@ -5421,7 +5421,7 @@ var cycles = [
 									required: true,
 									value: 50,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
@@ -5429,15 +5429,15 @@ var cycles = [
 									required: true,
 									value: 80,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									value: 10,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
@@ -5446,7 +5446,7 @@ var cycles = [
 									required: true,
 									value: 25,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
@@ -5454,24 +5454,24 @@ var cycles = [
 									programIndicatorId: 5,
 									required: true,
 									value: 160,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
 									value: 135,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
 									value: 135,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -5488,63 +5488,63 @@ var cycles = [
 					completed: false,
 					notApplicable: true,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
 									calculated: false,
 									required: true,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -5559,7 +5559,7 @@ var cycles = [
 					basicUnit: "Kit",
 					completed: false,
 					dataElements: [
-								{ 
+								{
 									id: 0,
 									name: "Opening balance",
 									type: "Number",
@@ -5568,7 +5568,7 @@ var cycles = [
 									getDataFromElementInPreviousCycle: 4,
 									value: 45,
 								},
-								{ 
+								{
 									id: 1,
 									name: "Quantity received",
 									type: "Number",
@@ -5576,7 +5576,7 @@ var cycles = [
 									required: true,
 									value: 50,
 								},
-								{ 
+								{
 									id: 2,
 									name: "Test consumption",
 									type: "Number",
@@ -5584,15 +5584,15 @@ var cycles = [
 									required: true,
 									value: 80,
 								},
-								{ 
-									id: 3, 
+								{
+									id: 3,
 									name: "Losses / Adjustments",
 									type: "Number",
 									calculated: false,
 									required: true,
 									value: 10,
 								},
-								{ 
+								{
 									id: 4,
 									name: "Number of tests remaining",
 									type: "Number",
@@ -5601,7 +5601,7 @@ var cycles = [
 									required: true,
 									value: 25,
 								},
-								{ 
+								{
 									id: 5,
 									name: "Maximum stock quantity",
 									type: "Number",
@@ -5609,24 +5609,24 @@ var cycles = [
 									programIndicatorId: 5,
 									required: true,
 									value: 160,
-								},						
-								{ 
+								},
+								{
 									id: 6,
 									name: "Quantity Required",
 									type: "Number",
 									calculated: true,
 									required: true,
 									value: 135,
-								},							
-								{ 
+								},
+								{
 									id: 7,
 									name: "Quantity to ship",
 									type: "Number",
 									calculated: false,
 									required: true,
 									value: 135,
-								},						
-								{ 
+								},
+								{
 									id: 8,
 									name: "Notes",
 									type: "Text",
@@ -5642,32 +5642,32 @@ var cycles = [
 			id: 1,
 			name: "Bimonthly Summary of HIV Test by Purpose of Use",
 			completed: false,
-			commodities: [ 
+			commodities: [
 				{
 					id: 1,
 					name: "Determine HIV 1/2",
 					basicUnit: "",
 					completed: false,
 					dataElements: [
-									{ 
+									{
 										name: "HCT",
 										type: "Number",
 										calculated: false,
 										required: true,
 									},
-									{ 
+									{
 										name: "PMTCT",
 										type: "Number",
 										calculated: false,
 										required: true,
 									},
-									{ 
+									{
 										name: "Clinical Diagnosis",
 										type: "Number",
 										calculated: false,
 										required: true,
 									},
-									{ 
+									{
 										name: "Quality Control",
 										type: "Number",
 										calculated: false,
@@ -5682,25 +5682,25 @@ var cycles = [
 					completed: false,
 					dataElements:
 										[
-							{ 
+							{
 								name: "HCT",
 								type: "Number",
 								calculated: false,
 								required: true,
 							},
-							{ 
+							{
 								name: "PMTCT",
 								type: "Number",
 								calculated: false,
 								required: true,
 							},
-							{ 
+							{
 								name: "Clinical Diagnosis",
 								type: "Number",
 								calculated: false,
 								required: true,
 							},
-							{ 
+							{
 								name: "Quality Control",
 								type: "Number",
 								calculated: false,
@@ -5714,25 +5714,25 @@ var cycles = [
 					basicUnit: "",
 					completed: false,
 					dataElements: [
-							{ 
+							{
 								name: "HCT",
 								type: "Number",
 								calculated: false,
 								required: true,
 							},
-							{ 
+							{
 								name: "PMTCT",
 								type: "Number",
 								calculated: false,
 								required: true,
 							},
-							{ 
+							{
 								name: "Clinical Diagnosis",
 								type: "Number",
 								calculated: false,
 								required: true,
 							},
-							{ 
+							{
 								name: "Quality Control",
 								type: "Number",
 								calculated: false,
@@ -5744,7 +5744,7 @@ var cycles = [
 		},
 	]},],
 	},
-	
+
 
 ];
 
