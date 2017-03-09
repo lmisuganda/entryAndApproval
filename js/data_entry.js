@@ -175,10 +175,6 @@ function getNotApplicableBox(listElement) {
 		checkbox.prop("checked", !checkbox.prop("checked"));
 		toggleCommodityNotApplicableStyling(listElement);
 	});
-	$(notApplicableCheckbox).change("click", function(e) {
-		var checkbox = $(e.target);
-		toggleCommodityNotApplicableStyling(listElement);
-	});
 
 	$(notApplicableWrapper).append(notApplicableCheckbox, "Not applicable");
 	return notApplicableWrapper;
