@@ -104,7 +104,11 @@ function isDefined(variable) {
 }
 
 /* GENERIC POPUP MESSAGE BOX */
+var msgBoxOpen = false;
+
 function showMessageBox(html) {
+	msgBoxOpen = true;
+	
 	var background = document.createElement("DIV");
 	$(background).attr("id", "popup_msgbox_background");
 	
@@ -119,11 +123,18 @@ function showMessageBox(html) {
 		closeMessageBox(background);
 	});
 	
+	addKeyboardEnterClickEvent(function() {
+		closeMessageBox(background);
+	});
+	
+	
 	$(box).append(close);
 	$(background).append(box);
 	$("body").append(background);
 }
 function showConfirmBox(html, yes, no) {
+	msgBoxOpen = true;
+	
 	var background = document.createElement("DIV");
 	$(background).attr("id", "popup_msgbox_background");
 	
@@ -145,6 +156,9 @@ function showConfirmBox(html, yes, no) {
 		$(noButton).click(no);
 	}
 
+	addKeyboardEnterClickEvent(function() {
+		yes();
+	});
 	
 	$(box).append(yesButton);
 	$(box).append(noButton);
@@ -152,6 +166,16 @@ function showConfirmBox(html, yes, no) {
 	$("body").append(background);
 }
 function closeMessageBox(box) {
+	msgBoxOpen = false;
+	
 	$(box).remove();
 	$("main").css("opacity", "1");
+}
+
+function addKeyboardEnterClickEvent(func) {
+	$(document).keypress(function(e) {
+		if(e.which == 13) { //13 = enterbutton
+			func();
+		}
+    });
 }

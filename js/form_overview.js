@@ -177,7 +177,7 @@ function getNotApplicableBox(listElement) {
 
 //handles navigation by enter button
 $(document).keypress(function(e) {
-	if(e.which == 13) { //13 = enterbutton
+	if(e.which == 13 && !msgBoxOpen) { //13 = enterbutton
 		e.preventDefault();
 		if (allSectionsIsCompleted(form)) {
 			openFormSummary();
