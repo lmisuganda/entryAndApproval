@@ -75,7 +75,7 @@
 #commodity_list .expandable_data_entry{
 	display: none;
 	position: relative;
-	min-height: 180px;
+	min-height: 220px;
 	margin: 0 0 0 0;
 	padding: 1px 20px 20px 20px;
 	background-color: white;
@@ -136,7 +136,7 @@
 	vertical-align: bottom;
 	padding: 10px;
 	border: 2px solid white;
-	width: 135px;
+	width: 120px;
 }
 
 
@@ -161,7 +161,7 @@
 }
 #commodity_list .data_element_input {
 	font-family: 'Open Sans', sans-serif;
-	font-size: .9rem;
+	font-size: 1rem;
 	display: block;
 	width: 100%;
 }
@@ -178,7 +178,7 @@
 }
 
 #commodity_list .notes {
-	width: 320px;
+	width: 240px;
 }
 
 #bottom_menu a {
