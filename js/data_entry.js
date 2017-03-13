@@ -387,12 +387,17 @@ function toggleCommodityNotApplicableStyling(listElement) {
 	if (checkbox.prop("checked")) {
 		$(currentExpandedCommodity).find(".data_element_input").val("");
 		$(currentExpandedCommodity).find(".data_element_input").attr("disabled", "true");
-		$(currentExpandedCommodity).toggleClass("not_applicable");
+		$(currentExpandedCommodity).addClass("not_applicable");
+		$(currentExpandedCommodity).addClass("completed_element");
 		$(currentExpandedCommodity).find(".commodity_status_text").text("Not applicable");
 	} else {
 		$(currentExpandedCommodity).find(".data_element_input").val("");
 		$(currentExpandedCommodity).find(".data_element_input").not(".calculated_input").removeAttr("disabled");
-		$(currentExpandedCommodity).toggleClass("not_applicable", "completed_element");
+		$(currentExpandedCommodity).removeClass("completed_element");
+		$(currentExpandedCommodity).removeClass("not_applicable");
+		$(currentExpandedCommodity).find(".commodity_status_text").text("");
+		setToUncompleted(getCommodityById(section, $(listElement).attr("id")));
+		console.log("HEI");
 	}
 }
 
