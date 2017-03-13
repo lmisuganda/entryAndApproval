@@ -20,7 +20,23 @@ var programIndicators = [
 		expression: "#{5}-#{4}",
 	},
 ]
-
+var programIndicators2 = [
+	{
+		id: "de_6",
+		name: "Test",
+		expression: "#{3} / (2 / #{5})",
+	},
+	{
+		id: "de_8",
+		name: "Test",
+		expression: "#{7} / #{6}",
+	},
+	{
+		id: "de_9",
+		name: "Test",
+		expression: "4 * #{6} - #{7}",
+	},
+]
 function getIndicatorById(indicators, id) {
 	for (var i = 0; i < indicators.length; i++) {
 		if (indicators[i].id == id) return indicators[i];
@@ -30,13 +46,15 @@ function getIndicatorById(indicators, id) {
 
 //Calculates and prints value of indicators (based on value of provided input elements)
 function calculateAndPrintIndicators(indicators, inputElements) {
-	
+	indicators = programIndicators2;
 	for (var i = 0; i < inputElements.length; i++) {
 		if ($(inputElements[i]).attr("disabled")) {
-			var indicator = getIndicatorById(programIndicators, $(inputElements[i]).attr("id"));
-			//console.log(indicator);
-			var calculation = calculateExpression(indicator.expression, inputElements)
-			if (calculation) $(inputElements[i]).val(calculation);
+			var indicator = getIndicatorById(indicators, $(inputElements[i]).attr("id"));
+			if (indicator) {
+				console.log("Updating calucation");
+				var calculation = Math.ceil(calculateExpression(indicator.expression, inputElements));
+				if (calculation) $(inputElements[i]).val(calculation);
+			}
 		}
 	}
 }
@@ -49,7 +67,8 @@ function calculateExpression(exp, currentInputFields) {
 		if (exp.charAt(i) == "#") {
 			var id = exp.substr(i + 2, exp.substr(i + 2, exp.length).indexOf("}"));
 			var inputValue = getValueFromDataInputElement(id, currentInputFields);
-			if (inputValue == "") return false;
+			if (inputValue == "") return 0;
+			if (inputValue == 0) inputValue = 1;
 			inputValue = "(" + inputValue + ")";
 			convExp += inputValue;
 			i += id.length + 3;
