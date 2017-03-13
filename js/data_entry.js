@@ -385,13 +385,13 @@ function isExpandedHTML (element) {
 function toggleCommodityNotApplicableStyling(listElement) {
 	var checkbox = $(listElement).find("#not_applicable_checkbox");
 	if (checkbox.prop("checked")) {
-		$(currentExpandedCommodity).find(".data_element_input").val("");
+		//$(currentExpandedCommodity).find(".data_element_input").val("");
 		$(currentExpandedCommodity).find(".data_element_input").attr("disabled", "true");
 		$(currentExpandedCommodity).addClass("not_applicable");
 		$(currentExpandedCommodity).addClass("completed_element");
 		$(currentExpandedCommodity).find(".commodity_status_text").text("Not applicable");
 	} else {
-		$(currentExpandedCommodity).find(".data_element_input").val("");
+		//$(currentExpandedCommodity).find(".data_element_input").val("");
 		$(currentExpandedCommodity).find(".data_element_input").not(".calculated_input").removeAttr("disabled");
 		$(currentExpandedCommodity).removeClass("completed_element");
 		$(currentExpandedCommodity).removeClass("not_applicable");

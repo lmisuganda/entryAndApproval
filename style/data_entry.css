@@ -65,6 +65,10 @@
 #commodity_list .not_applicable .expandable_data_entry .data_element_input_pair {
 	border: 2px solid #CFD8DC;
 }
+#commodity_list .not_applicable input {
+	color: ebebe4;
+	background-color: #ebebe4;
+}
 
 #commodity_list .current_element {
 	border: 2px solid orange;
