@@ -24,7 +24,7 @@ var programIndicators2 = [
 	{
 		id: "de_6",
 		name: "Test",
-		expression: "#{3} / (2 / #{5})",
+		expression: "(#{3} * 60) / (60 - #{5})",
 	},
 	{
 		id: "de_8",

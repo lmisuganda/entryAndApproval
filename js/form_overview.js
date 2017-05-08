@@ -65,13 +65,7 @@ function getNewListElement(section) {
 		styleAsNotApplicable(listElement);
 	}
 	
-	//event-listener onclick list elements
-	$(listElement).on("click", function(e) {
-		if (!$(this).hasClass("current_section") && !$(this).hasClass("not_applicable") && ($(this).hasClass("completed_section") || $(this).hasClass("current_section"))) {
-			var sectionId = $(this).attr("id");
-			openDataEntryForSection(sectionId);
-		}
-	});
+
 	
 	return listElement;
 }

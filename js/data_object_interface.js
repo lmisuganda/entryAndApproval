@@ -324,6 +324,13 @@ function getBasicUnit(commodity) {
 	return commodity.basicUnit;
 }
 
+function clearAllDataElementValues(commodity) {
+	var dataElements = getDataElements(commodity);
+	for (var i = 0; i < dataElements.length; i++) {
+		dataElements[i].value = "";
+	}
+}
+
 //######### DATA ELEMENTS
 function getDataElements(commodity) {
 	return commodity.dataElements;

@@ -361,6 +361,7 @@ function saveCommodity(id, currForm, notApplicable) {
 	//ADD VALUES FROM USER INPUT TO OBJECT
 	if (notApplicable) {
 		setToNotApplicable(commodity);
+		clearAllDataElementValues(commodity);
 	} else {
 		setToApplicable(commodity);
 		for (var i = 0; i < dataElements.length; i++) {
