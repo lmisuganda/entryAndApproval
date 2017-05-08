@@ -1,4 +1,4 @@
-var useTempData = true;
+var useTempData = true; //Use temp local data (no server communication)
 
 var serverInterface = {
 	

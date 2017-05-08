@@ -1,28 +1,4 @@
 
-var DHIS2 = {
-	
-	getAllFacilities:
-	function () {
-		
-	},
-	
-	getFacilityById:
-	function (id) {
-		
-	},
-	
-	getFormById:
-	function (id) {
-		
-	},
-	
-	getSectionById:
-	function (id) {
-		
-	},
-	
-	
-}
 
 var LS = {
 
