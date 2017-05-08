@@ -107,6 +107,8 @@ tr:first-child td {
 
 #summary_navigation {
 	text-align: center;
+	margin: 0;
+	padding: 0;
 	margin-bottom: 40px;
 }
 
