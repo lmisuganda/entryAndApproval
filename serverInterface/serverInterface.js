@@ -1,0 +1,28 @@
+var useTempData = true;
+
+var serverInterface = {
+	
+	getAllFacilities:
+	function () {
+		if (useTempData) {
+			return getTestDataFacilities();
+		}
+	},
+	
+	getFacilityById:
+	function (id) {
+		
+	},
+	
+	getFormById:
+	function (facilityId, cycleId, FormId) {
+		
+	},
+	
+	getSectionById:
+	function (facilityId, cycleId, FormId, SectionId) {
+		
+	},
+	
+	
+}

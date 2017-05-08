@@ -1,6 +1,6 @@
 if (true) {
 	//load from DHIS2 server
-	LS.updateAllFacilities(facilities);
+	LS.updateAllFacilities(serverInterface.getAllFacilities());
 	console.log("Working online");
 } else {
 	console.log("Working offline");
