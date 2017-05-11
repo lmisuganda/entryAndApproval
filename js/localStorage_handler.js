@@ -1,4 +1,30 @@
+var StorageHandler = {
+	
+	getFacilities: 
+	function () {
 
+	},
+	
+	updateFacility: 
+	function () {
+
+	},
+	
+	updateForm: 
+	function () {
+
+	},
+	
+	updateSection: 
+	function () {
+
+	},
+	
+	updateCommodity: 
+	function () {
+
+	},
+}
 
 var LS = {
 

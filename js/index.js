@@ -6,7 +6,7 @@ if (true) {
 	console.log("Working offline");
 	
 }
-//var facilities = LS.getFacilities();
+var facilities = LS.getFacilities();
 
 generateMainMenu(); //located in scripts.js
 generateFacilityList(facilities);
