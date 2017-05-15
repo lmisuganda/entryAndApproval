@@ -268,7 +268,7 @@ function getLastCompletedCommodity(section) {
 }
 function dataEntryIsStartedInSection(section) {
 	var commodities = getCommodities(section);
-	return isCompleted(commodities[0]);
+	if (commodities.length > 0) return isCompleted(commodities[0]);
 }
 function allCommoditiesCompleted(section) {
 	var commodities = getCommodities(section);

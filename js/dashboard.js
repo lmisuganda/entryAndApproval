@@ -1,26 +1,21 @@
-
- //MOVE TO INDEPENDENT SERVER-SYNC FILE
-if (false) {
-	//load from DHIS2 server
-	updateLS(cycles);
-	console.log("Working online");
-} else {
-	console.log("Working offline");
-} //
-
 var facilityId = getParameterFromURLByName("facility");
 if (isUndefinedOrNull(facilityId)) navigateToAddress("index.html");
+StorageHandler.downloadFacilityToLocalStorage(facilityId, initializeDashboardContent);
 
-var facility = LS.getFacilityById(facilityId);
-if (isUndefinedOrNull(facility)) navigateToAddress("index.html");
+function initializeDashboardContent() {
 
-generateMainMenu(); //located in scripts.js
+	facility = LS.getFacilityById(facilityId);
+	if (isUndefinedOrNull(facility)) navigateToAddress("index.html");
 
-var currentCycle = getCurrentCycle(facility);
+	generateMainMenu(); //located in scripts.js
 
-generateFacilityInfoSection();
-generateListOfHighlightedForms(currentCycle);
-generateListOfPreviousCycles(getPreviousCycles(facility));
+	currentCycle = getCurrentCycle(facility);
+
+	generateFacilityInfoSection();
+	generateListOfHighlightedForms(currentCycle);
+	generateListOfPreviousCycles(getPreviousCycles(facility));
+}
+
 
 function generateFacilityInfoSection() {
 	$("#facility_title_header").text(getName(facility));

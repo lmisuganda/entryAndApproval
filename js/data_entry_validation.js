@@ -53,7 +53,7 @@ testruleB = {
 		expression: "#{1}",
 	},
 }
-var rules = [testruleA];
+var rules = [];
 
 //tests validation rule based on DHIS2 rule object, and list of current input fields
 //returns true or error message based on instruction defined in rule.

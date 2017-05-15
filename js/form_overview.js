@@ -1,20 +1,28 @@
-
 var facilityId = getParameterFromURLByName("facility");
 var cycleId = getParameterFromURLByName("cycle");
 var formId = getParameterFromURLByName("form");
 if (isUndefinedOrNull(facilityId, cycleId, formId)) navigateToAddress("index.html");
 
-var facility = LS.getFacilityById(facilityId);
-var cycle = getCycleById(facility, cycleId);
-var form = getFormById(cycle, formId);
-if (isUndefinedOrNull(facility, cycle, form)) navigateToAddress("index.html");
+StorageHandler.downloadFacilityToLocalStorage(facilityId, initializeFormOverviewContent);
 
-redirectIfEditIsDenied(form); //if edit not allowed (based on completion and approval status, user rights) redirect to summary
-if (isCompleted(form)) openFormSummary();
 
-generateMainMenu(); //located in scripts.js
-setProgramTitleHeader(getName(form)); 
-generateSectionsList();
+
+function initializeFormOverviewContent() {
+	
+	facility = LS.getFacilityById(facilityId);
+	cycle = getCycleById(facility, cycleId);
+	form = getFormById(cycle, formId);
+	if (isUndefinedOrNull(facility, cycle, form)) navigateToAddress("index.html");
+
+	redirectIfEditIsDenied(form); //if edit not allowed (based on completion and approval status, user rights) redirect to summary
+	if (isCompleted(form)) openFormSummary();
+
+	generateMainMenu(); //located in scripts.js
+	setProgramTitleHeader(getName(form)); 
+	generateSectionsList();
+	
+}
+
 
 function refreshSectionsList() {
 	$("#sections_list").html("");
@@ -64,8 +72,6 @@ function getNewListElement(section) {
 	if (!isApplicable(section)) {
 		styleAsNotApplicable(listElement);
 	}
-	
-
 	
 	return listElement;
 }

@@ -24,5 +24,4 @@ var serverInterface = {
 		
 	},
 	
-	
 }

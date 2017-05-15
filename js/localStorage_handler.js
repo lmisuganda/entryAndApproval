@@ -5,6 +5,61 @@ var StorageHandler = {
 
 	},
 	
+	downloadFacilityToLocalStorage:
+	function (facilityId, pageInitFunction) {
+		if (this.serverIsAvailable) {
+			//load from DHIS2 server
+			var freshdata;
+			showWaitingScreen(); //located in scripts.js
+			server_interface.getFacilityById("temp").then(function() {
+				freshdata = blablabla;
+				setTimeout(function() { //TEMP wait for cycles
+					LS.updateFacility(freshdata);
+					console.log("Data updated from DHIS2 server");
+					pageInitFunction();
+					hideWaitingScreen();
+				}, 2000);
+			});
+
+		} else {
+			console.log("No data update");
+			if (LS.contains(LS.generateFacilityId(facilityId))) {
+				pageInitFunction();
+			} else {
+				console.log("Error: facility not stored in localStorage. Redirecting");
+				showMessageBox("<p>Facility is not available offline. Get internet access to download facility information</p>", function() {
+					navigateToAddress("index.html");
+				});
+			}
+		} //
+	},
+	
+	downloadFormToLocalStorage:
+	function (formId, pageInitFunction) {
+		
+	},
+	
+	serverIsAvailable:
+	function() {
+
+	  // Handle IE and more capable browsers
+	  var xhr = new ( window.ActiveXObject || XMLHttpRequest )( "Microsoft.XMLHTTP" );
+	  var status;
+
+	  // Open new request as a HEAD to the root hostname with a random param to bust the cache
+	  xhr.open( "HEAD", "//" + window.location.hostname + "/?rand=" + Math.floor((1 + Math.random()) * 0x10000), false );
+
+	  // Issue request and handle response
+	  try {
+		xhr.send();
+		return ( xhr.status >= 200 && (xhr.status < 300 || xhr.status === 304) );
+	  } catch (error) {
+		return false;
+	  }
+
+	},
+	
+	
 	updateFacility: 
 	function () {
 
@@ -64,14 +119,21 @@ var LS = {
 	function (facility) {
 		var key = this.generateFacilityId(getId(facility));
 		localStorage.setObject(key, facility);
+		
 	},
 	
 	generateFacilityId:
 	function (id) {
 		return "facility_" + id;
+	},
+	
+	contains: 
+	function(key) {
+		return (key in localStorage);
 	}
 	
 }
+
 
 Storage.prototype.setObject = function(key, value) {
     this.setItem(key, JSON.stringify(value));

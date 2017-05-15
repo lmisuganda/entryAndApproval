@@ -1,4 +1,4 @@
-// DHIS2 LMIS ORDER/REPORT APP. UiO - MAGNUS LI 2017.
+// DHIS2 LMIS ORDER/REPORT APP..
 // DATA ENTRY PAGE HANDLER
 
 
@@ -24,9 +24,9 @@ var unsolvedErrors = false; //in use for validation to prevent navigation way fr
 
 
 if (isUndefinedOrNull(singleCommodityEdit)) {
-	initMultipleCommodityMode();
+	initMultipleCommodityMode(); //for section edit
 } else {
-	initSingleCommodityMode();
+	initSingleCommodityMode(); //for single edit triggered from form summary
 }
 
 var currentExpandedCommodity;
@@ -151,7 +151,7 @@ function getNewListElement(commodity) {
 
 function getValidateButton() {
 	var button = document.createElement("BUTTON");
-	$(button).text("Validate and save");
+	$(button).text("Validate and go to next");
 	$(button).attr("tabindex", "0");
 	$(button).attr("id", "save_commodity_button");
 

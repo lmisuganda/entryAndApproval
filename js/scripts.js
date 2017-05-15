@@ -106,7 +106,7 @@ function isDefined(variable) {
 /* GENERIC POPUP MESSAGE BOX */
 var msgBoxOpen = false;
 
-function showMessageBox(html) {
+function showMessageBox(html, closeEvent) {
 	msgBoxOpen = true;
 	
 	var background = document.createElement("DIV");
@@ -120,6 +120,7 @@ function showMessageBox(html) {
 	$(close).html('<i id="close_msgbox" class="fa fa-window-close-o" aria-hidden="true"></i>')
 	
 	$(close).click(function() {
+		if (isDefined(closeEvent)) closeEvent();
 		closeMessageBox(background);
 	});
 	
@@ -178,4 +179,13 @@ function addKeyboardEnterClickEvent(func) {
 			func();
 		}
     });
+}
+
+function showWaitingScreen() {
+	var waitingElement = document.createElement("DIV");
+	$(waitingElement).attr("id", "waiting_screen");
+	$("body").append(waitingElement);
+}
+function hideWaitingScreen() {
+	$("#waiting_screen").remove();	
 }
