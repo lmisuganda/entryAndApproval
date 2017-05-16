@@ -174,7 +174,7 @@ body {
 	font-size: 1.5rem;
 }
 
-/* WAITING SCREEN */
+/* WAITING SCREEN defined in scripts.js*/
 #waiting_screen {
 	position: fixed;
 	top: 70px;
@@ -186,4 +186,20 @@ body {
 	background-image: url("loading_spinner.gif");
     background-repeat: no-repeat;
     background-position: center;
+}
+
+/* defined in storageHandler.js*/
+#connection_warning {
+	display: none;
+	position: fixed;
+	width: 300px;
+	margin: 5% auto; /* Will not center vertically and won't work in IE6/7. */
+	left: 0;
+	right: 0;
+	top: 0;
+	background-color: orange;
+	color: white;
+	margin-top: 0;
+	padding: 10px;
+	border-radius: 0 0 5px 5px;
 }

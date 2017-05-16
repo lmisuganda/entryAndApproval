@@ -83,6 +83,45 @@ var StorageHandler = {
 
 	},
 	
+	waitForServerConnectionAndSync:
+	function () {
+		var interval = 3000;
+
+		var i = 0; //temp test
+		StorageHandler.displayConnectionWarning("You are offline! Will retry upload shortly", "infinite");
+		var checkLoop = setInterval(function () {
+			console.log("You are offline and data is waiting for upload. Retrying");
+			i++; //temp test
+			if (i > 1) { //if connection --> for all unsynced forms and sections --> upload --> then remove from queue
+				console.log("Back online! Data uploaded :-)");
+				StorageHandler.displayConnectionWarning("Back online! Data uploaded :-)", 10000, "#449d44");
+				clearInterval(checkLoop); 
+			}
+		}, interval)
+			
+		
+	},
+	
+	displayConnectionWarning:
+	function (text, timeout, color) {
+		$("#connection_warning").remove();
+		var elem = document.createElement("P");
+		$(elem).attr("id", "connection_warning"); //styles located in style.css
+		$(elem).text(text);
+		$(elem).css("background-color", color);
+		$("body").append(elem);
+		$(elem).slideDown(500);
+		if (timeout != "infinite") {
+			setTimeout(function() {
+				$(elem).remove();
+			}, timeout)	
+		}	
+	},
+	
+	hideConnectionWarning:
+	function () {
+		$("#connection_warning").remove();
+	},
 	
 	updateFacility: 
 	function () {
