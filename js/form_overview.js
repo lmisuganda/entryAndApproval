@@ -3,9 +3,7 @@ var cycleId = getParameterFromURLByName("cycle");
 var formId = getParameterFromURLByName("form");
 if (isUndefinedOrNull(facilityId, cycleId, formId)) navigateToAddress("index.html");
 
-StorageHandler.downloadFacilityToLocalStorage(facilityId, initializeFormOverviewContent);
-
-
+StorageHandler.downloadFormToLocalStorage(facilityId, cycleId, formId, initializeFormOverviewContent);
 
 function initializeFormOverviewContent() {
 	

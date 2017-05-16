@@ -1,5 +1,7 @@
 var StorageHandler = {
 	
+	//TO ADD: list of unsynced forms. Upload before download. (stored in LS)
+	
 	getFacilities: 
 	function () {
 
@@ -11,19 +13,18 @@ var StorageHandler = {
 			//load from DHIS2 server
 			var freshdata;
 			showWaitingScreen(); //located in scripts.js
-			server_interface.getFacilityById("temp").then(function() {
-				freshdata = blablabla;
-				setTimeout(function() { //TEMP wait for cycles
-					LS.updateFacility(freshdata);
-					console.log("Data updated from DHIS2 server");
-					pageInitFunction();
-					hideWaitingScreen();
-				}, 2000);
+			server_interface.setFacility(facilityId).then(function() {
+				freshdata = facility;
+				LS.updateFacility(freshdata);
+				console.log("Data updated from DHIS2 server");
+				pageInitFunction();
+				hideWaitingScreen();
+				
 			});
 
 		} else {
 			console.log("No data update");
-			if (LS.contains(LS.generateFacilityId(facilityId))) {
+			if (LS.contains(LS.getFacilityPrefix() + facilityId)) {
 				pageInitFunction();
 			} else {
 				console.log("Error: facility not stored in localStorage. Redirecting");
@@ -35,8 +36,31 @@ var StorageHandler = {
 	},
 	
 	downloadFormToLocalStorage:
-	function (formId, pageInitFunction) {
-		
+	function (facilityId, cycleId, formId, pageInitFunction) {
+		if (this.serverIsAvailable) {
+			//load from DHIS2 server
+			var freshdata;
+			showWaitingScreen(); //located in scripts.js
+			server_interface.setForm(formId).then(function() {
+				freshdata = forms[0];
+				LS.updateForm(facilityId, cycleId, freshdata);
+				console.log("Data updated from DHIS2 server");
+				pageInitFunction();
+				hideWaitingScreen();
+				
+			});
+
+		} else {
+			console.log("No data update");
+			if (LS.contains(LS.getFacilityPrefix() + facilityId))  {
+				pageInitFunction();
+			} else {
+				console.log("Error: facility not stored in localStorage. Redirecting");
+				showMessageBox("<p>Facility is not available offline. Get internet access to download facility information</p>", function() {
+					navigateToAddress("index.html");
+				});
+			}
+		} //
 	},
 	
 	serverIsAvailable:
@@ -83,12 +107,18 @@ var StorageHandler = {
 
 var LS = {
 
+	//#### storage for facility-object
+	getFacilityPrefix: 
+	function () {
+		return "lmis_facility_"
+	},
+	
 	getFacilities: 
 	function () {
 		var result = [];
 		for (var i = 0; i < localStorage.length; i++) {
 			var key = localStorage.key(i);
-			if (key.startsWith("facility_")) { 
+			if (key.startsWith(this.getFacilityPrefix)) { 
 				result.push(localStorage.getObject(key)); 
 			}
 		}
@@ -100,7 +130,7 @@ var LS = {
 		for (var i = 0; i < localStorage.length; i++) {
 			var key = localStorage.key(i);
 			
-			if (key.startsWith(this.generateFacilityId(id))) { 
+			if (key.startsWith(this.getFacilityPrefix + id)) { 
 				return localStorage.getObject(key); 
 				
 			}
@@ -117,20 +147,63 @@ var LS = {
 	
 	updateFacility:
 	function (facility) {
-		var key = this.generateFacilityId(getId(facility));
+		var key = this.getFacilityPrefix + getId(facility);
 		localStorage.setObject(key, facility);
 		
 	},
 	
-	generateFacilityId:
-	function (id) {
-		return "facility_" + id;
+	//#### storage for local forms
+	updateForm:
+	function (facilityId, cycleId, form) {
+		var facility = LS.getFacilityById(facilityId);
+		var cycle = getCycleById(facility, cycleId);
+		var forms = getForms(cycle);
+		var existing = false;
+		for (var i = 0; i < forms.length; i++) {
+			if (getId(forms[i]) == getId(form)) {
+				forms[i] = form;
+				existing = true;
+				console.log("Form with id " + getId(form) + " was updated in localstorage");
+			}
+		}
+		if (!existing) {
+			forms.push(form);
+			console.log("Form with id " + getId(form) + " was added to localstorage");
+		}
+		
+		LS.updateFacility(facility); //save back to local storage
+	},
+	
+	//#### storage for unsynced forms
+	addToUnsyncedList:
+	function (form) {
+		var key = "lmis_unsyncedForm_" + getId(form);
+		localStorage.setObject(key, form);
+	},
+	
+	removeFromUnsyncedList:
+	function (form) {
+		var key = "lmis_unsyncedForm_" + getId(form);
+		localStorage.removeItem(key);
+	},
+	
+	getUnsyncedForms:
+	function () {
+		var result = [];
+		for (var i = 0; i < localStorage.length; i++) {
+			var key = localStorage.key(i);
+			if (key.startsWith("lmis_unsyncedForm_")) { 
+				result.push(localStorage.getObject(key)); 
+			}
+		}
+		return result;
 	},
 	
 	contains: 
 	function(key) {
 		return (key in localStorage);
 	}
+	
 	
 }
 
