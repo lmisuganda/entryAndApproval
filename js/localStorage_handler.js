@@ -23,7 +23,7 @@ var StorageHandler = {
 			
 		}, function (reason) { //on error (no connection etc.) no update on local storage
 			console.log("No data update: " + reason.status);
-			StorageHandler.displayConnectionWarning("Working offline", 8000, "orange");
+			StorageHandler.displayConnectionWarning("Working offline", "infinite", "orange", "Your computer have no internet connection. You can keep working, and the system will try to reconnect automatically");
 			
 			if (LS.containsFacility(facilityId)) {
 				pageInitFunction();
@@ -57,7 +57,7 @@ var StorageHandler = {
 			hideWaitingScreen();
 			
 		}, function (reason) { //on error (no connection etc.) no update on local storage)
-			StorageHandler.displayConnectionWarning("Working offline", 8000, "orange");
+			StorageHandler.displayConnectionWarningNoConnection();
 			console.log("Working offline: no data update");
 			if (LS.containsForm(facilityId, cycleId, formId))  {
 				pageInitFunction();
@@ -75,7 +75,7 @@ var StorageHandler = {
 	function () {
 		var interval = 3000;
 		var i = 0; //temp test
-		StorageHandler.displayConnectionWarning("You are offline! Will retry upload shortly", "infinite");
+		StorageHandler.displayConnectionWarningNoConnection();
 		var checkLoop = setInterval(function () {
 			console.log("You are offline and data is waiting for upload. Retrying");
 			i++; //temp test
@@ -87,12 +87,28 @@ var StorageHandler = {
 		}, interval)
 	},
 	
+	displayConnectionWarningNoConnection:
+	function () {
+		StorageHandler.displayConnectionWarning("Working offline", "infinite", "orange", "Your computer have no internet connection. You can keep working, and the system will try to reconnect automatically");
+	},
+	
 	displayConnectionWarning:
-	function (text, timeout, color) {
+	function (text, timeout, color, infoText) {
 		$("#connection_warning").remove();
+	
 		var elem = document.createElement("P");
 		$(elem).attr("id", "connection_warning"); //styles located in style.css
 		$(elem).text(text);
+		
+		if (!isUndefinedOrNull(infoText)) {
+			var infoButton = ('<i class="fa fa-info-circle" aria-hidden="true"></i>');
+			$(elem).append(infoButton);
+			$(elem).click(function() { 
+				console.log("hei");
+				showMessageBox("<p>" + infoText + "</p>");
+			});
+		}
+		
 		$(elem).css("background-color", color);
 		$("body").append(elem);
 		$(elem).slideDown(200);

@@ -194,13 +194,17 @@ body {
 	display: none;
 	position: fixed;
 	width: 300px;
-	margin: 5% auto; /* Will not center vertically and won't work in IE6/7. */
+	margin: 0 auto; /* Will not center vertically and won't work in IE6/7. */
 	left: 0;
 	right: 0;
-	top: 0;
+	bottom: 0;
 	background-color: orange;
 	color: white;
 	margin-top: 0;
 	padding: 10px;
-	border-radius: 0 0 5px 5px;
+	border-radius: 5px 5px 0 0;
+	cursor: pointer;
+}
+#connection_warning i {
+	margin-left: 10px;
 }

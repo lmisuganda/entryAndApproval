@@ -1,4 +1,4 @@
-// DHIS2 LMIS ORDER/REPORT APP. UiO - MAGNUS LI 2017.
+// DHIS2 LMIS ORDER/REPORT APP.
 // DATA ENTRY VALIDATION HANDLER
 
 function validateCommodityInput(commodityId, form) {
