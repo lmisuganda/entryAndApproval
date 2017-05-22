@@ -190,6 +190,7 @@ body {
 
 /* defined in storageHandler.js*/
 #connection_warning {
+	text-align: center;
 	display: none;
 	position: fixed;
 	width: 300px;

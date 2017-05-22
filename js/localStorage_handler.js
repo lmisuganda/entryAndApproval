@@ -9,22 +9,24 @@ var StorageHandler = {
 	
 	downloadFacilityToLocalStorage:
 	function (facilityId, pageInitFunction) {
-		if (this.serverIsAvailable) {
-			//load from DHIS2 server
-			var freshdata;
-			showWaitingScreen(); //located in scripts.js
-			server_interface.setFacility(facilityId).then(function() {
-				freshdata = facility;
-				LS.updateFacility(freshdata);
-				console.log("Data updated from DHIS2 server");
-				pageInitFunction();
-				hideWaitingScreen();
-				
-			});
-
-		} else {
-			console.log("No data update");
-			if (LS.contains(LS.getFacilityPrefix() + facilityId)) {
+		//load from DHIS2 server
+		var freshdata;
+		showWaitingScreen(); //located in scripts.js
+		
+		
+		//fetch data from server
+		server_interface.setFacility(facilityId).then(function() {
+			freshdata = facility;
+			LS.updateFacility(freshdata);
+			console.log("Data updated from DHIS2 server");
+			pageInitFunction();
+			hideWaitingScreen();
+			
+		}, function (reason) { //on error (no connection etc.) no update on local storage
+			console.log("No data update: " + reason.status);
+			StorageHandler.displayConnectionWarning("Working offline", 8000, "orange");
+			//LS.contains(LS.getFacilityPrefix() + facilityId)
+			if (true) {
 				pageInitFunction();
 			} else {
 				console.log("Error: facility not stored in localStorage. Redirecting");
@@ -32,7 +34,10 @@ var StorageHandler = {
 					navigateToAddress("index.html");
 				});
 			}
-		} //
+			hideWaitingScreen();
+			
+		});
+
 	},
 	
 	downloadFormToLocalStorage:
@@ -86,7 +91,6 @@ var StorageHandler = {
 	waitForServerConnectionAndSync:
 	function () {
 		var interval = 3000;
-
 		var i = 0; //temp test
 		StorageHandler.displayConnectionWarning("You are offline! Will retry upload shortly", "infinite");
 		var checkLoop = setInterval(function () {
@@ -110,7 +114,7 @@ var StorageHandler = {
 		$(elem).text(text);
 		$(elem).css("background-color", color);
 		$("body").append(elem);
-		$(elem).slideDown(500);
+		$(elem).slideDown(200);
 		if (timeout != "infinite") {
 			setTimeout(function() {
 				$(elem).remove();
