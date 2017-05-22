@@ -1,6 +1,5 @@
 var StorageHandler = {
 	
-	//TO ADD: list of unsynced forms. Upload before download. (stored in LS)
 	
 	getFacilities: 
 	function () {

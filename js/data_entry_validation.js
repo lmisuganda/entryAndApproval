@@ -96,6 +96,14 @@ function getValueFromDataInputElement (id, currentInputFields) {
 		i++;
 	}
 }
+//returns input value from textbox based on NAME and list of inputs
+function getValueFromDataInputElementByName (name, currentInputFields) {
+	var i = 0;
+	while (i < currentInputFields.length) {
+		if (currentInputFields[i].name == name) return currentInputFields[i].value;
+		i++;
+	}
+}
 
 //converting DHIS2 operators to logical operators
 function getOperator(text) {

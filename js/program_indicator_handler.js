@@ -1,55 +1,42 @@
-// DHIS2 LMIS ORDER/REPORT APP. UiO - MAGNUS LI 2017. 
+// DHIS2 LMIS ORDER/REPORT APP.  
 // PROGRAM INDICATOR CALCULATION HANDLER FOR DATA ENTRY SCREEN. 
 
-//TEMP TESTDATA
-var programIndicators = [
+
+//# ----------------------   DEFINE AUTOCALCULATED INPUT FIELD HERE --------------------- #
+var autoCalcRules = [
 	{
-		id: "de_4",
-		name: "Test",
-		expression: "#{0} + #{1} - #{2} + #{3}",
-	},
-		
-	{
-		id: "de_5",
-		name: "Test",
-		expression: "#{2}*2",
+		name: "Adjusted AMC",
+		description: "Adjusted AMC",
+		expression: "(#{ART & PMTCT consumption} * 60) / (60 - #{Days out of stock})",
 	},
 	{
-		id: "de_6",
-		name: "Test",
-		expression: "#{5}-#{4}",
-	},
-]
-var programIndicators2 = [
-	{
-		id: "de_6",
-		name: "Test",
-		expression: "(#{3} * 60) / (60 - #{5})",
+		name: "Months of stock on hand",
+		description: "Test",
+		expression: "#{Closing balance} / #{Adjusted AMC}",
 	},
 	{
-		id: "de_8",
-		name: "Test",
-		expression: "#{7} / #{6}",
-	},
-	{
-		id: "de_9",
-		name: "Test",
-		expression: "4 * #{6} - #{7}",
+		name: "Quantity required",
+		description: "Test",
+		expression: "4 * #{Adjusted AMC} - #{Closing balance}",
 	},
 ]
-function getIndicatorById(indicators, id) {
+
+
+
+//# ---------------------   AUTOCALCULATION FUNCTIONS ------------------------------------ #
+function getIndicatorByName(indicators, name) {
 	for (var i = 0; i < indicators.length; i++) {
-		if (indicators[i].id == id) return indicators[i];
+		if (indicators[i].name == name) return indicators[i];
 	}
 	return false;
 }
 
 //Calculates and prints value of indicators (based on value of provided input elements)
 function calculateAndPrintIndicators(indicators, inputElements) {
-	indicators = programIndicators2;
+	indicators = autoCalcRules;
 	for (var i = 0; i < inputElements.length; i++) {
 		if ($(inputElements[i]).attr("disabled")) {
-			var indicator = getIndicatorById(indicators, $(inputElements[i]).attr("id"));
+			var indicator = getIndicatorByName(indicators, $(inputElements[i]).attr("name"));
 			if (indicator) {
 				console.log("Updating calucation");
 				var calculation = Math.ceil(calculateExpression(indicator.expression, inputElements));
@@ -64,14 +51,16 @@ function calculateExpression(exp, currentInputFields) {
 	var convExp = "";
 	var i = 0;
 	while (i < exp.length) {
+		
 		if (exp.charAt(i) == "#") {
-			var id = exp.substr(i + 2, exp.substr(i + 2, exp.length).indexOf("}"));
-			var inputValue = getValueFromDataInputElement(id, currentInputFields);
+			var name = exp.substr(i + 2, exp.substr(i + 2, exp.length).indexOf("}"));
+			var inputValue = getValueFromDataInputElementByName(name, currentInputFields);
+			
 			if (inputValue == "") return 0;
 			if (inputValue == 0) inputValue = 1;
 			inputValue = "(" + inputValue + ")";
 			convExp += inputValue;
-			i += id.length + 3;
+			i += name.length + 3;
 		} else { 
 			convExp += exp.charAt(i++);
 		} 
