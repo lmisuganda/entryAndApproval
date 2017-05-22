@@ -25,8 +25,8 @@ var StorageHandler = {
 		}, function (reason) { //on error (no connection etc.) no update on local storage
 			console.log("No data update: " + reason.status);
 			StorageHandler.displayConnectionWarning("Working offline", 8000, "orange");
-			//LS.contains(LS.getFacilityPrefix() + facilityId)
-			if (true) {
+			
+			if (LS.containsFacility(facilityId)) {
 				pageInitFunction();
 			} else {
 				console.log("Error: facility not stored in localStorage. Redirecting");
@@ -42,22 +42,25 @@ var StorageHandler = {
 	
 	downloadFormToLocalStorage:
 	function (facilityId, cycleId, formId, pageInitFunction) {
-		if (this.serverIsAvailable) {
-			//load from DHIS2 server
-			var freshdata;
-			showWaitingScreen(); //located in scripts.js
-			server_interface.setForm(formId).then(function() {
-				freshdata = forms[0];
-				LS.updateForm(facilityId, cycleId, freshdata);
-				console.log("Data updated from DHIS2 server");
-				pageInitFunction();
-				hideWaitingScreen();
-				
-			});
-
-		} else {
-			console.log("No data update");
-			if (LS.contains(LS.getFacilityPrefix() + facilityId))  {
+		
+		//if facility data is not stored in local storage -> navigate to dashboard for init
+		if (!LS.containsFacility(facilityId)) navigateToAddress("dashboard.html#facility=" + facilityId);
+		
+		var freshdata;
+		showWaitingScreen(); //located in scripts.js
+		
+		//fetch data from server
+		server_interface.setForm(formId).then(function() {
+			freshdata = forms[0];
+			LS.updateForm(facilityId, cycleId, freshdata);
+			console.log("Data updated from DHIS2 server");
+			pageInitFunction();
+			hideWaitingScreen();
+			
+		}, function (reason) { //on error (no connection etc.) no update on local storage)
+			StorageHandler.displayConnectionWarning("Working offline", 8000, "orange");
+			console.log("Working offline: no data update");
+			if (LS.containsForm(facilityId, cycleId, formId))  {
 				pageInitFunction();
 			} else {
 				console.log("Error: facility not stored in localStorage. Redirecting");
@@ -65,30 +68,11 @@ var StorageHandler = {
 					navigateToAddress("index.html");
 				});
 			}
-		} //
+			hideWaitingScreen();
+		}); 
 	},
-	
-	serverIsAvailable:
-	function() {
 
-	  // Handle IE and more capable browsers
-	  var xhr = new ( window.ActiveXObject || XMLHttpRequest )( "Microsoft.XMLHTTP" );
-	  var status;
-
-	  // Open new request as a HEAD to the root hostname with a random param to bust the cache
-	  xhr.open( "HEAD", "//" + window.location.hostname + "/?rand=" + Math.floor((1 + Math.random()) * 0x10000), false );
-
-	  // Issue request and handle response
-	  try {
-		xhr.send();
-		return ( xhr.status >= 200 && (xhr.status < 300 || xhr.status === 304) );
-	  } catch (error) {
-		return false;
-	  }
-
-	},
-	
-	waitForServerConnectionAndSync:
+	waitForServerConnectionAndUploadData:
 	function () {
 		var interval = 3000;
 		var i = 0; //temp test
@@ -102,8 +86,6 @@ var StorageHandler = {
 				clearInterval(checkLoop); 
 			}
 		}, interval)
-			
-		
 	},
 	
 	displayConnectionWarning:
@@ -161,7 +143,7 @@ var LS = {
 		var result = [];
 		for (var i = 0; i < localStorage.length; i++) {
 			var key = localStorage.key(i);
-			if (key.startsWith(this.getFacilityPrefix)) { 
+			if (key.startsWith(this.getFacilityPrefix())) { 
 				result.push(localStorage.getObject(key)); 
 			}
 		}
@@ -173,7 +155,7 @@ var LS = {
 		for (var i = 0; i < localStorage.length; i++) {
 			var key = localStorage.key(i);
 			
-			if (key.startsWith(this.getFacilityPrefix + id)) { 
+			if (key.startsWith(this.getFacilityPrefix() + id)) { 
 				return localStorage.getObject(key); 
 				
 			}
@@ -190,7 +172,7 @@ var LS = {
 	
 	updateFacility:
 	function (facility) {
-		var key = this.getFacilityPrefix + getId(facility);
+		var key = this.getFacilityPrefix() + getId(facility);
 		localStorage.setObject(key, facility);
 		
 	},
@@ -199,6 +181,7 @@ var LS = {
 	updateForm:
 	function (facilityId, cycleId, form) {
 		var facility = LS.getFacilityById(facilityId);
+		console.log(cycleId);
 		var cycle = getCycleById(facility, cycleId);
 		var forms = getForms(cycle);
 		var existing = false;
@@ -245,11 +228,27 @@ var LS = {
 	contains: 
 	function(key) {
 		return (key in localStorage);
+	},
+	containsFacility: 
+	function(id) {
+		console.log("ID: " + LS.getFacilityPrefix() + id);
+		return LS.contains(LS.getFacilityPrefix() + id);
+	},
+	containsForm: 
+	function(facilityId, cycleId, formId) {
+		if (!LS.containsFacility(facilityId)) return false;
+		
+		var facility = LS.getFacilityById(facilityId);
+		var cycle = getCycleById(facility, cycleId);
+		var forms = getForms(cycle);
+		for (var i = 0; i < forms.length; i++) {
+			if (getId(forms[i]) == formId) {
+				return true;
+			}
+		}
+		return false;
 	}
-	
-	
 }
-
 
 Storage.prototype.setObject = function(key, value) {
     this.setItem(key, JSON.stringify(value));
