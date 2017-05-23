@@ -217,8 +217,8 @@ function getDataElementInputPair(commodity, dataElement) {
 	if (hasDescription(dataElement)) attachTooltip(section, getDescription(dataElement));
 
 
-	//if data element is auto-calculated
-	if (isCalculated(dataElement)) {
+	//if data element is auto-calculated | isAutoCalculated and rules located in program_indicator_handler.js
+	if (isAutoCalculated(getName(dataElement))) { 
 		$(input).prop('disabled', true);
 		$(input).css('border', "1px dashed grey");
 		$(input).addClass("calculated_input");

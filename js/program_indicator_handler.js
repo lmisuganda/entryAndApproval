@@ -3,6 +3,19 @@
 
 
 //# ----------------------   DEFINE AUTOCALCULATED INPUT FIELD HERE --------------------- #
+
+var calculatedDataElements = [
+	"Adjusted AMC", "Months of stock on hand", "Quantity required",
+]
+function isAutoCalculated (dataElementName) { 
+	var dataElementName = dataElementName.toLowerCase().trim();
+	
+	for (var i = 0; i < calculatedDataElements.length; i++) {
+		if (calculatedDataElements[i].toLowerCase().trim() == dataElementName) return true;
+	}
+	return false;
+}
+
 var autoCalcRules = [
 	{
 		name: "Adjusted AMC",
@@ -25,8 +38,9 @@ var autoCalcRules = [
 
 //# ---------------------   AUTOCALCULATION FUNCTIONS ------------------------------------ #
 function getIndicatorByName(indicators, name) {
+	var name = name.toLowerCase().trim();
 	for (var i = 0; i < indicators.length; i++) {
-		if (indicators[i].name == name) return indicators[i];
+		if (indicators[i].name.toLowerCase().trim() == name) return indicators[i];
 	}
 	return false;
 }
@@ -34,6 +48,7 @@ function getIndicatorByName(indicators, name) {
 //Calculates and prints value of indicators (based on value of provided input elements)
 function calculateAndPrintIndicators(indicators, inputElements) {
 	indicators = autoCalcRules;
+	
 	for (var i = 0; i < inputElements.length; i++) {
 		if ($(inputElements[i]).attr("disabled")) {
 			var indicator = getIndicatorByName(indicators, $(inputElements[i]).attr("name"));

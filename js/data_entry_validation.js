@@ -15,20 +15,19 @@ function validateCommodityInput(commodityId, form) {
 		return ["Missing required values"];
 	}
 	var result = [];
-	if (formId == 1) {
 
-		var j = 0;
-		//run rules from DHIS2
-		for (var i = 0; i < rules.length; i++) {
-			if (checkValidationRule(rules[i], currentInputFields) === true) {
-				console.log("   - TESTVAL OK");
-			} else {
-				console.log("   - TESTVAL FAILED");
-				console.log("     " + rules[i].instruction);
-				result[j++] = rules[i].instruction;
-			}
+	var j = 0;
+	//run rules from DHIS2
+	for (var i = 0; i < rules.length; i++) {
+		if (checkValidationRule(rules[i], currentInputFields) === true) {
+			console.log("   - TESTVAL OK");
+		} else {
+			console.log("   - TESTVAL FAILED");
+			console.log("     " + rules[i].instruction);
+			result[j++] = rules[i].instruction;
 		}
 	}
+	
 	return result;
 }
 
@@ -37,23 +36,24 @@ testruleA = {
 	operator: "less_than",
 	instruction: "Test consumption should be less than opening balance + quantity received.",
 	leftSide: {
-		expression: "#{2}",
+		expression: "#{ART & PMTCT consumption}",
 	},
 	rightSide: {
-		expression: "#{0}+#{1}",
+		expression: "#{Opening balance}+#{Quantity received}",
 	},
 }
 testruleB = {
-	operator: "equal_to",
-	instruction: "Opening balance should be equal to Quantity received",
+	operator: "less_than",
+	instruction: "Days out of stock should be less than 60 days (this is for a two month cycle)",
 	leftSide: {
-		expression: "#{0}",
+		expression: "#{Days out of stock}",
 	},
 	rightSide: {
-		expression: "#{1}",
+		expression: "60",
 	},
 }
-var rules = [];
+
+var rules = [testruleA, testruleB];
 
 //tests validation rule based on DHIS2 rule object, and list of current input fields
 //returns true or error message based on instruction defined in rule.
@@ -61,7 +61,6 @@ function checkValidationRule(rule, currentInputFields) {
 	var left = convertExpression(rule.leftSide.expression, currentInputFields);
 	var right = convertExpression(rule.rightSide.expression, currentInputFields);
 	var operator = getOperator(rule.operator);
-	//console.log("" + left + operator + right);
 	try {
 		var result = eval("" + left + operator + right);
 		if (!result) return rule.instruction;
@@ -79,7 +78,7 @@ function convertExpression(exp, currentInputFields) {
 	while (i < exp.length) {
 		if (exp.charAt(i) == "#") {
 			var id = exp.substr(i + 2, exp.substr(i + 2, exp.length).indexOf("}"));
-			convExp += getValueFromDataInputElement(id, currentInputFields);
+			convExp += getValueFromDataInputElementByName(id, currentInputFields);
 			i += id.length + 3;
 		} else {
 			convExp += exp.charAt(i++);
@@ -98,9 +97,10 @@ function getValueFromDataInputElement (id, currentInputFields) {
 }
 //returns input value from textbox based on NAME and list of inputs
 function getValueFromDataInputElementByName (name, currentInputFields) {
+	var name = name.toLowerCase().trim();
 	var i = 0;
 	while (i < currentInputFields.length) {
-		if (currentInputFields[i].name == name) return currentInputFields[i].value;
+		if (currentInputFields[i].name.toLowerCase().trim() == name) return currentInputFields[i].value;
 		i++;
 	}
 }

@@ -60,7 +60,7 @@ function getNewListElement(section) {
 	$(hiddenListSection).addClass("hidden_list_section");
 	$(hiddenListSection).append(getSectionStartButton(section), getSectionSkipButton(section, listElement), applicableElement);
 	
-	if (isCompleted(section)) { //If sections is already completed. Add styling
+	if (isCompleted(section) || isAllCommoditiesCompletedInSection(section)) { //If sections is already completed. Add styling
 		styleAsCompleted(listElement);
 	}
 	

@@ -280,8 +280,13 @@ function getCountOfCommoditiesInSection(section) {
 function getCountOfCompletedCommoditiesInSection(section) {
 	var commodities = getCommodities(section);
 	var count = 0;
-	while (count < commodities.length && isCompleted(commodities[count])) count++;
+	for (var i = 0; i < commodities.length; i++) {
+		if (isCompleted(commodities[i])) count++;
+	}
 	return count;
+}
+function isAllCommoditiesCompletedInSection(section) {
+	return (getCountOfCommoditiesInSection(section) == getCountOfCompletedCommoditiesInSection(section));
 }
 function getSectionStatus(section) {
 	if (!isCompleted(section) && !dataEntryIsStartedInSection(section)) return 1;
