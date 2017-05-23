@@ -5,16 +5,8 @@
 //# ----------------------   DEFINE AUTOCALCULATED INPUT FIELD HERE --------------------- #
 
 var calculatedDataElements = [
-	"Adjusted AMC", "Months of stock on hand", "Quantity required",
+	"Adjusted AMC", "Months of stock on hand", "Months of stock on-hand", "Quantity required",
 ]
-function isAutoCalculated (dataElementName) { 
-	var dataElementName = dataElementName.toLowerCase().trim();
-	
-	for (var i = 0; i < calculatedDataElements.length; i++) {
-		if (calculatedDataElements[i].toLowerCase().trim() == dataElementName) return true;
-	}
-	return false;
-}
 
 var autoCalcRules = [
 	{
@@ -23,7 +15,7 @@ var autoCalcRules = [
 		expression: "(#{ART & PMTCT consumption} * 60) / (60 - #{Days out of stock})",
 	},
 	{
-		name: "Months of stock on hand",
+		name: "Months of stock on-hand",
 		description: "Test",
 		expression: "#{Closing balance} / #{Adjusted AMC}",
 	},
@@ -37,6 +29,14 @@ var autoCalcRules = [
 
 
 //# ---------------------   AUTOCALCULATION FUNCTIONS ------------------------------------ #
+function isAutoCalculated (dataElementName) { 
+	var dataElementName = dataElementName.toLowerCase().trim();
+	
+	for (var i = 0; i < calculatedDataElements.length; i++) {
+		if (calculatedDataElements[i].toLowerCase().trim() == dataElementName) return true;
+	}
+	return false;
+}
 function getIndicatorByName(indicators, name) {
 	var name = name.toLowerCase().trim();
 	for (var i = 0; i < indicators.length; i++) {

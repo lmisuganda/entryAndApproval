@@ -71,22 +71,7 @@ var StorageHandler = {
 		}); 
 	},
 
-	waitForServerConnectionAndUploadData:
-	function () {
-		var interval = 3000;
-		var i = 0; //temp test
-		StorageHandler.displayConnectionWarningNoConnection();
-		var checkLoop = setInterval(function () {
-			console.log("You are offline and data is waiting for upload. Retrying");
-			i++; //temp test
-			if (i > 1) { //if connection --> for all unsynced forms and sections --> upload --> then remove from queue
-				console.log("Back online! Data uploaded :-)");
-				StorageHandler.displayConnectionWarning("Back online! Data uploaded :-)", 10000, "#449d44");
-				clearInterval(checkLoop); 
-			}
-		}, interval)
-	},
-	
+
 	displayConnectionWarningNoConnection:
 	function () {
 		StorageHandler.displayConnectionWarning("Working offline", "infinite", "orange", "Your computer have no internet connection. You can keep working, and the system will try to reconnect automatically");
@@ -124,25 +109,107 @@ var StorageHandler = {
 		$("#connection_warning").remove();
 	},
 	
-	updateFacility: 
+	updateFacilityOnServer: 
 	function () {
 
 	},
 	
-	updateForm: 
+	updateFormOnServer: 
 	function () {
 
 	},
 	
-	updateSection: 
-	function () {
-
+	updateSectionOnServer: 
+	function (facilityId, form, section) {
+		server_interface.updateSectionOnServer(facilityId, getId(form), section).then(function() {
+				console.log("SUCCESS: Section " + getId(section) + " was updated on server!");
+			}, function(reason) {
+				console.log("ERROR: Section " + getId(section) + " was NOT updated on server");
+				sync_queue.addForm(form);
+				var testform = form;
+				testform.id = "89HM";
+				sync_queue.addForm(testform);
+				sync_queue.pushDataToServerWhenOnline();
+			});
 	},
 	
-	updateCommodity: 
+	updateCommodityOnServer: 
 	function () {
 
 	},
+}
+
+var sync_queue = {
+	
+	active: false,
+	
+	pushDataToServerWhenOnline:
+	function () {
+		if (!sync_queue.active) {
+			sync_queue.active = true;
+			var interval = 9000;
+			var i = 0; //temp test
+			StorageHandler.displayConnectionWarningNoConnection();
+			var checkLoop = setInterval(function () {
+				console.log("You are offline and data is waiting for upload. Retrying");
+				
+				var formsWaitingToSync = sync_queue.getForms();
+				if (sync_queue.updateFormsOnServer(formsWaitingToSync)) { 
+					console.log("Back online! Data uploaded :-)");
+					StorageHandler.displayConnectionWarning("Back online! Data uploaded :-)", 10000, "#449d44");
+					sync_queue.active = false;
+					clearInterval(checkLoop);				
+				}
+			}, interval)
+		}
+	},
+	
+	//recursive function that tries to upload all forms in queue to server. 
+	updateFormsOnServer:
+	function() {
+		var forms = sync_queue.getForms();
+		if (forms.length == 0) return true;
+		
+		if (sync_queue.updateSingleFormOnServer(forms[0])) {
+			sync_queue.removeForm(forms[0]);
+			return sync_queue.updateFormsOnServer();
+		} else {
+			return false;
+		}
+	},
+	
+	updateSingleFormOnServer: //temp imp
+	function(form) {
+		console.log("Form with id " + getId(form) + " updated on server");
+		return true;
+	},
+
+	//#### storage for unsynced forms
+	addForm:
+	function (form) {
+		var key = "lmis_unsyncedForm_" + getId(form);
+		localStorage.setObject(key, form);
+		console.log("Form added to sync queue");
+	},
+	
+	removeForm:
+	function (form) {
+		var key = "lmis_unsyncedForm_" + getId(form);
+		localStorage.removeItem(key);
+	},
+	
+	getForms:
+	function () {
+		var result = [];
+		for (var i = 0; i < localStorage.length; i++) {
+			var key = localStorage.key(i);
+			if (key.startsWith("lmis_unsyncedForm_")) { 
+				result.push(localStorage.getObject(key)); 
+			}
+		}
+		return result;
+	},
+	
 }
 
 var LS = {
@@ -214,32 +281,7 @@ var LS = {
 		
 		LS.updateFacility(facility); //save back to local storage
 	},
-	
-	//#### storage for unsynced forms
-	addToUnsyncedList:
-	function (form) {
-		var key = "lmis_unsyncedForm_" + getId(form);
-		localStorage.setObject(key, form);
-	},
-	
-	removeFromUnsyncedList:
-	function (form) {
-		var key = "lmis_unsyncedForm_" + getId(form);
-		localStorage.removeItem(key);
-	},
-	
-	getUnsyncedForms:
-	function () {
-		var result = [];
-		for (var i = 0; i < localStorage.length; i++) {
-			var key = localStorage.key(i);
-			if (key.startsWith("lmis_unsyncedForm_")) { 
-				result.push(localStorage.getObject(key)); 
-			}
-		}
-		return result;
-	},
-	
+		
 	contains: 
 	function(key) {
 		return (key in localStorage);

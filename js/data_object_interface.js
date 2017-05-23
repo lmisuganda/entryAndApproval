@@ -288,6 +288,11 @@ function getCountOfCompletedCommoditiesInSection(section) {
 function isAllCommoditiesCompletedInSection(section) {
 	return (getCountOfCommoditiesInSection(section) == getCountOfCompletedCommoditiesInSection(section));
 }
+function isSectionCompleted(section) {
+	if (isCompleted(section)) return true;
+	if (isAllCommoditiesCompletedInSection(section)) return true;
+	return false;
+}
 function getSectionStatus(section) {
 	if (!isCompleted(section) && !dataEntryIsStartedInSection(section)) return 1;
 	if (!isCompleted(section)) return 2;

@@ -335,7 +335,8 @@ function tryToCompleteSection() {
 	if (singleCommodityEdit || allCommoditiesCompleted(section)) {
 		setToCompleted(getSectionById(form, sectionId));
 		LS.updateFacility(facility);
-		if (!singleCommodityEdit) navigateToAddress("form_overview.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId);
+		StorageHandler.updateSectionOnServer(facilityId, form, section);
+		//if (!singleCommodityEdit) navigateToAddress("form_overview.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId);
 	} else {
 		showMessageBox("<p>All commodities needs to be validated and completed in order to complete section</p>");
 	}

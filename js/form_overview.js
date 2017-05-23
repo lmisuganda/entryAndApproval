@@ -35,7 +35,7 @@ function generateSectionsList() {
 	for (i = 0; i < sections.length; i++) {
 		var elem = getNewListElement(sections[i]);
 		sectionsListElement.append(elem);
-		if (!isCompleted(sections[i]) && currentSectionNotSet) {
+		if (!isSectionCompleted(sections[i]) && currentSectionNotSet) {
 			setToCurrentSection(elem);
 			currentSectionNotSet = false;
 		}
@@ -60,8 +60,11 @@ function getNewListElement(section) {
 	$(hiddenListSection).addClass("hidden_list_section");
 	$(hiddenListSection).append(getSectionStartButton(section), getSectionSkipButton(section, listElement), applicableElement);
 	
-	if (isCompleted(section) || isAllCommoditiesCompletedInSection(section)) { //If sections is already completed. Add styling
+	if (isSectionCompleted(section)) { //If sections is already completed. Add styling
 		styleAsCompleted(listElement);
+		$(listElement).click(function() {
+			openDataEntryForSection(getId(section));
+		});
 	}
 	
 	var statusElement = getSectionStatusElement(section);
@@ -69,7 +72,9 @@ function getNewListElement(section) {
 
 	if (!isApplicable(section)) {
 		styleAsNotApplicable(listElement);
+		$(listElement).unbind( "click" );
 	}
+	
 	
 	return listElement;
 }
@@ -105,6 +110,7 @@ function toggleNotApplicable(section, listElement) {
 			setToNotApplicable(section)
 			setToCompleted(section);
 			LS.updateFacility(facility);
+			StorageHandler.updateSectionOnServer(facilityId, section);
 			refreshSectionsList();
 			closeMessageBox($("#popup_msgbox_background"));
 		}, function () {
