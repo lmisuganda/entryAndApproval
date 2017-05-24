@@ -334,7 +334,7 @@ function configureCompleteButton() {
 function tryToCompleteSection() {
 	if (singleCommodityEdit || allCommoditiesCompleted(section)) {
 		setToCompleted(getSectionById(form, sectionId));
-		StorageHandler.saveSection(facility, form, section).then(function() {
+		StorageHandler.saveForm(facility, form).then(function() {
 			if (!singleCommodityEdit) navigateToAddress("form_overview.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId);
 		});
 	} else {

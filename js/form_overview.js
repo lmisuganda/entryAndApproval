@@ -109,7 +109,7 @@ function toggleNotApplicable(section, listElement) {
 		showConfirmBox("<p>Are you sure the whole section is not applicable for this facility?</p>", function () {
 			setToNotApplicable(section)
 			setToCompleted(section);
-			StorageHandler.saveSection(facility, form, section);
+			StorageHandler.saveForm(facility, form);
 			refreshSectionsList();
 			closeMessageBox($("#popup_msgbox_background"));
 		}, function () {

@@ -6,12 +6,24 @@ var StorageHandler = {
 		
 	},
 	
+	getFacility:
+	function () {
+		
+	},
+	
+	getForm:
+	function () {
+		
+	},
+	
 	downloadFacilityToLocalStorage:
 	function (facilityId, pageInitFunction) {
+		
+		StorageHandler.pushUnsyncedFormsToServer();
+		
 		//load from DHIS2 server
 		var freshdata;
 		showWaitingScreen(); //located in scripts.js
-		
 		
 		//fetch data from server
 		server_interface.setFacility(facilityId).then(function() {
@@ -111,17 +123,7 @@ var StorageHandler = {
 		$("#connection_warning").remove();
 	},
 	
-	updateFacilityOnServer: 
-	function () {
-
-	},
-	
-	updateFormOnServer: 
-	function () {
-
-	},
-	
-	saveSection: 
+	saveForm: 
 	function (facility, form, section) {
 		LS.updateFacility(facility); //save to localStorage
 		
@@ -137,12 +139,7 @@ var StorageHandler = {
 				StorageHandler.pushUnsyncedFormsToServer();
 			});
 	},
-	
-	updateCommodityOnServer: 
-	function () {
 
-	},
-	
 	pushUnsyncedFormsToServer:
 	function () {
 		sync_queue.startSyncLoop();
@@ -154,7 +151,6 @@ var StorageHandler = {
 var sync_queue = {
 	
 	active: false,
-	formsCount: 0,
 	
 	startSyncLoop:
 	function () {
@@ -175,8 +171,8 @@ var sync_queue = {
 		console.log("You are offline and data is waiting for upload. Retrying");		
 		var formsWaitingToSync = sync_queue.getForms();
 		sync_queue.updateFormsOnServer(formsWaitingToSync).then(function() { 
-			console.log("Back online! Data uploaded :-)");
-			StorageHandler.displayConnectionWarning("Back online! Data uploaded :-)", 10000, "#449d44");
+			console.log("Data uploaded to server");
+			StorageHandler.displayConnectionWarning("Data uploaded to server", 10000, "#449d44");
 			sync_queue.active = false;
 			clearInterval(checkLoop);				
 		}, function (reason) {
@@ -234,9 +230,9 @@ var sync_queue = {
 		return result;
 	},
 	
-	isNotEmpty:
+	isEmpty:
 	function() {
-		return (formsCount > 0);
+		return (sync_queue.getForms().length == 0);
 	},
 	
 	//to provide warning message when user navigates away from page while forms are unsynced
