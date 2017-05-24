@@ -3,7 +3,7 @@ var StorageHandler = {
 	
 	getFacilities: 
 	function () {
-
+		
 	},
 	
 	downloadFacilityToLocalStorage:
@@ -41,6 +41,8 @@ var StorageHandler = {
 	
 	downloadFormToLocalStorage:
 	function (facilityId, cycleId, formId, pageInitFunction) {
+		
+		StorageHandler.pushUnsyncedFormsToServer();
 		
 		//if facility data is not stored in local storage -> navigate to dashboard for init
 		if (!LS.containsFacility(facilityId)) navigateToAddress("dashboard.html#facility=" + facilityId);
@@ -119,17 +121,20 @@ var StorageHandler = {
 
 	},
 	
-	updateSectionOnServer: 
-	function (facilityId, form, section) {
-		server_interface.updateSectionOnServer(facilityId, getId(form), section).then(function() {
-				console.log("SUCCESS: Section " + getId(section) + " was updated on server!");
+	saveSection: 
+	function (facility, form, section) {
+		LS.updateFacility(facility); //save to localStorage
+		
+		//save to server
+		showWaitingScreen();
+		return server_interface.updateFormOnServer(getId(facility), form).then(function() {
+				console.log("SUCCESS: Form " + getId(form) + " was updated on server!");
+				
 			}, function(reason) {
-				console.log("ERROR: Section " + getId(section) + " was NOT updated on server");
+				console.log("ERROR: Form " + getId(form) + " was NOT updated on server");
+				form.facilityId = getId(facility);
 				sync_queue.addForm(form);
-				var testform = form;
-				testform.id = "89HM";
-				sync_queue.addForm(testform);
-				sync_queue.pushDataToServerWhenOnline();
+				StorageHandler.pushUnsyncedFormsToServer();
 			});
 	},
 	
@@ -137,51 +142,68 @@ var StorageHandler = {
 	function () {
 
 	},
+	
+	pushUnsyncedFormsToServer:
+	function () {
+		sync_queue.startSyncLoop();
+	},
 }
+
+// ###############  OFFLINE SYNC QUEUE  ###############
 
 var sync_queue = {
 	
 	active: false,
+	formsCount: 0,
 	
-	pushDataToServerWhenOnline:
+	startSyncLoop:
 	function () {
 		if (!sync_queue.active) {
 			sync_queue.active = true;
+			
 			var interval = 9000;
-			var i = 0; //temp test
-			StorageHandler.displayConnectionWarningNoConnection();
-			var checkLoop = setInterval(function () {
-				console.log("You are offline and data is waiting for upload. Retrying");
-				
-				var formsWaitingToSync = sync_queue.getForms();
-				if (sync_queue.updateFormsOnServer(formsWaitingToSync)) { 
-					console.log("Back online! Data uploaded :-)");
-					StorageHandler.displayConnectionWarning("Back online! Data uploaded :-)", 10000, "#449d44");
-					sync_queue.active = false;
-					clearInterval(checkLoop);				
-				}
-			}, interval)
+			var checkLoop = setInterval(function() { //looping sync attempts with given interval
+				sync_queue.attemptSync(checkLoop);
+			}, interval);
+			
+			sync_queue.attemptSync(checkLoop); //try one sync before loop. 
 		}
+	},
+	
+	attemptSync:
+	function(checkLoop) {
+		console.log("You are offline and data is waiting for upload. Retrying");		
+		var formsWaitingToSync = sync_queue.getForms();
+		sync_queue.updateFormsOnServer(formsWaitingToSync).then(function() { 
+			console.log("Back online! Data uploaded :-)");
+			StorageHandler.displayConnectionWarning("Back online! Data uploaded :-)", 10000, "#449d44");
+			sync_queue.active = false;
+			clearInterval(checkLoop);				
+		}, function (reason) {
+			//sync_queue.showUnsyncedDataWarningOnUnload();
+			StorageHandler.displayConnectionWarningNoConnection();
+		});
 	},
 	
 	//recursive function that tries to upload all forms in queue to server. 
 	updateFormsOnServer:
 	function() {
 		var forms = sync_queue.getForms();
-		if (forms.length == 0) return true;
-		
-		if (sync_queue.updateSingleFormOnServer(forms[0])) {
+		if (forms.length == 0) { 
+			//return "fake" successful promise when no forms to update as basecase for recusive function
+			return successPromise = new Promise((resolve, reject) => {
+				resolve("Success!"); 
+			});
+		}
+		return sync_queue.updateSingleFormOnServer(forms[0]).then(function() {
 			sync_queue.removeForm(forms[0]);
 			return sync_queue.updateFormsOnServer();
-		} else {
-			return false;
-		}
+		});
 	},
 	
-	updateSingleFormOnServer: //temp imp
+	updateSingleFormOnServer:
 	function(form) {
-		console.log("Form with id " + getId(form) + " updated on server");
-		return true;
+		return server_interface.updateFormOnServer(form.facilityId, form);
 	},
 
 	//#### storage for unsynced forms
@@ -190,12 +212,14 @@ var sync_queue = {
 		var key = "lmis_unsyncedForm_" + getId(form);
 		localStorage.setObject(key, form);
 		console.log("Form added to sync queue");
+		sync_queue.formsCount++;
 	},
 	
 	removeForm:
 	function (form) {
 		var key = "lmis_unsyncedForm_" + getId(form);
 		localStorage.removeItem(key);
+		sync_queue.formsCount--;
 	},
 	
 	getForms:
@@ -210,7 +234,22 @@ var sync_queue = {
 		return result;
 	},
 	
+	isNotEmpty:
+	function() {
+		return (formsCount > 0);
+	},
+	
+	//to provide warning message when user navigates away from page while forms are unsynced
+	showUnsyncedDataWarningOnUnload:
+	function() {
+		window.onbeforeunload = function() {
+			if (sync_queue.active) return "You have unsynced data. Are you sure you want to leave page?";
+		};
+	},
+	
 }
+
+// #####   LOCAL STORAGE ABSTRACTION BARRIERS   ######
 
 var LS = {
 
