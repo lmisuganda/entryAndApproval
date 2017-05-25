@@ -180,21 +180,26 @@ body {
 	top: 70px;
 	left: 0;
 	width: 100vw;
-	height: 90vh;
+	height: 100%;
 	background-color: white;
 	opacity: 1;
     background-repeat: no-repeat;
     background-position: center;
+	text-align: center;
+}
+#waiting_screen p {
+	display: inline-block;
+	margin: 0 auto 0 auto;
 }
 
-.loader,
-.loader:after {
+#waiting_screen .loader,
+#waiting_screen .loader:after {
   border-radius: 50%;
   width: 10em;
   height: 10em;
 }
-.loader {
-  margin: 30vh auto;
+#waiting_screen .loader {
+  margin: 30vh auto 30px auto;
   font-size: 10px;
   position: relative;
   text-indent: -9999em;

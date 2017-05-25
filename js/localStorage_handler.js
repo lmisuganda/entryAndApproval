@@ -4,7 +4,12 @@ var StorageHandler = {
 	
 	getFacilities: 
 	function () {
-		
+		return LS.getFacilities();
+	},
+	
+	downloadAvailableFacilities:
+	function() {
+		//for each facility provided from server: LS.mergeFacility(facilities[n])
 	},
 	
 	getFacility: 
@@ -15,27 +20,34 @@ var StorageHandler = {
 	downloadFacilityWithId:
 	function(facilityId, pageInitFunction) {
 		showWaitingScreen();
-		if (StorageHandler.hasUnsyncedForms()) { //if local forms are unsynced -> upload data
-			StorageHandler.pushUnsyncedFormsToServer().then(function() {
-				pageInitFunction();
-				hideWaitingScreen();
-			}, function() {
-				pageInitFunction();
-				hideWaitingScreen();				
+		
+		var localDataIsOutdated = this.localDataIsOutdated(this.getFacility(facilityId));
+		var whenDone = function() { //function to run when data is processed
+			pageInitFunction();
+			hideWaitingScreen();
+		};
+		
+		if (StorageHandler.hasUnsyncedForms()) { //if local forms are unsynced -> upload data before download
+			StorageHandler.pushUnsyncedFormsToServer().done(function() {
+				if (localDataIsOutdated) {
+					StorageHandler.downloadFacilityToLocalStorage(facilityId).always(function() {
+						whenDone();
+					});
+				} else {
+					whenDone();
+				}
+			}).fail(function() {
+				whenDone();
 			});
-		} else { //if not -> download from server
-			console.log(this.localDataIsOutdated(this.getFacility(facilityId)))
-			if (this.localDataIsOutdated(this.getFacility(facilityId))) {
-				StorageHandler.downloadFacilityToLocalStorage(facilityId).then(function() {
-					pageInitFunction();
-					hideWaitingScreen();
-				}, function () {
-					pageInitFunction();
-					hideWaitingScreen();				
+			
+		} else { 
+
+			if (localDataIsOutdated) {
+				StorageHandler.downloadFacilityToLocalStorage(facilityId).always(function() {
+					whenDone();
 				});
 			} else {
-				pageInitFunction();
-				hideWaitingScreen();				
+				whenDone();				
 			}
 		}
 	},
@@ -63,26 +75,35 @@ var StorageHandler = {
 	downloadFormWithId:
 	function (facilityId, cycleId, formId, pageInitFunction) {
 		showWaitingScreen();
+		
+		var localDataIsOutdated = this.localDataIsOutdated(LS.getFormById(facilityId, cycleId, formId));
+		var whenDone = function() { //function to run when data is processed
+			pageInitFunction();
+			hideWaitingScreen();
+		};
+		
 		if (StorageHandler.hasUnsyncedForms()) { //if local forms are unsynced -> upload data
-			StorageHandler.pushUnsyncedFormsToServer().then(function() {
-				pageInitFunction();
-				hideWaitingScreen();
-			}, function() {
-				pageInitFunction();
-				hideWaitingScreen();				
+			
+			StorageHandler.pushUnsyncedFormsToServer().done(function() {
+				if (localDataIsOutdated) {
+					StorageHandler.downloadFormToLocalStorage(facilityId, cycleId, formId, pageInitFunction).always(function() {
+						whenDone();
+					});
+				} else {
+					whenDone();
+				}
+			}).fail(function() {
+				whenDone();				
 			});
+		
 		} else { //if not -> download from server
-			if (this.localDataIsOutdated(LS.getFormById(facilityId, cycleId, formId))) {
-				StorageHandler.downloadFormToLocalStorage(facilityId, cycleId, formId, pageInitFunction).then(function() {
-					pageInitFunction();
-					hideWaitingScreen();
-				}, function () {
-					pageInitFunction();
-					hideWaitingScreen();				
+			
+			if (localDataIsOutdated) {
+				StorageHandler.downloadFormToLocalStorage(facilityId, cycleId, formId, pageInitFunction).always(function() {
+					whenDone();
 				});
 			} else {
-				pageInitFunction();
-				setTimeout(hideWaitingScreen, 10);				
+				whenDone();			
 			}
 		}
 	},
@@ -356,6 +377,34 @@ var LS = {
 		var key = this.getFacilityPrefix() + getId(facility);
 		localStorage.setObject(key, facility);
 		
+	},
+	
+	//merges given facility with facility in LS with same id (adds non-existing cycles and forms to new facility before saving to LS)
+	mergeFacility:
+	function (newFacility) {
+		if (!LS.containsFacility(getId(newFacility))) {
+			LS.updateFacility(newFacility);
+			return;
+		} 
+		
+		var existingFacility = LS.getFacilityById(getId(facility));
+		
+		var cycles = getCycles(existingFacility);
+		cycles.forEach(function(cycle) {
+			if (!facilityContainsCycleWithId(newFacility, getId(cycle))) {
+				insertCycle(newFacility, cycle);
+			} else {
+			
+				var forms = getForms(cycle);
+				forms.forEach(function(form) {
+					if (!facilityContainsFormWithId(newFacility, getId(cycle), getId(form))) {
+						insertForm(newFacility, getId(cycle), form);
+					}
+				});
+			}
+		});
+		
+		LS.updateFacility(newFacility);
 	},
 	
 	//#### storage for local forms

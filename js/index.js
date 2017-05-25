@@ -25,7 +25,7 @@ function getListElement(facility) {
 	$(aElement).append(getName(facility));
 	$(aElement).attr("href", "dashboard.html#facility=" + getId(facility));
 	$(liElement).append(aElement);
-	appendStatusElements(liElement, facility);
+	//appendStatusElements(liElement, facility);
 	return liElement;
 }
 

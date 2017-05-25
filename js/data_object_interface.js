@@ -130,6 +130,29 @@ function getFormStatusCounts(facility) {
 	return result;
 }
 
+function facilityContainsFormWithId(facility, cycleId, formId) {
+	var cycle = getCycleById(facility, cycleId);
+	var forms = getForms(cycle);
+	for (var i = 0; i < forms.length; i++) {
+		if (getId(forms[i]) == formId) return true;
+	}
+	return false;
+}
+function insertForm(facility, cycleId, form) {
+	var cycle = getCycleById(facility, cycleId);
+	cycle.forms.push(form);
+}
+function facilityContainsCycleWithId(facility, cycleId) {
+	var cycles = getCycles(facility);
+	for (var i = 0; i < cycles.length; i++) {
+		if (getId(cycles[i]) == cycleId) return true;
+	}
+	return false;
+}
+function insertCycle(facility, cycle) {
+	facility.cycles.push(cycle);
+}
+
 // ######### Cycles
 function getForms(cycle) {
 	return cycle.forms;
