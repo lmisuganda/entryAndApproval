@@ -3,11 +3,11 @@ var cycleId = getParameterFromURLByName("cycle");
 var formId = getParameterFromURLByName("form");
 if (isUndefinedOrNull(facilityId, cycleId, formId)) navigateToAddress("index.html");
 
-StorageHandler.downloadFormToLocalStorage(facilityId, cycleId, formId, initializeFormOverviewContent);
+StorageHandler.downloadFormWithId(facilityId, cycleId, formId, initializeFormOverviewContent);
 
 function initializeFormOverviewContent() {
 	
-	facility = LS.getFacilityById(facilityId);
+	facility = StorageHandler.getFacility(facilityId);
 	cycle = getCycleById(facility, cycleId);
 	form = getFormById(cycle, formId);
 	if (isUndefinedOrNull(facility, cycle, form)) navigateToAddress("index.html");

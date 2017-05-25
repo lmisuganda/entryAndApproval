@@ -1,90 +1,136 @@
 var StorageHandler = {
 	
+	dataDownloadInterval: 20, //interval in minutes
 	
 	getFacilities: 
 	function () {
 		
 	},
 	
-	getFacility:
-	function () {
-		
+	getFacility: 
+	function(facilityId) {
+		return LS.getFacilityById(facilityId);
 	},
 	
-	getForm:
-	function () {
-		
+	downloadFacilityWithId:
+	function(facilityId, pageInitFunction) {
+		showWaitingScreen();
+		if (StorageHandler.hasUnsyncedForms()) { //if local forms are unsynced -> upload data
+			StorageHandler.pushUnsyncedFormsToServer().then(function() {
+				pageInitFunction();
+				hideWaitingScreen();
+			}, function() {
+				pageInitFunction();
+				hideWaitingScreen();				
+			});
+		} else { //if not -> download from server
+			console.log(this.localDataIsOutdated(this.getFacility(facilityId)))
+			if (this.localDataIsOutdated(this.getFacility(facilityId))) {
+				StorageHandler.downloadFacilityToLocalStorage(facilityId).then(function() {
+					pageInitFunction();
+					hideWaitingScreen();
+				}, function () {
+					pageInitFunction();
+					hideWaitingScreen();				
+				});
+			} else {
+				pageInitFunction();
+				hideWaitingScreen();				
+			}
+		}
 	},
-	
+		
 	downloadFacilityToLocalStorage:
-	function (facilityId, pageInitFunction) {
-		
-		StorageHandler.pushUnsyncedFormsToServer();
-		
-		//load from DHIS2 server
+	function (facilityId) {
 		var freshdata;
-		showWaitingScreen(); //located in scripts.js
-		
 		//fetch data from server
-		server_interface.setFacility(facilityId).then(function() {
+		return server_interface.setFacility(facilityId).then(function() {
 			freshdata = facility;
+			StorageHandler.setLastDownloadTime(freshdata);
 			LS.updateFacility(freshdata);
 			console.log("Data updated from DHIS2 server");
-			pageInitFunction();
-			hideWaitingScreen();
-			
-		}, function (reason) { //on error (no connection etc.) no update on local storage
-			console.log("No data update: " + reason.status);
-			StorageHandler.displayConnectionWarning("Working offline", "infinite", "orange", "Your computer have no internet connection. You can keep working, and the system will try to reconnect automatically");
-			
-			if (LS.containsFacility(facilityId)) {
+			return new Promise((resolve, reject) => { //return success promise
+				resolve("Success!");
+			});
+		}, function (reason) { //on error (no connection etc.) no update on local storage)
+			console.log("Working offline: no data update");
+			return new Promise((resolve, reject) => { //return success promise
+				reject("Error!");
+			});
+		}); 
+	},
+	
+	downloadFormWithId:
+	function (facilityId, cycleId, formId, pageInitFunction) {
+		showWaitingScreen();
+		if (StorageHandler.hasUnsyncedForms()) { //if local forms are unsynced -> upload data
+			StorageHandler.pushUnsyncedFormsToServer().then(function() {
 				pageInitFunction();
-			} else {
-				console.log("Error: facility not stored in localStorage. Redirecting");
-				showMessageBox("<p>Facility is not available offline. Get internet access to download facility information</p>", function() {
-					navigateToAddress("index.html");
+				hideWaitingScreen();
+			}, function() {
+				pageInitFunction();
+				hideWaitingScreen();				
+			});
+		} else { //if not -> download from server
+			if (this.localDataIsOutdated(LS.getFormById(facilityId, cycleId, formId))) {
+				StorageHandler.downloadFormToLocalStorage(facilityId, cycleId, formId, pageInitFunction).then(function() {
+					pageInitFunction();
+					hideWaitingScreen();
+				}, function () {
+					pageInitFunction();
+					hideWaitingScreen();				
 				});
+			} else {
+				pageInitFunction();
+				setTimeout(hideWaitingScreen, 10);				
 			}
-			hideWaitingScreen();
-			
-		});
-
+		}
 	},
 	
 	downloadFormToLocalStorage:
 	function (facilityId, cycleId, formId, pageInitFunction) {
 		
-		StorageHandler.pushUnsyncedFormsToServer();
-		
-		//if facility data is not stored in local storage -> navigate to dashboard for init
+		//TEMP if facility data is not stored in local storage -> navigate to dashboard for init
 		if (!LS.containsFacility(facilityId)) navigateToAddress("dashboard.html#facility=" + facilityId);
 		
 		var freshdata;
-		showWaitingScreen(); //located in scripts.js
-		
 		//fetch data from server
-		server_interface.setForm(formId).then(function() {
+		return server_interface.setForm(formId).then(function() {
 			freshdata = forms[0];
+			StorageHandler.setLastDownloadTime(freshdata);
 			LS.updateForm(facilityId, cycleId, freshdata);
 			console.log("Data updated from DHIS2 server");
-			pageInitFunction();
-			hideWaitingScreen();
-			
+			return new Promise((resolve, reject) => { //return success promise
+				resolve("Success!");
+			});
 		}, function (reason) { //on error (no connection etc.) no update on local storage)
-			StorageHandler.displayConnectionWarningNoConnection();
 			console.log("Working offline: no data update");
-			if (LS.containsForm(facilityId, cycleId, formId))  {
-				pageInitFunction();
-			} else {
-				console.log("Error: facility not stored in localStorage. Redirecting");
-				showMessageBox("<p>Facility is not available offline. Get internet access to download facility information</p>", function() {
-					navigateToAddress("index.html");
-				});
-			}
-			hideWaitingScreen();
+			return new Promise((resolve, reject) => { //return success promise
+				reject("Error!");
+			});
 		}); 
 	},
-
+	
+	setLastDownloadTime:
+	function(object) {
+		var currentTime = new Date().getTime();
+		object.lastDownloadTime = currentTime / 1000 / 60; //last download time in minutes
+	},
+	localDataIsOutdated:
+	function(object) { 
+		if (this.forceDownloadMode()) return true;
+		if (isUndefinedOrNull(object) || isUndefinedOrNull(object.lastDownloadTime)) return true;
+		var previousDownload = object.lastDownloadTime;
+		var currentTime = new Date().getTime() / 1000 / 60;
+		if (currentTime > (previousDownload + this.dataDownloadInterval)) return true;
+		return false;
+	},
+	forceDownloadMode() {
+		return URLContainsParameter("forceDownload");
+	},
+	avoidDownloadMode() {
+		return URLContainsParameter("avoidDownload");
+	},
 
 	displayConnectionWarningNoConnection:
 	function () {
@@ -93,7 +139,7 @@ var StorageHandler = {
 	
 	displayConnectionWarning:
 	function (text, timeout, color, infoText) {
-		$("#connection_warning").remove();
+		
 	
 		var elem = document.createElement("P");
 		$(elem).attr("id", "connection_warning"); //styles located in style.css
@@ -109,8 +155,16 @@ var StorageHandler = {
 		}
 		
 		$(elem).css("background-color", color);
-		$("body").append(elem);
-		$(elem).slideDown(200);
+
+		if ($("#connection_warning").length) {
+			$("#connection_warning").remove();
+			$("body").append(elem);
+			$("#connection_warning").show();
+		} else {
+			$("body").append(elem);
+			$(elem).slideDown(200);
+		}
+		
 		if (timeout != "infinite") {
 			setTimeout(function() {
 				$(elem).remove();
@@ -136,13 +190,17 @@ var StorageHandler = {
 				console.log("ERROR: Form " + getId(form) + " was NOT updated on server");
 				form.facilityId = getId(facility);
 				sync_queue.addForm(form);
-				StorageHandler.pushUnsyncedFormsToServer();
+				//StorageHandler.pushUnsyncedFormsToServer();
 			});
 	},
 
 	pushUnsyncedFormsToServer:
 	function () {
-		sync_queue.startSyncLoop();
+		return sync_queue.startSyncLoop();
+	},
+	hasUnsyncedForms:
+	function () {
+		return !sync_queue.isEmpty()
 	},
 }
 
@@ -162,7 +220,7 @@ var sync_queue = {
 				sync_queue.attemptSync(checkLoop);
 			}, interval);
 			
-			sync_queue.attemptSync(checkLoop); //try one sync before loop. 
+			return sync_queue.attemptSync(checkLoop); //try one sync before loop. 
 		}
 	},
 	
@@ -170,14 +228,20 @@ var sync_queue = {
 	function(checkLoop) {
 		console.log("You are offline and data is waiting for upload. Retrying");		
 		var formsWaitingToSync = sync_queue.getForms();
-		sync_queue.updateFormsOnServer(formsWaitingToSync).then(function() { 
+		return sync_queue.updateFormsOnServer(formsWaitingToSync).then(function() { 
 			console.log("Data uploaded to server");
 			StorageHandler.displayConnectionWarning("Data uploaded to server", 10000, "#449d44");
 			sync_queue.active = false;
-			clearInterval(checkLoop);				
+			clearInterval(checkLoop);
+			return new Promise((resolve, reject) => { //return success promise
+				resolve("Success!"); 
+			});
 		}, function (reason) {
 			//sync_queue.showUnsyncedDataWarningOnUnload();
 			StorageHandler.displayConnectionWarningNoConnection();
+			return new Promise((resolve, reject) => {//return fail promise
+				reject("Fail!"); 
+			});
 		});
 	},
 	
@@ -339,7 +403,15 @@ var LS = {
 			}
 		}
 		return false;
-	}
+	},
+	getFormById:
+	function (facilityId, cycleId, formId){
+		var facility = LS.getFacilityById(facilityId);
+		if (isUndefinedOrNull(facility)) return null;
+		var cycle = getCycleById(facility, cycleId);
+		if (isUndefinedOrNull(cycle)) return null;
+		return getFormById(cycle, formId);
+	},
 }
 
 Storage.prototype.setObject = function(key, value) {

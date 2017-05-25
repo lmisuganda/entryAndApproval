@@ -1,6 +1,6 @@
 var facilityId = getParameterFromURLByName("facility");
 if (isUndefinedOrNull(facilityId)) navigateToAddress("index.html");
-StorageHandler.downloadFacilityToLocalStorage(facilityId, initializeDashboardContent);
+StorageHandler.downloadFacilityWithId(facilityId, initializeDashboardContent);
 
 function initializeDashboardContent() {
 

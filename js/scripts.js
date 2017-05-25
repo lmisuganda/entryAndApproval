@@ -53,6 +53,10 @@ function getParameterFromURLByName(name) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
+function URLContainsParameter(param) {
+	return !isUndefinedOrNull(getParameterFromURLByName(param));
+}
+
 function getFileNameFromURL() {
 	var url = window.location.pathname.split('/');
 	return (url[url.length-1]);
@@ -184,8 +188,11 @@ function addKeyboardEnterClickEvent(func) {
 function showWaitingScreen() {
 	var waitingElement = document.createElement("DIV");
 	$(waitingElement).attr("id", "waiting_screen");
+	$(waitingElement).append('<div class="loader">Loading data...</div>');
 	$("body").append(waitingElement);
 }
 function hideWaitingScreen() {
-	$("#waiting_screen").remove();	
+	setTimeout(function() {
+		$("#waiting_screen").remove();
+	}, 10);
 }
