@@ -421,7 +421,9 @@ function validateCommodityClickHandler(button) {
 
 			//WHEN SINGLE EDIT MODE --> NAVIGATE BACK TO SUMMARY
 			if (singleCommodityEdit) {
-				navigateToAddress("form_summary.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId + "#section=" + sectionId);
+				StorageHandler.saveForm(facility, form).then(function() {
+					navigateToAddress("form_summary.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId + "#section=" + sectionId);
+				});
 			}
 			styleCompletedCommodity(currentElement); //set styles
 

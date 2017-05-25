@@ -1,4 +1,4 @@
-// DHIS2 LMIS ORDER/REPORT APP. UiO - MAGNUS LI 2017. 
+// DHIS2 LMIS ORDER/REPORT APP. 
 // FORM SUMMARY PAGE HANDLER
 
 //get ids from URL
@@ -8,36 +8,40 @@ var formId = getParameterFromURLByName("form");
 var sectionId = getParameterFromURLByName("section");
 if (isUndefinedOrNull(facilityId, cycleId, formId)) navigateToAddress("index.html"); //check if URL parameters OK
 
-//Get facility from localStorage, and form from facility object
-var facility = LS.getFacilityById(facilityId);
-var cycle = getCycleById(facility, cycleId);
-var form = getFormById(cycle, formId);
-if (isUndefinedOrNull(form, cycle, facility)) navigateToAddress("index.html");
+StorageHandler.downloadFormWithId(facilityId, cycleId, formId, initializeFormSummaryContent);
 
-var sectionElements = [];
-var currentSection = 0;
+function initializeFormSummaryContent() {
 
-generateMainMenu(); //located in scripts.js
-generateFormSummaryHeader();
-generateSectionsList();
+	facility = StorageHandler.getFacility(facilityId);
+	cycle = getCycleById(facility, cycleId);
+	form = getFormById(cycle, formId);
+	if (isUndefinedOrNull(form, cycle, facility)) navigateToAddress("index.html");
 
-//expandOrMinimizeListElement(sectionElements[sectionId]);  //expand element defined in url
+	sectionElements = [];
+	currentSection = 0;
 
-// init mode based on completed, approved and approval rights
-if (!isCompleted(form)) {
-	initSubmissionMode(); //In submission mode, edit is allowed, and complete button is visible
-} else if (isCompleted(form) && !isApproved(form) && allowedApproval()) {
-	initApprovalMode(); //In approval mode, edit is allowed, and approval button is visible
-} 
+	generateMainMenu(); //located in scripts.js
+	generateFormSummaryHeader();
+	generateSectionsList();
 
-//if user just completed the form, and have approval rights: prompt for approval. 
-var promptForInstantApproval = getParameterFromURLByName("promptForInstantApproval");
-if (promptForInstantApproval && !isApproved(form)) {
-	showConfirmBox("<p>Do you also want to <b>approve</b> the form?</p>", function() {
-			setToApproved(form);
-			LS.updateFacility(facility);
-			location.reload();
-		});
+	//expandOrMinimizeListElement(sectionElements[sectionId]);  //expand element defined in url
+
+	// init mode based on completed, approved and approval rights
+	if (!isCompleted(form)) {
+		initSubmissionMode(); //In submission mode, edit is allowed, and complete button is visible
+	} else if (isCompleted(form) && !isApproved(form) && allowedApproval()) {
+		initApprovalMode(); //In approval mode, edit is allowed, and approval button is visible
+	} 
+
+	//if user just completed the form, and have approval rights: prompt for approval. 
+	var promptForInstantApproval = getParameterFromURLByName("promptForInstantApproval");
+	if (promptForInstantApproval && !isApproved(form)) {
+		showConfirmBox("<p>Do you also want to <b>approve</b> the form?</p>", function() {
+				setToApproved(form);
+				LS.updateFacility(facility);
+				location.reload();
+			});
+	}
 }
 
 // set header + status-text and color
