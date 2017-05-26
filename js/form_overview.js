@@ -34,11 +34,14 @@ function generateSectionsList() {
 	
 	for (i = 0; i < sections.length; i++) {
 		var elem = getNewListElement(sections[i]);
-		sectionsListElement.append(elem);
-		if (!isSectionCompleted(sections[i]) && currentSectionNotSet) {
+		
+		if (allCommoditiesCompleted(sections[i])) setToCompleted(sections[i]);
+		
+	if ((!isSectionCompleted(sections[i]) && isApplicable(sections[i])) && currentSectionNotSet) {
 			setToCurrentSection(elem);
 			currentSectionNotSet = false;
 		}
+		sectionsListElement.append(elem);
 	}
 	var elem = getLastListElement("Look over and complete form");
 	sectionsListElement.append(elem);
@@ -72,6 +75,7 @@ function getNewListElement(section) {
 
 	if (!isApplicable(section)) {
 		styleAsNotApplicable(listElement);
+		styleAsCompleted(listElement);
 		$(listElement).unbind( "click" );
 	}
 	
@@ -118,7 +122,7 @@ function toggleNotApplicable(section, listElement) {
 		});
 		
 	} else {
-		setToApplicable(section)
+		setToApplicable(section);
 		setToUncompleted(section);
 		LS.updateFacility(facility);
 		refreshSectionsList();
