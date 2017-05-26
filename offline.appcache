@@ -8,22 +8,23 @@ form_overview.html
 data_entry.html
 form_summary.html
 
-js/index.js
-js/dashboard.js
-js/form_overview.js
-js/data_entry.js
-js/data_entry_validation.js
-js/auto_calculation_handler.js
-js/form_summary.js
+js/pagehandlers/index.js
+js/pagehandlers/dashboard.js
+js/pagehandlers/form_overview.js
+js/pagehandlers/form_summary.js
+js/pagehandlers/dataEntry/data_entry.js
+js/pagehandlers/dataEntry/data_entry_validation.js
+js/pagehandlers/dataEntry/data_entry_auto_calculation.js
 
 js/help_aside_handler.js
-js/scripts.js
-js/storage_handler.js
-js/data_object_interface.js
-js/data2.js
+js/generic_scripts.js
 js/jquery-3.1.0.js
 
-serverInterface/RetrieveEvents.js
+js/storagehandlers/storage_handler.js
+js/storagehandlers/data_object_interface.js
+js/storagehandlers/RetrieveEvents.js
+
+js/testdata/data2.js
 
 style/app_icon.png
 style/arrow-icon.png

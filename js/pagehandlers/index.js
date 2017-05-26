@@ -1,6 +1,6 @@
 if (true) {
 	//load from DHIS2 server
-	LS.updateAllFacilities(serverInterface.getAllFacilities());
+	StorageHandler.saveFacilityLocalOnly(offlineTestData.getFacility());
 	console.log("Working online");
 } else {
 	console.log("Working offline");
