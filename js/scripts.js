@@ -185,11 +185,12 @@ function addKeyboardEnterClickEvent(func) {
     });
 }
 
-function showWaitingScreen() {
+function showWaitingScreen(message) {
+	if (isUndefinedOrNull(message)) var message = "Loading data from server. Please wait...";
 	var waitingElement = document.createElement("DIV");
 	$(waitingElement).attr("id", "waiting_screen");
 	$(waitingElement).append('<div class="loader">Loading data...</div>');
-	$(waitingElement).append('<p>Loading data from server. Please wait...</p>');
+	$(waitingElement).append("<p>" + message + "</p>");
 	$("body").append(waitingElement);
 	//$("main").not("#main_header").hide();
 }

@@ -109,7 +109,7 @@ function toggleNotApplicable(section, listElement) {
 		showConfirmBox("<p>Are you sure the whole section is not applicable for this facility?</p>", function () {
 			setToNotApplicable(section)
 			setToCompleted(section);
-			StorageHandler.saveForm(facility, form);
+			StorageHandler.saveFacilityLocalOnly(facility);
 			refreshSectionsList();
 			closeMessageBox($("#popup_msgbox_background"));
 		}, function () {
@@ -183,7 +183,7 @@ $(document).keypress(function(e) {
 	if(e.which == 13 && !msgBoxOpen) { //13 = enterbutton
 		e.preventDefault();
 		if (allSectionsIsCompleted(form)) {
-			openFormSummary();
+			saveAndOpenFormSummary();
 		} else {
 			var sectionId = $(".current_section").attr("id");
 			openDataEntryForSection(sectionId);
@@ -194,8 +194,10 @@ $(document).keypress(function(e) {
 function openDataEntryForSection(sectionId) {
 	navigateToAddress("data_entry.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId + "#section=" + sectionId);
 }
-function openFormSummary() {
-	navigateToAddress("form_summary.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId + "#section=0");
+function saveAndOpenFormSummary() {
+	StorageHandler.saveForm(facility, form).then(function() {
+		navigateToAddress("form_summary.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId + "#section=0");
+	});
 }
 
 
@@ -207,7 +209,9 @@ function getLastListElement(name) {
 	
 	var startEntryButton = document.createElement("A");
 	$(startEntryButton).text("Click here to look over and complete form");
-	$(startEntryButton).attr("href", "form_summary.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId + "#section=0");
+	$(startEntryButton).click(function() {
+		saveAndOpenFormSummary();
+	});
 	
 	$(hiddenListSection).append(startEntryButton);
 	$(listElement).attr("id", "show_summary_button");

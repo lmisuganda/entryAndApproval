@@ -203,7 +203,7 @@ var StorageHandler = {
 		LS.updateFacility(facility); //save to localStorage
 		
 		//save to server
-		showWaitingScreen();
+		showWaitingScreen("Saving data to server. Please wait...");
 		return server_interface.updateFormOnServer(getId(facility), form).then(function() {
 				console.log("SUCCESS: Form " + getId(form) + " was updated on server!");
 				
@@ -213,6 +213,11 @@ var StorageHandler = {
 				sync_queue.addForm(form);
 				//StorageHandler.pushUnsyncedFormsToServer();
 			});
+	},
+	
+	saveFacilityLocalOnly:
+	function(facility) {
+		LS.updateFacility(facility);
 	},
 
 	pushUnsyncedFormsToServer:
