@@ -79,7 +79,6 @@ function getListElement(cycle, form) {
 	$(status).html(getStatusIcon(form, allowedApproval("TEMP")) + getStatusTextShort(form));
 	$(listElement).append(status);
 
-	console.log(getId(form));
 
 	if (isCompleted(form)) {
 		$(link).attr("href", "form_summary.html#facility=" + facilityId + "#cycle=" + getId(cycle) + "#form=" + getId(form));

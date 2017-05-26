@@ -56,10 +56,10 @@ var StorageHandler = {
 	function (facilityId) {
 		var freshdata;
 		//fetch data from server
-		return server_interface.setFacility(facilityId).then(function() {
+		return server_interface.setLightWeightFacility(facilityId).then(function() {
 			freshdata = facility;
 			StorageHandler.setLastDownloadTime(freshdata);
-			LS.updateFacility(freshdata);
+			LS.mergeFacility(freshdata);
 			console.log("Data updated from DHIS2 server");
 			return new Promise((resolve, reject) => { //return success promise
 				resolve("Success!");
@@ -397,8 +397,8 @@ var LS = {
 			
 				var forms = getForms(cycle);
 				forms.forEach(function(form) {
-					if (!facilityContainsFormWithId(newFacility, getId(cycle), getId(form))) {
-						insertForm(newFacility, getId(cycle), form);
+					if (!facilityContainsFormWithId(newFacility, getId(cycle), getId(form)) || formInFacilityIsEmpty(newFacility, getId(cycle), getId(form))) {
+						replaceOrInsertForm(newFacility, getId(cycle), form);
 					}
 				});
 			}
@@ -436,7 +436,6 @@ var LS = {
 	},
 	containsFacility: 
 	function(id) {
-		console.log("ID: " + LS.getFacilityPrefix() + id);
 		return LS.contains(LS.getFacilityPrefix() + id);
 	},
 	containsForm: 

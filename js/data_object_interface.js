@@ -142,11 +142,28 @@ function insertForm(facility, cycleId, form) {
 	var cycle = getCycleById(facility, cycleId);
 	cycle.forms.push(form);
 }
+function replaceOrInsertForm(facility, cycleId, newForm) {
+	var cycle = getCycleById(facility, cycleId);
+	var oldForms = getForms(cycle);
+	for (var i = 0; i < oldForms.length; i++) {
+		if (getId(oldForms[i]) == getId(newForm)){
+			oldForms[i] = newForm;
+			return;
+		}
+	}
+	cycle.forms.push(form);
+}
 function facilityContainsCycleWithId(facility, cycleId) {
 	var cycles = getCycles(facility);
 	for (var i = 0; i < cycles.length; i++) {
 		if (getId(cycles[i]) == cycleId) return true;
 	}
+	return false;
+}
+function formInFacilityIsEmpty(facility, cycleId, formId) {
+	var cycle = getCycleById(facility, cycleId);
+	var form = getFormById(cycle, formId);
+	if (getSections(form).length == 0) return true;
 	return false;
 }
 function insertCycle(facility, cycle) {
@@ -173,12 +190,23 @@ function getDataElementFromCycle(cycle, formId, sectionId, commodityId, dataElem
 
 //##########  FORMS
 
+function formIsEmpty(form) {
+	if (getSections(form).length == 0) return true;
+	return false;
+}
+
 //returns string with predefined qualitative status messages for form. Regarding approval and completion
 function getStatus(form) {
-	if (!isCompleted(form) && !dataEntryIsStartedInForm(form)) return 1;
-	if (isCompleted(form) && !isApproved(form)) return 2;
-	if (isApproved(form)) return 3;
-	if (!isCompleted(form) && dataEntryIsStartedInForm(form)) return 4;
+	if (!formIsEmpty(form)) { //if form is not empty --> perform deep analysis of form status
+		if (!isCompleted(form) && !dataEntryIsStartedInForm(form)) return 1;
+		if (isCompleted(form) && !isApproved(form)) return 2;
+		if (isApproved(form)) return 3;
+		if (!isCompleted(form) && dataEntryIsStartedInForm(form)) return 4;
+	} else { //if form is empty --> perform shallow analysis of form status
+		if (!isCompleted(form)) return 1;
+		if (isCompleted(form) && !isApproved(form)) return 2;
+		if (isApproved(form)) return 3;
+	}
 	return -1;
 }
 function getStatusText(form) {
@@ -237,7 +265,15 @@ function actionIsRequiredByUser(form, allowedApproval) {
 	} else {
 		return false;
 	}
+
 }
+
+	/*if (status == 1) return "Form is waiting for completion";
+	if (status == 2) return "Form is completed, and waiting for approval";
+	if (status == 3) return "Form is completed and approved";
+	if (status == 4) return "Data entry is started, but not completed"*/
+	
+	
 function dataEntryIsStartedInForm(form) {
 	var section = getSections(form)[0];
 	return dataEntryIsStartedInSection(section);
@@ -281,6 +317,7 @@ function allSectionsIsCompleted(form) {
 	var sections = getSections(form);
 	return isCompleted(sections[sections.length-1]);
 }
+
 
 //##########  SECTIONS
 function getLastCompletedCommodity(section) {
