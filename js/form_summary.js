@@ -88,14 +88,15 @@ function generateCompleteButton() {
 	$(button).on("click", function(e) {
 		showConfirmBox("<p>Are you sure you want to the complete the form?</p>", function() {
 			setToCompleted(form);
-			LS.updateFacility(facility);
-			//if allowed approval: refresh and prompt for instant approval after completion
-			if (allowedApproval("TEMP")) {
-				navigateToAddress("form_summary.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId + "#promptForInstantApproval=true");
-				location.reload();
-			} else {
-				location.reload();
-			}
+			StorageHandler.saveForm(facility, form).then(function() {
+				//if allowed approval: refresh and prompt for instant approval after completion
+				if (allowedApproval("TEMP")) {
+					navigateToAddress("form_summary.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId + "#promptForInstantApproval=true");
+					location.reload();
+				} else {
+					location.reload();
+				}
+			});
 		});
 	});
 }
@@ -110,8 +111,9 @@ function generateApproveButton() {
 	$(button).on("click", function(e) {
 		showConfirmBox("<p>Are you sure you want to the approve the form?</p>", function() {
 			setToApproved(form);
-			LS.updateFacility(facility);
-			location.reload();
+			StorageHandler.saveForm(facility, form).then(function() {
+				location.reload();
+			});
 		});
 	});
 }

@@ -60,10 +60,10 @@ function generateListOfPreviousCycles(cycles) {
 function getListElement(cycle, form) {
 
 	var listElement = document.createElement("LI");
-
+	$(listElement).attr("id", getId(form));
+	
 	//form name
 	var link = document.createElement("A");
-	$(link).attr("data-tip", "this is the tip!");
 	$(listElement).append(link);
 
 	$(link).html('<i class="fa fa-file-text-o" aria-hidden="true"></i>' + getName(form));
@@ -87,7 +87,11 @@ function getListElement(cycle, form) {
 	}
 
 	$(listElement).click(function() {
-		navigateToAddress("form_overview.html#facility=" + facilityId + "#cycle=" + getId(cycle) + "#form=" + getId(form));
+		if (isCompleted(form)) {
+			navigateToAddress("form_summary.html#facility=" + facilityId + "#cycle=" + getId(cycle) + "#form=" + getId(form));
+		} else {
+			navigateToAddress("form_overview.html#facility=" + facilityId + "#cycle=" + getId(cycle) + "#form=" + getId(form));
+		}
 	});
 
 	return listElement;

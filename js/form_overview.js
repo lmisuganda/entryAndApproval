@@ -13,7 +13,7 @@ function initializeFormOverviewContent() {
 	if (isUndefinedOrNull(facility, cycle, form)) navigateToAddress("index.html");
 
 	redirectIfEditIsDenied(form); //if edit not allowed (based on completion and approval status, user rights) redirect to summary
-	if (isCompleted(form)) openFormSummary();
+	if (isCompleted(form)) saveAndOpenFormSummary();
 
 	generateMainMenu(); //located in scripts.js
 	setProgramTitleHeader(getName(form)); 

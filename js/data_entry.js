@@ -411,7 +411,7 @@ function validateCommodityClickHandler(button) {
 
 	var currentForm = $(currentElement).find("form")[0];
 	var notApplicable = $(currentElement).find("#not_applicable_checkbox").is(':checked');
-	var errorMessages = validateCommodityInput(commodityId, currentForm);
+	var errorMessages = DataEntryValidation.validateCommodityInput(commodityId, currentForm);
 	//run validation
 	if (notApplicable || errorMessages.length == 0){
 			unsolvedErrors = false;

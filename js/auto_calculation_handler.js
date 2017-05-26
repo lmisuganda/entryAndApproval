@@ -76,7 +76,7 @@ var autoCalc = {
 			
 			if (exp.charAt(i) == "#") {
 				var name = exp.substr(i + 2, exp.substr(i + 2, exp.length).indexOf("}"));
-				var inputValue = getValueFromDataInputElementByName(name, currentInputFields);
+				var inputValue = this.getValueFromDataInputElementByName(name, currentInputFields);
 				
 				if (inputValue == "") return 0;
 				if (inputValue == 0) inputValue = 1;
@@ -88,5 +88,15 @@ var autoCalc = {
 			} 
 		}
 		return eval(convExp);
+	},
+	
+	getValueFromDataInputElementByName:
+	function (name, currentInputFields) {
+		var name = name.toLowerCase().trim();
+		var i = 0;
+		while (i < currentInputFields.length) {
+			if (currentInputFields[i].name.toLowerCase().trim() == name) return currentInputFields[i].value;
+			i++;
+		}
 	},
 }
