@@ -218,7 +218,7 @@ function getDataElementInputPair(commodity, dataElement) {
 
 
 	//if data element is auto-calculated | isAutoCalculated and rules located in program_indicator_handler.js
-	if (isAutoCalculated(getName(dataElement))) { 
+	if (autoCalc.isAutoCalculated(getName(dataElement))) { 
 		$(input).prop('disabled', true);
 		$(input).css('border', "1px dashed grey");
 		$(input).addClass("calculated_input");
@@ -273,7 +273,7 @@ function addInputEventListeners(input) {
 
 	// temp indicator autocalc handler. --> see program_indicator_handler.js
 	$(input).keyup(function () {
-		calculateAndPrintIndicators("temp", $("input").filter(":visible"));
+		autoCalc.calculateAndPrint($("input").filter(":visible"));
 	});
 }
 
