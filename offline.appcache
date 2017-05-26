@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#12.05.2017a
+#25.05.17a
 
 CACHE:
 index.html
@@ -13,15 +13,17 @@ js/dashboard.js
 js/form_overview.js
 js/data_entry.js
 js/data_entry_validation.js
-js/program_indicator_handler.js
+js/auto_calculation_handler.js
 js/form_summary.js
 
 js/help_aside_handler.js
 js/scripts.js
-js/localStorage_handler.js
+js/storage_handler.js
 js/data_object_interface.js
-js/data.js
+js/data2.js
 js/jquery-3.1.0.js
+
+serverInterface/RetrieveEvents.js
 
 style/app_icon.png
 style/arrow-icon.png
@@ -53,6 +55,9 @@ style/fonts/OpenSans-LightItalic.ttf
 style/fonts/OpenSans-Regular.ttf
 style/fonts/OpenSans-Semibold.ttf
 style/fonts/OpenSans-SemiboldItalic.ttf
+
+experiment/experiment.js
+experiment/index.html
 
 offline.appcache
 manifest.webapp
