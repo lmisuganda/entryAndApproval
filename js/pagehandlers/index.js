@@ -1,16 +1,14 @@
-if (true) {
-	//load from DHIS2 server
-	StorageHandler.saveFacilityLocalOnly(offlineTestData.getFacility());
-	console.log("Working online");
-} else {
-	console.log("Working offline");
-	
+//import offline test data
+StorageHandler.saveFacilityLocalOnly(offlineTestData.getFacility());
+StorageHandler.downloadAvailableFacilities(initializeIndexContent);
+
+function initializeIndexContent() {
+	var facilities = LS.getFacilities();
+
+	generateMainMenu(); //located in scripts.js
+	generateFacilityList(facilities);
+
 }
-var facilities = LS.getFacilities();
-
-generateMainMenu(); //located in scripts.js
-generateFacilityList(facilities);
-
 function generateFacilityList(facilities) {
 	for (var i = 0; i < facilities.length; i++) {
 		$("#facility_list").append(getListElement(facilities[i]));

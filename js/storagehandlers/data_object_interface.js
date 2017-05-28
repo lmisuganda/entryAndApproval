@@ -175,6 +175,10 @@ function getForms(cycle) {
 	return cycle.forms;
 }
 
+function getDeadline(cycle) {
+	return cycle.deadline;
+}
+
 function getFormById(cycle, id) {
 	var forms = getForms(cycle);
 	for (var i = 0; i < forms.length; i++) {
@@ -191,6 +195,7 @@ function getDataElementFromCycle(cycle, formId, sectionId, commodityId, dataElem
 //##########  FORMS
 
 function formIsEmpty(form) {
+	if (isUndefinedOrNull(getSections(form))) return true;
 	if (getSections(form).length == 0) return true;
 	return false;
 }

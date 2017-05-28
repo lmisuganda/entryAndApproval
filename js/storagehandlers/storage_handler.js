@@ -7,14 +7,36 @@ var StorageHandler = {
 		return LS.getFacilities();
 	},
 	
-	downloadAvailableFacilities:
-	function() {
-		//for each facility provided from server: LS.mergeFacility(facilities[n])
-	},
-	
 	getFacility: 
 	function(facilityId) {
 		return LS.getFacilityById(facilityId);
+	},
+	
+	downloadAvailableFacilities:
+	function(pageInitFunction) {
+		this.downloadAvailableFacilitiesToLocalStorage().always(function() {
+			pageInitFunction();
+		});
+	},
+	
+	downloadAvailableFacilitiesToLocalStorage:
+	function () {
+		var freshdata;
+		//fetch data from server
+		return server_interface.setFacilities().then(function() {
+			freshdata = all_facilities_information;
+			//StorageHandler.setLastDownloadTime(freshdata);
+			LS.updateAllFacilities(freshdata); //change to mergeFacility when working
+			console.log("Data updated from DHIS2 server");
+			return new Promise((resolve, reject) => { //return success promise
+				resolve("Success!");
+			});
+		}, function (reason) { //on error (no connection etc.) no update on local storage)
+			console.log("Working offline: no data update");
+			return new Promise((resolve, reject) => { //return success promise
+				reject("Error!");
+			});
+		}); 
 	},
 	
 	downloadFacilityWithId:
@@ -58,8 +80,9 @@ var StorageHandler = {
 		//fetch data from server
 		return server_interface.setLightWeightFacility(facilityId).then(function() {
 			freshdata = facility;
+			console.log(freshdata);
 			StorageHandler.setLastDownloadTime(freshdata);
-			LS.mergeFacility(freshdata);
+			LS.updateFacility(freshdata); //change to mergeFacility when working
 			console.log("Data updated from DHIS2 server");
 			return new Promise((resolve, reject) => { //return success promise
 				resolve("Success!");
@@ -372,7 +395,9 @@ var LS = {
 	
 	updateAllFacilities:
 	function (facilities) {
-		for (var i = 0; i < cycles.length; i++) {
+		console.log(facilities);
+		for (var i = 0; i < facilities.length; i++) {
+			console.log(getId(facilities[i]));
 			this.updateFacility(facilities[i]);
 		}
 	},

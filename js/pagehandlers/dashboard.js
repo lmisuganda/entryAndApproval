@@ -9,7 +9,7 @@ function initializeDashboardContent() {
 
 	generateMainMenu(); //located in scripts.js
 
-	currentCycle = getCurrentCycle(facility);
+	currentCycle = getCurrentCycle(facility); //temp
 
 	generateFacilityInfoSection();
 	generateListOfHighlightedForms(currentCycle);
@@ -19,11 +19,12 @@ function initializeDashboardContent() {
 
 function generateFacilityInfoSection() {
 	$("#facility_title_header").text(getName(facility));
-	$("#header_cycle_info").html('<i class="fa fa-circle-o-notch" aria-hidden="true"></i>' + "Current cycle: " + getId(currentCycle));
+	$("#header_cycle_info").html('<i class="fa fa-circle-o-notch" aria-hidden="true"></i>' + "Current cycle: " + getName(currentCycle) + ". Deadline: " +  getDeadline(currentCycle));
 }
 
 function generateListOfHighlightedForms(cycle) {
 	var forms = getForms(cycle);
+	console.log(forms);
 	var pendingFormsCount = 0;
 	for (var i = 0; i < forms.length; i++) {
 		if (actionIsRequiredByUser(forms[i], allowedApproval("TEMP"))) {
@@ -43,7 +44,7 @@ function generateListOfPreviousCycles(cycles) {
 		var listElement = document.createElement("LI");
 		var detailElement = document.createElement("DETAILS");
 		var summaryElement = document.createElement("SUMMARY");
-		$(summaryElement).text("2016: cycle " + getId(cycles[i]));
+		$(summaryElement).text(new Date(getDeadline(cycles[i])).getFullYear() + ": cycle " + getName(cycles[i]));
 		$(detailElement).append(summaryElement);
 		$(listElement).append(detailElement);
 		$("#previous_cycles").append(listElement);
@@ -70,7 +71,7 @@ function getListElement(cycle, form) {
 
 	//cycle info
 	var cycleEl = document.createElement("P");
-	$(cycleEl).html('<i class="fa fa-circle-o-notch" aria-hidden="true"></i>' + getId(cycle));
+	$(cycleEl).html('<i class="fa fa-circle-o-notch" aria-hidden="true"></i>' + getName(cycle));
 	$(listElement).append(cycleEl);
 
 	//status info
