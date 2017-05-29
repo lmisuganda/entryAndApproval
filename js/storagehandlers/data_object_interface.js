@@ -89,17 +89,29 @@ function getDescription(object) {
 
 
 // ######### Facility
+
+function getCyclesSortedByDeadline(facility) {
+	var compare = function(a, b) {
+		if (a.deadline < b.deadline)
+			return 1;
+		if (a.deadline > b.deadline)
+			return -1;
+		return 0;
+	};
+	return getCycles(facility).sort(compare);
+}
 function getCycles(facility) {
 	return facility.cycles;
 }
 function getCurrentCycle(facility) {
-	return getCycles(facility)[0]; //TEMP HACK NEED FIX
+	return getCyclesSortedByDeadline(facility)[0];
+	
 }
 function getPreviousCycles(facility) {
-	return getCycles(facility).slice(1); //TEMP HACK NEED FIX
+	return getCyclesSortedByDeadline(facility).slice(1);
 }
-function getPreviousCycle(currentCycle) {
-	return getCycles(facility)[1]; //TEMP HACK NEED FIX
+function getPreviousCycle(currentCycleId) {
+	return getPreviousCycles(facility)[0]; //untested update (in use for getting opening balance from previous cycle | see data_entry.js
 }
 function getCycleById(facility, id) {
 	var cycles = getCycles(facility);
@@ -177,6 +189,9 @@ function getForms(cycle) {
 
 function getDeadline(cycle) {
 	return cycle.deadline;
+}
+function isPassedDeadline(cycle) {
+	return getDeadline(cycle) < getCurrentDateISO();
 }
 
 function getFormById(cycle, id) {

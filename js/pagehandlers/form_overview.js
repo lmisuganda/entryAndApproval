@@ -249,7 +249,7 @@ function setArrowPosition(section) {
 
 function setProgramTitleHeader(text) {
 	$("#program_title").text(text);
-	$("#cycle_title").html('<i class="fa fa-circle-o-notch" aria-hidden="true"></i>' + "Cycle " + getId(cycle));
+	$("#cycle_title").append('<i class="fa fa-circle-o-notch" aria-hidden="true"></i>' + "Cycle " + getName(cycle));
 }
 
 

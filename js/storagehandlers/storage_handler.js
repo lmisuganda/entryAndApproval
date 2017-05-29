@@ -139,7 +139,7 @@ var StorageHandler = {
 		
 		var freshdata;
 		//fetch data from server
-		return server_interface.setForm(formId).then(function() {
+		return server_interface.setForm(facilityId, formId).then(function() {
 			freshdata = forms[0];
 			StorageHandler.setLastDownloadTime(freshdata);
 			LS.updateForm(facilityId, cycleId, freshdata);

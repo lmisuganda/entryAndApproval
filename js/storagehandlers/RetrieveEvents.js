@@ -55,7 +55,6 @@
         HENTE EVENTS
     */
 
-    var orgunit_id = 'narItU6DLU1'
     var program_id = 'Y3mw3alAgKH'
     var program_stage_id = 'MFlEmsId1Hy'
     var program_name = 'ARV'
@@ -172,8 +171,9 @@
         });
     }
 
-    function setOrderDeadlines(){
+    function setOrderDeadlines(orgunit_id){
         return getRelevantData('organisationUnitGroups', 'filter=organisationUnits.id:eq:' + orgunit_id +'&', 'displayName', function(data){
+            console.log("data", data)
             org_unit_zone = data.organisationUnitGroups[0].displayName
         }).then(function(){
             return getCyclePeriods(org_unit_zone)
@@ -188,27 +188,27 @@
 
 
 
-    function generateFromEventId(event_uid){
-        return setOrderDeadlines().then(function(){
+    function generateFromEventId(event_uid, orgunit_id){
+        return setOrderDeadlines(orgunit_id).then(function(){
             console.log("creating json-object for webapp...")
-            return generateFromEventById(event_uid)
+            return generateFromEventById(event_uid, orgunit_id)
         })
     }
 
     function generateFromOrderingCycles(program_id, orgunit_id){
 
-        return setOrderDeadlines().then(function(){
+        return setOrderDeadlines(orgunit_id).then(function(){
             console.log("creating json-object for webapp...")
-            return generateFromEvents()
+            return generateFromEvents(orgunit_id)
         })
 
     }
 
     function generateLightWeightFromOrderingCycles(program_id, orgunit_id){
 
-        return setOrderDeadlines().then(function(){
+        return setOrderDeadlines(orgunit_id).then(function(){
             console.log("creating json-object for webapp...")
-            return generateLightWeightFromEvents()
+            return generateLightWeightFromEvents(orgunit_id)
         })
 
     }
@@ -224,7 +224,7 @@
         }
     }
 
-    function generateFromEventById(event_uid){
+    function generateFromEventById(event_uid, orgunit_id){
         var promises = [];
 
         for(var i = 0; i < order_periods.length; i++){
@@ -259,7 +259,7 @@
         });
     }
 
-    function generateFromEvents(){
+    function generateFromEvents(orgunit_id){
         var promises = [];
         for(var i = 0; i < order_periods.length; i++){
             var cycle_start = '';
@@ -282,7 +282,7 @@
         });
     }
 
-    function generateLightWeightFromEvents(){
+    function generateLightWeightFromEvents(orgunit_id){
         var promises = [];
         for(var i = 0; i < order_periods.length; i++){
             var cycle_start = '';
@@ -382,8 +382,8 @@
         return generateLightWeightFromOrderingCycles(program_id, orgunit_id)
     }
 
-    function createCyclesObjectFromEventId(event_uid){
-        return generateFromEventId(event_uid)
+    function createCyclesObjectFromEventId(event_uid, orgunit_id){
+        return generateFromEventId(event_uid, orgunit_id)
     }
 
     function getDataElementGroupID(commodity_name){
@@ -875,7 +875,7 @@
                     facility = {}
                     facility.id = id
                     $.ajax({
-                        url: base_url + '/api/organisationUnits.json?paging=false&filter=id:eq:' + orgunit_id + '&fields=displayName',
+                        url: base_url + '/api/organisationUnits.json?paging=false&filter=id:eq:' + id + '&fields=displayName',
                         type: 'GET',
                         async: false,
                         error: function (data) {
@@ -892,9 +892,9 @@
             function(id){
                 return createLightWeightCyclesObject(program_id, id).then(function(){
                     facility = {}
-                    facility.id = orgunit_id
+                    facility.id = id
                     $.ajax({
-                        url: base_url + '/api/organisationUnits.json?paging=false&filter=id:eq:' + orgunit_id + '&fields=displayName',
+                        url: base_url + '/api/organisationUnits.json?paging=false&filter=id:eq:' + id + '&fields=displayName',
                         type: 'GET',
                         async: false,
                         error: function (data) {
@@ -911,8 +911,8 @@
                 })
         },
         setForm:
-            function(id){
-                return createCyclesObjectFromEventId(id)
+            function(orgunit_id, id){
+                return createCyclesObjectFromEventId(id, orgunit_id)
             },
         updateFormOnServer:
             function(orgUnitId, form){
@@ -975,7 +975,7 @@
     }
 
     function magnus_funksjon2(){
-        return server_interface.setForm('BQfsyXkVIbw').then(function(){
+        return server_interface.setForm('BQfsyXkVIbw', 'narItU6DLU1').then(function(){
             form = forms[0]
             console.log("her er formet ditt,magnus li",form)
         })
@@ -999,6 +999,12 @@
         })
     }
 
+    function magnus_funksjon6(){
+        return server_interface.setLightWeightFacility('GWx4sxmtgCc').then(function(){
+            console.log("Facilitet er: ", facility)
+        })
+    }
+
     function test_func(){
         return server_interface.setForm('BQfsyXkVIbw').then(function(){
             section = {commodities:[{notApplicable:false, notApplicable_id:"skhME5651k0",dataElements:[{name:"Adjusted AMC",id:"CAn4RkGfoDE",value:-3,type:"NUMBER",calculated:false,required:true, description:""}]},{notApplicable:false, notApplicable_id: "KYVkkpfLuuh",dataElements:[{name:"ART & PMTCT Consumption",id:"npWuwkFlohR",value:2,type:"NUMBER",calculated:false,required:true, description:""}]}]}
@@ -1016,10 +1022,11 @@
     // magnus_funksjon3()
     // magnus_funksjon4()
     // magnus_funksjon5()
+    // magnus_funksjon6()
 
     // test_func()
 
     // server_interface.updateFormOnServer(orgunit_id, formArray)
 
-    // server_interface.updateEventWithBlanks(orgunit_id, 'BQfsyXkVIbw')
+    // server_interface.updateEventWithBlanks('GWx4sxmtgCc', 'em6WxTpbAMI')
     // createBlankEvent(program_id, program_stage_id, orgunit_id)

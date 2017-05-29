@@ -199,3 +199,61 @@ function hideWaitingScreen() {
 		$("#waiting_screen").remove();
 	}, 10);
 }
+
+function getFullDate(oldDate){
+    var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    var months = ["January","February","March","April","May","June","July", "August", "September", "October", "November", "December"];
+    var date = new Date(oldDate)
+    var weekday = days[date.getDay()]
+    var month = months[date.getMonth()]
+    var day = parseInt(date.getDate())
+    if (day==1){
+        day = day + 'st'
+    } else if(day==2){
+        day = day + 'nd'
+    } else if(day==3){
+        day = day + 'rd'
+    } else {
+        day = day + 'th'
+    }
+    var year = parseInt(date.getFullYear())
+
+    var final_date = weekday + ' ' +  month + " " + day + " " + year
+    return final_date
+}
+
+function getFullDateNoDayNoYear(oldDate){
+    var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    var months = ["January","February","March","April","May","June","July", "August", "September", "October", "November", "December"];
+    var date = new Date(oldDate)
+    var weekday = days[date.getDay()]
+    var month = months[date.getMonth()]
+    var day = parseInt(date.getDate())
+    if (day==1){
+        day = day + 'st'
+    } else if(day==2){
+        day = day + 'nd'
+    } else if(day==3){
+        day = day + 'rd'
+    } else {
+        day = day + 'th'
+    }
+
+    var final_date = month + " " + day
+    return final_date
+}
+
+function getCurrentDateISO() {
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+
+	var yyyy = today.getFullYear();
+	if(dd<10){
+		dd='0'+dd;
+	} 
+	if(mm<10){
+		mm='0'+mm;
+	} 
+	return yyyy+'-'+mm+'-'+dd;
+}

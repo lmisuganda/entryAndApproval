@@ -86,7 +86,7 @@ function generateCompleteButton() {
 	
 	//add event-listener to button
 	$(button).on("click", function(e) {
-		showConfirmBox("<p>Are you sure you want to the complete the form?</p>", function() {
+		showConfirmBox("<p>Are you sure you want to complete the form?</p>", function() {
 			setToCompleted(form);
 			StorageHandler.saveForm(facility, form).then(function() {
 				//if allowed approval: refresh and prompt for instant approval after completion

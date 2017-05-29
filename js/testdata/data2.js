@@ -14,6 +14,8 @@ var offlineTestData = {
 
 		{
 			id: 1,
+			name: 1,
+			deadline: "2017-04-28",
 			forms: [
 	   {
 		id: 2,

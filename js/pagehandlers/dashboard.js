@@ -11,24 +11,73 @@ function initializeDashboardContent() {
 
 	currentCycle = getCurrentCycle(facility); //temp
 
-	generateFacilityInfoSection();
-	generateListOfHighlightedForms(currentCycle);
-	generateListOfPreviousCycles(getPreviousCycles(facility));
+	generateFormsLists(facility);
+	//generateFacilityInfoSection();
+	//generateListOfHighlightedForms(currentCycle);
+	//generateListOfPreviousCycles(getPreviousCycles(facility));
 }
 
 
 function generateFacilityInfoSection() {
 	$("#facility_title_header").text(getName(facility));
-	$("#header_cycle_info").html('<i class="fa fa-circle-o-notch" aria-hidden="true"></i>' + "Current cycle: " + getName(currentCycle) + ". Deadline: " +  getDeadline(currentCycle));
+	$("#header_cycle_info").html('<i class="fa fa-circle-o-notch" aria-hidden="true"></i>' + "Current cycle: " + getName(currentCycle) + ". Deadline: " +  getFullDate(getDeadline(currentCycle)));
 }
 
+function generateFormsLists(facility) {
+	var currentCycle = getCurrentCycle(facility);
+	var currentCycleForms = getForms(currentCycle); 
+	currentCycleForms.forEach(function(form) {
+		if (formIsPendingForAction(form)) {
+			$("#pending_forms").append(getListElement(currentCycle, form));
+		} else {
+			$("#submitted_forms").append(getListElement(cycle, form));
+		}
+	});
+	
+	var previousCycles = getPreviousCycles(facility);
+	previousCycles.forEach(function (cycle) {
+		var forms = getForms(cycle);
+		var completedForms = [];
+		
+		forms.forEach(function (form) {
+			if (formIsPendingForAction(form)) {
+				$("#pending_forms").append(getListElement(cycle, form));
+			} else {
+				completedForms.push(getListElement(cycle, form));
+			}
+		});
+		
+		if (completedForms.length > 0) {
+			generatePreviousCycleListElement(cycle, completedForms);
+		}
+	});
+	 
+	
+}
+
+function generatePreviousCycleListElement(cycle, formsListElements) {
+		var listElement = document.createElement("LI");
+		var detailElement = document.createElement("DETAILS");
+		var summaryElement = document.createElement("SUMMARY");
+		$(summaryElement).text(new Date(getDeadline(cycle)).getFullYear() + ": cycle " + getName(cycle));
+		$(detailElement).append(summaryElement);
+		$(listElement).append(detailElement);
+		$("#previous_cycles").append(listElement);
+		$(detailElement).append(formsListElements);
+}
+
+function formIsPendingForAction(form) {
+	return actionIsRequiredByUser(form, allowedApproval("TEMP"));
+}
+
+/*REMOVE !!!!!!!!!!!
 function generateListOfHighlightedForms(cycle) {
 	var forms = getForms(cycle);
 	console.log(forms);
 	var pendingFormsCount = 0;
 	for (var i = 0; i < forms.length; i++) {
 		if (actionIsRequiredByUser(forms[i], allowedApproval("TEMP"))) {
-			$("#pending_forms").append(getListElement(cycle, forms[i]));
+			
 			pendingFormsCount++;
 		} else {
 			$("#submitted_forms").append(getListElement(cycle, forms[i]));
@@ -55,6 +104,7 @@ function generateListOfPreviousCycles(cycles) {
 		}
 	}
 }
+*/
 
 
 
@@ -71,7 +121,9 @@ function getListElement(cycle, form) {
 
 	//cycle info
 	var cycleEl = document.createElement("P");
-	$(cycleEl).html('<i class="fa fa-circle-o-notch" aria-hidden="true"></i>' + getName(cycle));
+	if (isPassedDeadline(cycle)) $(cycleEl).css("color", "red");
+	$(cycleEl).append('<i class="fa fa-circle-o-notch" aria-hidden="true"></i>' + getName(cycle));
+	$(cycleEl).append(" | Deadline: " + getFullDateNoDayNoYear(getDeadline(cycle)));
 	$(listElement).append(cycleEl);
 
 	//status info
