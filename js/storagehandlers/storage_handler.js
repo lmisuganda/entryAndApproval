@@ -26,7 +26,7 @@ var StorageHandler = {
 		return server_interface.setFacilities().then(function() {
 			freshdata = all_facilities_information;
 			//StorageHandler.setLastDownloadTime(freshdata);
-			LS.updateAllFacilities(freshdata); //change to mergeFacility when working
+			LS.mergeFacilities(freshdata); //change to mergeFacilities(facilities) when working
 			console.log("Data updated from DHIS2 server");
 			return new Promise((resolve, reject) => { //return success promise
 				resolve("Success!");
@@ -82,7 +82,7 @@ var StorageHandler = {
 			freshdata = facility;
 			console.log(freshdata);
 			StorageHandler.setLastDownloadTime(freshdata);
-			LS.updateFacility(freshdata); //change to mergeFacility when working
+			LS.mergeFacility(freshdata); //change to mergeFacility when working
 			console.log("Data updated from DHIS2 server");
 			return new Promise((resolve, reject) => { //return success promise
 				resolve("Success!");
@@ -409,6 +409,15 @@ var LS = {
 		
 	},
 	
+	mergeFacilities:
+	function (facilities) {
+		var i = 0;
+		facilities.forEach(function(facility) {
+			//console.log(i++, facility);
+			if (!isUndefinedOrNull(facility)) LS.mergeFacility(facility);
+		});
+	},
+	
 	//merges given facility with facility in LS with same id (adds non-existing cycles and forms to new facility before saving to LS)
 	mergeFacility:
 	function (newFacility) {
@@ -417,10 +426,14 @@ var LS = {
 			return;
 		} 
 		
-		var existingFacility = LS.getFacilityById(getId(facility));
+		var existingFacility = LS.getFacilityById(getId(newFacility));
 		
 		var cycles = getCycles(existingFacility);
+		if (isUndefinedOrNull(cycles)) cycles = [];
 		cycles.forEach(function(cycle) {
+			
+			if (isUndefinedOrNull(cycle))return;
+			
 			if (!facilityContainsCycleWithId(newFacility, getId(cycle))) {
 				insertCycle(newFacility, cycle);
 			} else {

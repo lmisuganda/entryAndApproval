@@ -5,10 +5,20 @@ StorageHandler.downloadAvailableFacilities(initializeIndexContent);
 function initializeIndexContent() {
 	var facilities = LS.getFacilities();
 
+	var appCache = window.applicationCache
+	appCache.addEventListener('downloading', function() {
+		showWaitingScreen("Downloading application. Please wait..");
+	}, false);
+	appCache.addEventListener('cached', function() {
+		console.log("download done");
+		hideWaitingScreen();
+	}, false);
+	
 	generateMainMenu(); //located in scripts.js
 	generateFacilityList(facilities);
-
+	
 }
+
 function generateFacilityList(facilities) {
 	for (var i = 0; i < facilities.length; i++) {
 		$("#facility_list").append(getListElement(facilities[i]));

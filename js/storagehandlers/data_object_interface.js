@@ -5,7 +5,7 @@
 //#### user data
 
 function allowedApproval(user) {
-	return true; //TEMP
+	return false; //TEMP
 }
 
 
@@ -167,6 +167,7 @@ function replaceOrInsertForm(facility, cycleId, newForm) {
 }
 function facilityContainsCycleWithId(facility, cycleId) {
 	var cycles = getCycles(facility);
+	if (isUndefinedOrNull(cycles)) return false;
 	for (var i = 0; i < cycles.length; i++) {
 		if (getId(cycles[i]) == cycleId) return true;
 	}

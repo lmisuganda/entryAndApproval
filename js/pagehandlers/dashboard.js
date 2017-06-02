@@ -11,8 +11,8 @@ function initializeDashboardContent() {
 
 	currentCycle = getCurrentCycle(facility); //temp
 
+	generateFacilityInfoSection(facility);
 	generateFormsLists(facility);
-	//generateFacilityInfoSection();
 	//generateListOfHighlightedForms(currentCycle);
 	//generateListOfPreviousCycles(getPreviousCycles(facility));
 }
@@ -30,7 +30,7 @@ function generateFormsLists(facility) {
 		if (formIsPendingForAction(form)) {
 			$("#pending_forms").append(getListElement(currentCycle, form));
 		} else {
-			$("#submitted_forms").append(getListElement(cycle, form));
+			$("#submitted_forms").append(getListElement(currentCycle, form));
 		}
 	});
 	

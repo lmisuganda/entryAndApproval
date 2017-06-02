@@ -4,7 +4,7 @@ var offlineTestData = {
 	function () {
 		var facility = {
 			id: 0,
-			name: "Oslo Health Center (DEMO)",
+			name: "Kyampisi HC III",
 			cycles: this.cycles,
 		};
 		return facility;
@@ -39,7 +39,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -47,7 +47,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -55,7 +55,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -63,7 +63,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -71,7 +71,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -79,14 +79,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -94,14 +94,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -123,7 +123,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -131,7 +131,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -139,7 +139,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -147,7 +147,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -155,7 +155,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -163,14 +163,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -178,14 +178,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -207,7 +207,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -215,7 +215,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -223,7 +223,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -231,7 +231,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -239,7 +239,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -247,14 +247,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -262,14 +262,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -291,7 +291,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -299,7 +299,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -307,7 +307,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -315,7 +315,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -323,7 +323,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -331,14 +331,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -346,14 +346,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -375,7 +375,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -383,7 +383,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -391,7 +391,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -399,7 +399,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -407,7 +407,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -415,14 +415,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -430,14 +430,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -459,7 +459,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -467,7 +467,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -475,7 +475,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -483,7 +483,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -491,7 +491,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -499,14 +499,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -514,14 +514,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -543,7 +543,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -551,7 +551,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -559,7 +559,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -567,7 +567,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -575,7 +575,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -583,14 +583,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -598,14 +598,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -627,7 +627,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -635,7 +635,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -643,7 +643,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -651,7 +651,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -659,7 +659,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -667,14 +667,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -682,14 +682,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -711,7 +711,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -719,7 +719,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -727,7 +727,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -735,7 +735,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -743,7 +743,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -751,14 +751,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -766,14 +766,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -795,7 +795,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -803,7 +803,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -811,7 +811,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -819,7 +819,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -827,7 +827,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -835,14 +835,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -850,14 +850,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -879,7 +879,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -887,7 +887,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -895,7 +895,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -903,7 +903,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -911,7 +911,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -919,14 +919,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -934,14 +934,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -970,7 +970,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -978,7 +978,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -986,7 +986,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -994,7 +994,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -1002,7 +1002,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -1010,14 +1010,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -1025,14 +1025,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -1054,7 +1054,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -1062,7 +1062,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -1070,7 +1070,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -1078,7 +1078,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -1086,7 +1086,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -1094,14 +1094,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -1109,14 +1109,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -1138,7 +1138,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -1146,7 +1146,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -1154,7 +1154,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -1162,7 +1162,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -1170,7 +1170,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -1178,14 +1178,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -1193,14 +1193,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -1222,7 +1222,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -1230,7 +1230,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -1238,7 +1238,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -1246,7 +1246,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -1254,7 +1254,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -1262,14 +1262,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -1277,14 +1277,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -1306,7 +1306,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -1314,7 +1314,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -1322,7 +1322,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -1330,7 +1330,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -1338,7 +1338,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -1346,14 +1346,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -1361,14 +1361,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -1390,7 +1390,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -1398,7 +1398,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -1406,7 +1406,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -1414,7 +1414,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -1422,7 +1422,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -1430,14 +1430,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -1445,14 +1445,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -1474,7 +1474,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -1482,7 +1482,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -1490,7 +1490,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -1498,7 +1498,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -1506,7 +1506,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -1514,14 +1514,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -1529,14 +1529,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -1558,7 +1558,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -1566,7 +1566,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -1574,7 +1574,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -1582,7 +1582,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -1590,7 +1590,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -1598,14 +1598,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -1613,14 +1613,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -1649,7 +1649,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -1657,7 +1657,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -1665,7 +1665,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -1673,7 +1673,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -1681,7 +1681,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -1689,14 +1689,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -1704,14 +1704,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -1733,7 +1733,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -1741,7 +1741,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -1749,7 +1749,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -1757,7 +1757,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -1765,7 +1765,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -1773,14 +1773,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -1788,14 +1788,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -1817,7 +1817,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -1825,7 +1825,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -1833,7 +1833,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -1841,7 +1841,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -1849,7 +1849,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -1857,14 +1857,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -1872,14 +1872,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -1901,7 +1901,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -1909,7 +1909,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -1917,7 +1917,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -1925,7 +1925,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -1933,7 +1933,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -1941,14 +1941,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -1956,14 +1956,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -1992,7 +1992,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -2000,7 +2000,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -2008,7 +2008,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -2016,7 +2016,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -2024,7 +2024,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -2032,14 +2032,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -2047,14 +2047,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -2076,7 +2076,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -2084,7 +2084,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -2092,7 +2092,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -2100,7 +2100,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -2108,7 +2108,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -2116,14 +2116,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -2131,14 +2131,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -2160,7 +2160,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -2168,7 +2168,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -2176,7 +2176,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -2184,7 +2184,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -2192,7 +2192,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -2200,14 +2200,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -2215,14 +2215,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -2244,7 +2244,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -2252,7 +2252,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -2260,7 +2260,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -2268,7 +2268,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -2276,7 +2276,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -2284,14 +2284,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -2299,14 +2299,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -2328,7 +2328,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -2336,7 +2336,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -2344,7 +2344,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -2352,7 +2352,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -2360,7 +2360,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -2368,14 +2368,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -2383,14 +2383,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -2419,7 +2419,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -2427,7 +2427,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -2435,7 +2435,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -2443,7 +2443,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -2451,7 +2451,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -2459,14 +2459,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -2474,14 +2474,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -2503,7 +2503,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -2511,7 +2511,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -2519,7 +2519,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -2527,7 +2527,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -2535,7 +2535,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -2543,14 +2543,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -2558,14 +2558,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -2587,7 +2587,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -2595,7 +2595,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -2603,7 +2603,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -2611,7 +2611,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -2619,7 +2619,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -2627,14 +2627,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -2642,14 +2642,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -2671,7 +2671,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -2679,7 +2679,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -2687,7 +2687,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -2695,7 +2695,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -2703,7 +2703,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -2711,14 +2711,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -2726,14 +2726,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -2755,7 +2755,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -2763,7 +2763,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -2771,7 +2771,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -2779,7 +2779,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -2787,7 +2787,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -2795,14 +2795,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -2810,14 +2810,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -2839,7 +2839,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -2847,7 +2847,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -2855,7 +2855,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -2863,7 +2863,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -2871,7 +2871,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -2879,14 +2879,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -2894,14 +2894,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,
@@ -2923,7 +2923,7 @@ var offlineTestData = {
 										name: "Opening balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Stock balance at start of 2 Month Cycle",
 									},
 									{
@@ -2931,7 +2931,7 @@ var offlineTestData = {
 										name: "Quantity received",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Recieved during 2 month cycle",
 									},
 									{
@@ -2939,7 +2939,7 @@ var offlineTestData = {
 										name: "ART & PMTCT consumption",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Consumption during 2 month cycle"
 									},
 									{
@@ -2947,7 +2947,7 @@ var offlineTestData = {
 										name: "Losses / Adjustments",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "(+/-)",
 									},
 									{
@@ -2955,7 +2955,7 @@ var offlineTestData = {
 										name: "Days out of stock",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "During 2 month cycle",
 									},
 									{
@@ -2963,14 +2963,14 @@ var offlineTestData = {
 										name: "Adjusted AMC",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 7,
 										name: "Closing balance",
 										type: "Number",
 										calculated: false,
-										required: true,
+										required: false,
 										description: "Physical count in stores + pharmacy",
 									},
 									{
@@ -2978,14 +2978,14 @@ var offlineTestData = {
 										name: "Months of stock on-hand",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 9,
 										name: "Quantity required",
 										type: "Number",
 										calculated: true,
-										required: true,
+										required: false,
 									},
 									{
 										id: 10,

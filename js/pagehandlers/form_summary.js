@@ -46,7 +46,7 @@ function initializeFormSummaryContent() {
 
 // set header + status-text and color
 function generateFormSummaryHeader () {
-	$("#form_summary").prepend("<p>" + '<i class="fa fa-circle-o-notch" aria-hidden="true"></i>' + "Cycle " + getId(cycle) + "</p>");
+	$("#form_summary").prepend("<p>" + '<i class="fa fa-circle-o-notch" aria-hidden="true"></i>' + "Cycle " + getName(cycle) + "</p>");
 	$("#form_summary").prepend("<h1>" + getName(form) + "</h1>")
 	var status = getStatus(form);
 	if (status == 1 || (status == 2 && allowedApproval("TEMP"))) {
@@ -90,6 +90,7 @@ function generateCompleteButton() {
 			setToCompleted(form);
 			StorageHandler.saveForm(facility, form).then(function() {
 				//if allowed approval: refresh and prompt for instant approval after completion
+				console.log(form);
 				if (allowedApproval("TEMP")) {
 					navigateToAddress("form_summary.html#facility=" + facilityId + "#cycle=" + cycleId + "#form=" + formId + "#promptForInstantApproval=true");
 					location.reload();

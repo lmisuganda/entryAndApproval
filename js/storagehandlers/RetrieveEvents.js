@@ -174,6 +174,11 @@
     function setOrderDeadlines(orgunit_id){
         return getRelevantData('organisationUnitGroups', 'filter=organisationUnits.id:eq:' + orgunit_id +'&', 'displayName', function(data){
             console.log("data", data)
+            if(data.organisationUnitGroups.length == 0){
+                return new Promise(function(resolve, reject){
+                    reject()
+                })
+            }
             org_unit_zone = data.organisationUnitGroups[0].displayName
         }).then(function(){
             return getCyclePeriods(org_unit_zone)
@@ -242,14 +247,15 @@
         }
 
         return $.when.apply($, promises).then(function() {
-
             setEventfromId(event_uid)
             return event_promise[0].then(function(){
                 createCommodityObject(event_uid, 0)
-                return setSections('ARV', 0).then(function(){
-                    createSectionObject(0)
-                    return createFormObject(0).then(function(){
-                        createCycleObject(0)
+                return setLastUpdatedDate(0).then(function(){
+                    return setSections('ARV', 0).then(function(){
+                        createSectionObject(0)
+                        return createFormObject(0).then(function(){
+                            createCycleObject(0)
+                        })
                     })
                 })
             })
@@ -304,7 +310,21 @@
         });
     }
 
-
+    function setLastUpdatedDate(i){
+        var event_id = all_api_events[i].rows[0][0]
+        var lastUpdated = ''
+        return $.ajax({
+            url:  base_url + '/api/events.json?event=' + event_id + '&paging=false&fields=lastUpdated',
+            type: 'GET',
+            async: false,
+            error: function (data) {
+                console.log("Error on retrieving data via API call")
+            },
+            success: function (json) {
+                all_api_events[i].lastUpdated = json.events[0].lastUpdated
+            }
+        });
+    }
 
 
     function waitForEvent(promises, i){
@@ -313,9 +333,11 @@
                 resolve()
             })
         } else if (all_api_events[i] && all_api_events[i].height > 0){
-            return createFormObject(i).then(function(){
-                createCycleObject(i)
-                return waitForEvent(promises.slice(1, promises.length), i+1)
+            return setLastUpdatedDate(i).then(function(){
+                return createFormObject(i).then(function(){
+                    createCycleObject(i)
+                    return waitForEvent(promises.slice(1, promises.length), i+1)
+                })
             })
         } else {
             return waitForEvent(promises.slice(1, promises.length), i+1)
@@ -329,11 +351,13 @@
             })
         } else if (all_api_events[i] && all_api_events[i].height > 0){
             createCommodityObject(undefined, i)
-            return setSections('ARV', i).then(function(){
-                createSectionObject(i)
-                return createFormObject(i).then(function(){
-                    createCycleObject(i)
-                    return waitForFullEvent(promises.slice(1, promises.length), i+1)
+            return setLastUpdatedDate(i).then(function(){
+                return setSections('ARV', i).then(function(){
+                    createSectionObject(i)
+                    return createFormObject(i).then(function(){
+                        createCycleObject(i)
+                        return waitForFullEvent(promises.slice(1, promises.length), i+1)
+                    })
                 })
             })
         } else {
@@ -551,6 +575,7 @@
         var program_uid = event.rows[0][1]
         var event_id = event.rows[0][0]
         forms[event_number] = {}
+        forms[event_number].lastUpdated = all_api_events[event_number].lastUpdated
 
 
         $.ajax({
@@ -566,7 +591,7 @@
         });
 
         return $.ajax({
-            url: base_url + '/api/programStages/' + program_uid + '.json?fields=displayName',
+            url: base_url + '/api/programStages/' + program_uid + '.json?fields=description',
             type: 'GET',
             async: false,
             error: function (data) {
@@ -575,7 +600,7 @@
             success: function (json) {
                 forms[event_number].id= event_id;
                 forms[event_number].approved = false;
-                forms[event_number].name = json.displayName
+                forms[event_number].name = json.description
                 forms[event_number].sections = sections[event_number];
                 return
             }
@@ -610,18 +635,17 @@
 
     function createPostEvent(orgUnitId, dataValuesArray, form_completed){
         post_obj = {};
-        if (form_completed){
-            post_obj.completed = form_completed
+        console.log("sjekker verdi til form_completed: ", form_completed)
+        if (form_completed != undefined){
+    		if(form_completed){
+            	post_obj.status = "COMPLETED"
+    		} else {
+            	post_obj.status = "ACTIVE"
+    		}
         }
+
         post_obj.orgUnit = orgUnitId;
         post_obj.dataValues = dataValuesArray
-        if(forms[0]){
-            if(forms[0].completed == true){
-                post_obj.status = 'COMPLETED'
-            } else {
-                post_obj.status = 'ACTIVE'
-            }
-        }
         return post_obj;
     }
 
@@ -816,7 +840,7 @@
     function updateEventWithBlanks(orgunit_id, event_id){
         var all_ids = getAllIDs()
         var all_values = getAllInitialisedValues()
-        var jsn = createPostEvent(orgunit_id, createDataValuesArray(all_ids, all_values), 'ACTIVE');
+        var jsn = createPostEvent(orgunit_id, createDataValuesArray(all_ids, all_values), false);
         return sendPUTDataToServer(jsn, event_id);
     }
 
@@ -908,6 +932,8 @@
                     for(var i = 0; i < facility.cycles.length; i++){
                         facility.cycles[i].forms[0].sections = []
                     }
+                }, function(){
+                    console.log("hhi error")
                 })
         },
         setForm:
@@ -916,8 +942,8 @@
             },
         updateFormOnServer:
             function(orgUnitId, form){
-                // var form =  {sections:[{commodities:[{dataElements:[{name:"Adjusted AMC",id:"CAn4RkGfoDE",value:-2,type:"NUMBER",calculated:false,required:true, description:""}]},{dataElements:[{name:"ART & PMTCT Consumption",id:"npWuwkFlohR",value:2,type:"NUMBER",calculated:false,required:true, description:""}]}]}]}
-                var jsn = createPostEvent(orgUnitId, createDataValuesArrayFromForm(form, form.id), form.completed);
+                // form =  {completed:true, id:"s06LX6vdwHQ", sections:[{commodities:[{dataElements:[{name:"Adjusted AMC",id:"CAn4RkGfoDE",value:-2,type:"NUMBER",calculated:false,required:true, description:""}]},{dataElements:[{name:"ART & PMTCT Consumption",id:"npWuwkFlohR",value:2,type:"NUMBER",calculated:false,required:true, description:""}]}]}]}
+                var jsn = createPostEvent(orgUnitId, createDataValuesArrayFromForm(form), form.completed);
                 return sendPUTDataToServer(jsn, form.id).then(function(){
                     return updateEventAnalytics()
                 })
@@ -975,7 +1001,7 @@
     }
 
     function magnus_funksjon2(){
-        return server_interface.setForm('BQfsyXkVIbw', 'narItU6DLU1').then(function(){
+        return server_interface.setForm('narItU6DLU1', 'BQfsyXkVIbw').then(function(){
             form = forms[0]
             console.log("her er formet ditt,magnus li",form)
         })
@@ -1000,10 +1026,17 @@
     }
 
     function magnus_funksjon6(){
-        return server_interface.setLightWeightFacility('GWx4sxmtgCc').then(function(){
+        return server_interface.setLightWeightFacility('fhgLsjnYsjU').then(function(){
             console.log("Facilitet er: ", facility)
         })
     }
+
+    function magnus_funksjon7(){
+        return server_interface.setFacility('GWx4sxmtgCc').then(function(){
+            console.log("Facilitet er: ", facility)
+        })
+    }
+
 
     function test_func(){
         return server_interface.setForm('BQfsyXkVIbw').then(function(){
@@ -1018,15 +1051,17 @@
     // sendPUTDataToServer(jsn, 'YjVVIPuVZZG');
 
     // magnus_funksjon()
+    //     if(forms[0].completed == true){
     // magnus_funksjon2()
     // magnus_funksjon3()
     // magnus_funksjon4()
     // magnus_funksjon5()
     // magnus_funksjon6()
+    // magnus_funksjon7()
 
     // test_func()
 
-    // server_interface.updateFormOnServer(orgunit_id, formArray)
+    // server_interface.updateFormOnServer("narItU6DLU1")
 
-    // server_interface.updateEventWithBlanks('GWx4sxmtgCc', 'em6WxTpbAMI')
+    // server_interface.updateEventWithBlanks('narItU6DLU1', 's06LX6vdwHQ')
     // createBlankEvent(program_id, program_stage_id, orgunit_id)
